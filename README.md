@@ -8,7 +8,7 @@ The Valley was a type-in-yourself program published in the UK in *Computing Toda
 
 I wrote about in my ‘Forgotten Tech’ column in *The Register*, back in 2009. You can read the article [here](https://www.theregister.co.uk/2009/11/27/back_into_the_valley/). The [comments section](https://forums.theregister.co.uk/forum/1/2009/11/27/back_into_the_valley/) is particularly illuminting.
 
-<p align="center"><img src="https://smittytone.github.io/blob/master/images/valley_logo.png" width="800" ></p>
+<p align="center"><img src="https://smittytone.github.io/images/valley_logo.png" width="800" ></p>
 
 The column was prompted by the discovery of Fraser Charlon’s [Valley fan page](https://www.staff.ncl.ac.uk/fraser.charlton/otherstuff/Valley/valley_index.html). I got in touch with Fraser and he was kind enough to scan and email me a copy of the listing (mine had long since been dropped in the bin). Thus began an on-again-off-again project to create a macOS version that was true to the spirit of the original: a UI that mimicked the machine on which the game had been first presented (a Commodore Pet).
 
