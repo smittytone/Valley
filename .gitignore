@@ -15,6 +15,9 @@ Art/*
 build/
 DerivedData/
 
+
+The Valley.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
@@ -36,5 +39,3 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 *.lock
-
-The Valley.xcodeproj/project.xcworkspace/contents.xcworkspacedata
