@@ -92,11 +92,59 @@
 
 
 
+- (instancetype)copyWithZone:(NSZone *)zone
+{
+    return [self mutableCopyWithZone:zone];
+}
+
+
+
+- (instancetype)mutableCopyWithZone:(NSZone *)zone
+{
+    Character *copy = [[Character alloc] init];
+    copy.name = [self.name copy];
+    copy.valleyPath = [self.valleyPath mutableCopy];
+    copy.profession = self.profession;
+    copy.stamina = self.stamina;
+    copy.experience = self.experience;
+    copy.rating = self.rating;
+    copy.treasure = self.treasure;
+    copy.psiGain = self.psiGain;
+    copy.psiStrength = self.psiStrength;
+    copy.comGain = self.comGain;
+    copy.comStrength = self.comStrength;
+    copy.amulet = self.amulet;
+    copy.amuletStones = self.amuletStones;
+    copy.helm = self.helm;
+    copy.item3 = self.item3;
+    copy.turns = self.turns;
+    copy.saveSquare = self.saveSquare;
+    copy.scenario = self.scenario;
+    copy.vPos = self.vPos;
+    copy.tPos = self.tPos;
+    copy.cPos = self.cPos;
+    copy.floor = self.floor;
+    copy.places0 = self.places0;
+    copy.places1 = self.places1;
+    copy.places2 = self.places2;
+    copy.places3 = self.places3;
+    copy.places4 = self.places4;
+
+    return copy;
+}
+
+
+
 - (id)init
 {
 	self = [super init];
-	if (self) valleyPath = [[NSMutableArray alloc] init];
-	return self;
+	if (self)
+    {
+        valleyPath = [[NSMutableArray alloc] init];
+        profession = kCharDolt;
+    }
+
+    return self;
 }
 
 
