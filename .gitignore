@@ -15,8 +15,8 @@ Art/*
 build/
 DerivedData/
 
-
 The Valley.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+The Valley/The Valley.entitlements
 
 ## Various settings
 *.pbxuser
@@ -39,5 +39,3 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 *.lock
-
-The Valley/The_Valley.entitlements
