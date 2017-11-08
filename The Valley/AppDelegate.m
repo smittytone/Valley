@@ -442,7 +442,7 @@
         [theMessage clearBuffer];
 
         [self print:@"OH, WHAT A FRAIL SHELL" at:89];
-        [self print:@"IS THIS THAT WE CALL MAN?" at:126];
+        [self print:@"IS THIS THAT WE CALL MAN?" at:127];
 
         heartbeatCount = 0;
         player.stamina = 0;
@@ -659,6 +659,7 @@
 
             [[NSRunLoop currentRunLoop] addTimer:fightTimer forMode:NSDefaultRunLoopMode];
 
+            [self setKeysAndClicks:YES];
             return;
         }
     }
