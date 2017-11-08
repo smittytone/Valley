@@ -36,13 +36,22 @@
                 <outlet property="cButtonS" destination="LAL-ew-NJg" id="QwS-Ug-Jv3"/>
                 <outlet property="experienceView" destination="xLF-0o-XJl" id="pQ0-c3-eR3"/>
                 <outlet property="mainWindow" destination="QvC-M9-y7g" id="gXI-gL-kiS"/>
+                <outlet property="menuItemSave" destination="pxx-59-PXV" id="G6k-Bm-aoj"/>
                 <outlet property="monsterGraphic" destination="eH6-yn-W6Y" id="8Wg-j9-qwp"/>
                 <outlet property="monsterNameView" destination="d54-hT-8Ix" id="0x2-YL-LGk"/>
                 <outlet property="monsterStrengthView" destination="H9P-17-s2Q" id="b3V-R0-6M1"/>
                 <outlet property="newPlayerWindow" destination="qnZ-LR-KbU" id="r7i-g7-bJu"/>
+                <outlet property="oButtonA" destination="Nfd-f5-DaQ" id="oT3-Sn-NqN"/>
+                <outlet property="oButtonE" destination="54L-0Y-nSw" id="Tbv-vt-Zrd"/>
+                <outlet property="oButtonR" destination="wD3-p8-NX5" id="6jZ-Ek-YkF"/>
                 <outlet property="playerNameReadout" destination="g6F-8A-ZqF" id="dxs-uc-dB9"/>
                 <outlet property="playerNameView" destination="COD-KW-TQx" id="nvp-iZ-R3j"/>
+                <outlet property="playerPicView" destination="3PD-F0-4hP" id="do7-2x-FXg"/>
                 <outlet property="playerStrengthView" destination="kC3-Nu-Wet" id="LfU-zj-QnN"/>
+                <outlet property="prefsAsciiCheckbox" destination="yI7-ti-Yxb" id="GTx-lQ-1WE"/>
+                <outlet property="prefsSaveCheckbox" destination="xCY-vL-Sgi" id="beD-tv-AOu"/>
+                <outlet property="prefsSheet" destination="AkV-NT-lAw" id="VVU-TS-0dr"/>
+                <outlet property="prefsSoundCheckbox" destination="a1R-y3-VLC" id="3Sq-pA-gYf"/>
                 <outlet property="psiView" destination="9iZ-gM-jX7" id="0Yy-L6-0uc"/>
                 <outlet property="staminaView" destination="l5a-JJ-8E7" id="A5K-1R-wMj"/>
                 <outlet property="theMessage" destination="xnx-9W-YA8" id="a3d-cO-dGZ"/>
@@ -66,7 +75,11 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                            <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                            <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                <connections>
+                                    <action selector="prefsPanel:" target="Voe-Tx-rLC" id="ch8-JM-1kB"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                             <menuItem title="Services" id="NMo-om-nkz">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -134,12 +147,12 @@
                             </menuItem>
                             <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
                                 <connections>
-                                    <action selector="saveDocument:" target="-1" id="teZ-XB-qJY"/>
+                                    <action selector="saveDocument:" target="Voe-Tx-rLC" id="ZHe-be-RG4"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Save As…" keyEquivalent="S" id="Bw7-FT-i3A">
                                 <connections>
-                                    <action selector="saveDocumentAs:" target="-1" id="mDf-zr-I0C"/>
+                                    <action selector="saveDocumentAs:" target="Voe-Tx-rLC" id="bc3-DW-dj1"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -373,12 +386,6 @@
                                     <action selector="performMiniaturize:" target="-1" id="VwT-WD-YPe"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Zoom" id="R4o-n2-Eq4">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="performZoom:" target="-1" id="DIl-cC-cCs"/>
-                                </connections>
-                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
                             <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -402,8 +409,9 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="-405" y="430"/>
         </menu>
-        <window title="The Valley" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="The Valley" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="ValleyWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="680" height="740"/>
@@ -683,7 +691,7 @@
                                     </constraints>
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="back_combat" id="jGz-jb-lKO"/>
                                 </imageView>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rQo-Gd-H5X">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rQo-Gd-H5X" customClass="ValleyButton">
                                     <rect key="frame" x="20" y="50" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="72" id="5Uj-Z3-lMt"/>
@@ -972,13 +980,6 @@ DQ
                             <action selector="saveCharSheet:" target="Voe-Tx-rLC" id="eMQ-bZ-Wyo"/>
                         </connections>
                     </button>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Xww-54-ZW5">
-                        <rect key="frame" x="131" y="61" width="155" height="148"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="148" id="H1n-8x-IxO"/>
-                            <constraint firstAttribute="width" constant="155" id="lJm-dt-2sj"/>
-                        </constraints>
-                    </customView>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g6F-8A-ZqF">
                         <rect key="frame" x="20" y="249" width="266" height="22"/>
                         <constraints>
@@ -1018,6 +1019,14 @@ Gw
                             <action selector="cancelCharSheet:" target="Voe-Tx-rLC" id="6cu-ha-szt"/>
                         </connections>
                     </button>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3PD-F0-4hP">
+                        <rect key="frame" x="131" y="61" width="155" height="148"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="155" id="bHA-hB-2kc"/>
+                            <constraint firstAttribute="height" constant="148" id="ehp-li-0Ud"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="figure_base" id="dlZ-si-xgR"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="TDb-on-u4R" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="0jc-bb-jbX"/>
@@ -1025,9 +1034,9 @@ Gw
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TFm-a0-HaH" secondAttribute="trailing" constant="20" symbolic="YES" id="4WC-uI-Pg3"/>
                     <constraint firstItem="ptd-TO-wnt" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="CmB-Mp-Jir"/>
                     <constraint firstAttribute="bottom" secondItem="ax3-aO-USa" secondAttribute="bottom" constant="20" id="DSF-tF-3YV"/>
+                    <constraint firstItem="3PD-F0-4hP" firstAttribute="top" secondItem="TDb-on-u4R" secondAttribute="bottom" constant="15" id="DrL-ig-U23"/>
                     <constraint firstItem="fbU-5V-9zf" firstAttribute="top" secondItem="ptd-TO-wnt" secondAttribute="bottom" constant="11" id="FgP-U3-6Fs"/>
                     <constraint firstAttribute="trailing" secondItem="g6F-8A-ZqF" secondAttribute="trailing" constant="20" id="Lw4-lc-ym1"/>
-                    <constraint firstAttribute="trailing" secondItem="Xww-54-ZW5" secondAttribute="trailing" constant="20" id="M5x-uL-4Ys"/>
                     <constraint firstAttribute="trailing" secondItem="TDb-on-u4R" secondAttribute="trailing" constant="20" id="Mpm-U1-UYL"/>
                     <constraint firstAttribute="trailing" secondItem="ny7-Kr-FRn" secondAttribute="trailing" constant="20" id="NMI-b9-6lf"/>
                     <constraint firstItem="BaT-nV-0J6" firstAttribute="leading" secondItem="ax3-aO-USa" secondAttribute="trailing" constant="12" id="Oq9-Iq-n7j"/>
@@ -1045,15 +1054,15 @@ Gw
                     <constraint firstItem="fbU-5V-9zf" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="k8k-CO-qHz"/>
                     <constraint firstItem="ax3-aO-USa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" symbolic="YES" id="lNy-hi-nLt"/>
                     <constraint firstAttribute="bottom" secondItem="BaT-nV-0J6" secondAttribute="bottom" constant="20" id="oMN-by-613"/>
-                    <constraint firstItem="Xww-54-ZW5" firstAttribute="top" secondItem="TDb-on-u4R" secondAttribute="bottom" constant="15" id="oU1-nH-vRb"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fbU-5V-9zf" secondAttribute="trailing" constant="20" symbolic="YES" id="omx-dm-kcg"/>
                     <constraint firstItem="TDb-on-u4R" firstAttribute="top" secondItem="g6F-8A-ZqF" secondAttribute="bottom" constant="8" id="pcb-j5-F7l"/>
                     <constraint firstAttribute="trailing" secondItem="BaT-nV-0J6" secondAttribute="trailing" constant="20" id="sSW-JA-eND"/>
                     <constraint firstItem="ny7-Kr-FRn" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="vPP-rK-N3I"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gLI-M7-PYp" secondAttribute="trailing" constant="20" symbolic="YES" id="xF3-0Z-SS3"/>
+                    <constraint firstAttribute="trailing" secondItem="3PD-F0-4hP" secondAttribute="trailing" constant="20" id="ySO-Dy-PkM"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="185" y="263"/>
+            <point key="canvasLocation" x="-437" y="48"/>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="LB0-3C-aU3">
             <windowStyleMask key="styleMask" titled="YES"/>
@@ -1154,10 +1163,104 @@ DQ
             </view>
             <point key="canvasLocation" x="738" y="328.5"/>
         </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="AkV-NT-lAw">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="283" y="305" width="480" height="181"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" id="WnT-aI-PUP">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="181"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xCY-vL-Sgi">
+                        <rect key="frame" x="18" y="145" width="444" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="0HE-Nd-zn2"/>
+                        </constraints>
+                        <buttonCell key="cell" type="check" title="Only allow games to be saved when the player is in a Safe Castle" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="63j-ec-hFz">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yI7-ti-Yxb">
+                        <rect key="frame" x="18" y="125" width="444" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="UkB-EH-0iE"/>
+                        </constraints>
+                        <buttonCell key="cell" type="check" title="Use new graphics" bezelStyle="regularSquare" imagePosition="left" inset="2" id="KCF-Vt-n3u">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a1R-y3-VLC">
+                        <rect key="frame" x="18" y="105" width="444" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="2CB-xc-xDM"/>
+                        </constraints>
+                        <buttonCell key="cell" type="check" title="Play sounds" bezelStyle="regularSquare" imagePosition="left" inset="2" id="WQT-gw-MvX">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xs4-PO-hhe">
+                        <rect key="frame" x="396" y="13" width="70" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="0Vq-sd-wAK"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="58" id="KHF-LK-9sW"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FrU-VN-o4r">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="prefsSheetSave:" target="Voe-Tx-rLC" id="m3E-Uf-Oo6"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lIk-Xa-InB">
+                        <rect key="frame" x="314" y="13" width="82" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="Bz9-9m-rcy"/>
+                            <constraint firstAttribute="height" constant="21" id="mH0-OX-nsy"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NhM-b4-Wy7">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="prefsSheetCancel:" target="Voe-Tx-rLC" id="8zg-bz-hCd"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="yI7-ti-Yxb" secondAttribute="trailing" constant="20" id="2Dj-bk-b3V"/>
+                    <constraint firstAttribute="trailing" secondItem="Xs4-PO-hhe" secondAttribute="trailing" constant="20" id="9Dz-os-tkT"/>
+                    <constraint firstAttribute="bottom" secondItem="lIk-Xa-InB" secondAttribute="bottom" constant="20" id="EDX-kA-Bed"/>
+                    <constraint firstAttribute="trailing" secondItem="xCY-vL-Sgi" secondAttribute="trailing" constant="20" id="Owj-zV-N7a"/>
+                    <constraint firstAttribute="trailing" secondItem="a1R-y3-VLC" secondAttribute="trailing" constant="20" id="P44-St-1zK"/>
+                    <constraint firstItem="yI7-ti-Yxb" firstAttribute="leading" secondItem="WnT-aI-PUP" secondAttribute="leading" constant="20" id="Qoh-wj-NX1"/>
+                    <constraint firstAttribute="bottom" secondItem="Xs4-PO-hhe" secondAttribute="bottom" constant="20" id="b4B-gM-4Ic"/>
+                    <constraint firstItem="xCY-vL-Sgi" firstAttribute="leading" secondItem="WnT-aI-PUP" secondAttribute="leading" constant="20" id="crA-rn-9bF"/>
+                    <constraint firstItem="xCY-vL-Sgi" firstAttribute="top" secondItem="WnT-aI-PUP" secondAttribute="top" constant="20" id="gYB-zP-gdJ"/>
+                    <constraint firstItem="lIk-Xa-InB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WnT-aI-PUP" secondAttribute="leading" constant="20" symbolic="YES" id="h5H-LK-qjW"/>
+                    <constraint firstItem="Xs4-PO-hhe" firstAttribute="leading" secondItem="lIk-Xa-InB" secondAttribute="trailing" constant="12" id="hXQ-LB-UCc"/>
+                    <constraint firstItem="a1R-y3-VLC" firstAttribute="top" secondItem="yI7-ti-Yxb" secondAttribute="bottom" constant="6" id="qt0-XL-EX9"/>
+                    <constraint firstItem="yI7-ti-Yxb" firstAttribute="top" secondItem="xCY-vL-Sgi" secondAttribute="bottom" constant="6" id="r2l-Sh-9t9"/>
+                    <constraint firstItem="a1R-y3-VLC" firstAttribute="leading" secondItem="WnT-aI-PUP" secondAttribute="leading" constant="20" id="uep-ih-Fy6"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="135" y="818.5"/>
+        </window>
     </objects>
     <resources>
         <image name="back_combat" width="220" height="110"/>
         <image name="background" width="680" height="442"/>
+        <image name="figure_base" width="155" height="148"/>
         <image name="key_1" width="72" height="72"/>
         <image name="key_2" width="72" height="72"/>
         <image name="key_3" width="72" height="72"/>
