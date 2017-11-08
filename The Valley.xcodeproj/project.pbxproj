@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BA0A3A01FB380E50024C2F9 /* ValleyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA0A39F1FB380E50024C2F9 /* ValleyWindow.m */; };
+		3BA0A3A31FB38BEB0024C2F9 /* ValleyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA0A3A21FB38BEB0024C2F9 /* ValleyButton.m */; };
 		3BC6433F1FB0C3F000E57E65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6433E1FB0C3F000E57E65 /* AppDelegate.m */; };
 		3BC643411FB0C3F000E57E65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BC643401FB0C3F000E57E65 /* Assets.xcassets */; };
 		3BC643441FB0C3F000E57E65 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC643421FB0C3F000E57E65 /* MainMenu.xib */; };
@@ -20,6 +22,10 @@
 
 /* Begin PBXFileReference section */
 		3B50A4B81FB1B263004AD973 /* The Valley.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "The Valley.entitlements"; sourceTree = "<group>"; };
+		3BA0A39E1FB380E50024C2F9 /* ValleyWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValleyWindow.h; sourceTree = "<group>"; };
+		3BA0A39F1FB380E50024C2F9 /* ValleyWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValleyWindow.m; sourceTree = "<group>"; };
+		3BA0A3A11FB38BEB0024C2F9 /* ValleyButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValleyButton.h; sourceTree = "<group>"; };
+		3BA0A3A21FB38BEB0024C2F9 /* ValleyButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValleyButton.m; sourceTree = "<group>"; };
 		3BC6433A1FB0C3F000E57E65 /* The Valley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Valley.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC6433D1FB0C3F000E57E65 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3BC6433E1FB0C3F000E57E65 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -73,6 +79,10 @@
 				3BC643571FB0C52A00E57E65 /* Constants.h */,
 				3BC6433D1FB0C3F000E57E65 /* AppDelegate.h */,
 				3BC6433E1FB0C3F000E57E65 /* AppDelegate.m */,
+				3BA0A39E1FB380E50024C2F9 /* ValleyWindow.h */,
+				3BA0A39F1FB380E50024C2F9 /* ValleyWindow.m */,
+				3BA0A3A11FB38BEB0024C2F9 /* ValleyButton.h */,
+				3BA0A3A21FB38BEB0024C2F9 /* ValleyButton.m */,
 				3BC643591FB0CA4C00E57E65 /* MessageView.h */,
 				3BC6435A1FB0CA4C00E57E65 /* MessageView.m */,
 				3BC643581FB0CA4C00E57E65 /* NameView.h */,
@@ -169,10 +179,12 @@
 			files = (
 				3BC643601FB0CA4D00E57E65 /* MessageView.m in Sources */,
 				3BC643611FB0CA4D00E57E65 /* NumberView.m in Sources */,
+				3BA0A3A31FB38BEB0024C2F9 /* ValleyButton.m in Sources */,
 				3BC643471FB0C3F000E57E65 /* main.m in Sources */,
 				3BC6433F1FB0C3F000E57E65 /* AppDelegate.m in Sources */,
 				3BC643631FB0CA4D00E57E65 /* ScreenView.m in Sources */,
 				3BC643531FB0C51B00E57E65 /* Character.m in Sources */,
+				3BA0A3A01FB380E50024C2F9 /* ValleyWindow.m in Sources */,
 				3BC643621FB0CA4D00E57E65 /* NameView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
