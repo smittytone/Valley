@@ -415,7 +415,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="680" height="740"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="680" height="740"/>
             <value key="maxSize" type="size" width="680" height="740"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
@@ -706,7 +706,7 @@
                                         <action selector="strike:" target="Voe-Tx-rLC" id="vz7-5J-nAq"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cPD-sr-E7l">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cPD-sr-E7l" customClass="ValleyButton">
                                     <rect key="frame" x="231" y="12" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="72" id="mpr-He-5tv"/>
@@ -721,7 +721,7 @@
                                         <action selector="strike:" target="Voe-Tx-rLC" id="86r-hK-9HL"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0If-JD-g82">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0If-JD-g82" customClass="ValleyButton">
                                     <rect key="frame" x="231" y="94" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="72" id="2Nq-0Z-Eim"/>
@@ -783,7 +783,7 @@
                             <action selector="retreat:" target="Voe-Tx-rLC" id="6pq-3c-e14"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LAL-ew-NJg">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LAL-ew-NJg" customClass="ValleyButton">
                         <rect key="frame" x="504" y="20" width="72" height="72"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="72" id="Fn4-GD-qB4"/>
@@ -875,7 +875,7 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="306" height="316"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="306" height="316"/>
             <value key="maxSize" type="size" width="306" height="316"/>
             <view key="contentView" id="ewN-Zi-AvS">
@@ -1068,7 +1068,7 @@ Gw
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="640" height="425"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="640" height="425"/>
             <value key="maxSize" type="size" width="640" height="425"/>
             <view key="contentView" id="PkO-xz-L2r">
@@ -1167,7 +1167,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="480" height="181"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="WnT-aI-PUP">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="181"/>
                 <autoresizingMask key="autoresizingMask"/>

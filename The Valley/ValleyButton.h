@@ -1,14 +1,18 @@
-//
-//  ValleyButton.h
-//  The Valley
-//
-//  Created by Tony Smith on 11/8/17.
-//  Copyright © 2017 Tony Smith. All rights reserved.
-//
+
+
+// macOS software © Tony Smith 2012-17, based on work
+// by by Henry Budget, Peter Freebrey, Peter Green and Ron Harris.
+// Originally published by Computing Today
+// magazine in its April 1982 issue.
+
 
 #import <Cocoa/Cocoa.h>
 
+
 @interface ValleyButton : NSButton
+
+
+@property (readwrite) BOOL enableClicks;
 
 
 @end

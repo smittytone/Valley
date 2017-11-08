@@ -29,10 +29,13 @@
     if (!enableKeys && (event.type == NSEventTypeKeyUp || event.type == NSEventTypeKeyDown))
     {
         NSString *c = event.characters;
-        BOOL value = [c compare:@"B"] || [c compare:@"L"] || [c compare:@"H"];
+        BOOL value = [c compare:@"B"] || [c compare:@"L"] || [c compare:@"H"] || [c compare:@"S"];
 
         if (value)
         {
+            // B, H or L pressed at a time when we don't want to record those presses
+            // So generate an alternative event to replace the incoming one
+
             NSEvent *newEvent = [NSEvent keyEventWithType:event.type
                                                  location:event.locationInWindow
                                             modifierFlags:event.modifierFlags
@@ -44,7 +47,10 @@
                                                 isARepeat:NO
                                                   keyCode:event.keyCode];
 
+            // And pass it along the chain
+
             [super sendEvent:newEvent];
+
             return;
         }
     }

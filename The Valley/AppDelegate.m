@@ -58,7 +58,7 @@
     // Give the main window the option to go full-screen
 
     [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
-    
+
     savedfilePath = nil;
     needToSave = NO;
 
@@ -979,7 +979,7 @@
 {
     theMessage.inputString = @"Your move... Which direction?";
 
-    [self setKeys:YES];
+    [self setKeysAndClicks:YES];
     [self updateStats];
 }
 
@@ -1124,7 +1124,7 @@
 {
     // Announce the appearance of a monster - this is the preliminary round of combat
 
-    [self setKeys:NO];
+    [self setKeysAndClicks:NO];
 
     [theMessage clearBuffer];
 
@@ -1270,7 +1270,7 @@
 {
     if (!isMonstersTurn) return;
 
-    [self setKeys:NO];
+    [self setKeysAndClicks:NO];
 
     // Announce the attack
 
@@ -1639,7 +1639,7 @@
 {
     // Player has the initiative
 
-    [self setKeys:YES];
+    [self setKeysAndClicks:YES];
     theMessage.inputString = @"You have surprise... Attack or Retreat?";
     playerHasInitiative = YES;
 
@@ -1741,7 +1741,7 @@
 
     theMessage.inputString = @"Strike Quickly!";
 
-    [self setKeys:YES];
+    [self setKeysAndClicks:YES];
 
     isPlayersTurn = YES;
 
@@ -3486,9 +3486,14 @@
 
 
 
-- (void)setKeys:(BOOL)state
+- (void)setKeysAndClicks:(BOOL)state
 {
     _window.enableKeys = state;
+
+    cButtonB.enableClicks = state;
+    cButtonH.enableClicks = state;
+    cButtonL.enableClicks = state;
+    cButtonS.enableClicks = state;
 
     /*
     button9.enabled = state;
@@ -3500,11 +3505,6 @@
     button3.enabled = state;
     button2.enabled = state;
     button1.enabled = state;
-
-    cButtonB.enabled = state;
-    cButtonH.enabled = state;
-    cButtonL.enabled = state;
-    cButtonS.enabled = state;
 
     oButtonA.enabled = state;
     oButtonE.enabled = state;

@@ -1,55 +1,49 @@
-//
-//  ValleyButton.m
-//  The Valley
-//
-//  Created by Tony Smith on 11/8/17.
-//  Copyright © 2017 Tony Smith. All rights reserved.
-//
+
+
+// macOS software © Tony Smith 2012-17, based on work
+// by by Henry Budget, Peter Freebrey, Peter Green and Ron Harris.
+// Originally published by Computing Today
+// magazine in its April 1982 issue.
+
 
 #import "ValleyButton.h"
 
 @implementation ValleyButton
 
+@synthesize enableClicks;
 
-- (void)drawRect:(NSRect)dirtyRect {
 
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
+
+- (void)awakeFromNib
+{
+    enableClicks = YES;
+
+    [super awakeFromNib];
 }
 
 
-- (void)mouseUp:(NSEvent *)event
+
+- (void)mouseDown:(NSEvent *)event
 {
-    // Intercept mouse clicks
-
-    if (event.type == NSEventTypeLeftMouseUp)
+    if (!enableClicks)
     {
-        NSRect bb = self.frame;
-        NSPoint mp = event.locationInWindow;
+        NSEvent *newEvent = [NSEvent mouseEventWithType:event.type
+                                               location:NSMakePoint(0, 0)
+                                          modifierFlags:event.modifierFlags
+                                              timestamp:event.timestamp
+                                           windowNumber:event.windowNumber
+                                                context:nil
+                                            eventNumber:event.eventNumber
+                                             clickCount:event.clickCount
+                                               pressure:event.pressure];
 
-        if (mp.x >= bb.origin.x && mp.x <= bb.origin.x + bb.size.width)
-        {
-            if (mp.y >= bb.origin.y && mp.y <= bb.origin.y + bb.size.height)
-            {
-                NSEvent *newEvent = [NSEvent mouseEventWithType:event.type
-                                                       location:NSMakePoint(0, 0)
-                                                  modifierFlags:event.modifierFlags
-                                                      timestamp:event.timestamp
-                                                   windowNumber:event.windowNumber
-                                                        context:nil
-                                                    eventNumber:event.eventNumber
-                                                     clickCount:event.clickCount
-                                                       pressure:event.pressure];
-
-                [super mouseUp:newEvent];
-                NSBeep();
-                return;
-            }
-        }
+        [super mouseDown:newEvent];
+        NSBeep();
+        return;
     }
 
-    [super mouseUp:event];
+    [super mouseDown:event];
 }
+
 
 @end

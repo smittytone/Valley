@@ -79,10 +79,10 @@
     IBOutlet NSButton *button8;
     IBOutlet NSButton *button9;
 
-    IBOutlet NSButton *cButtonH;
+    IBOutlet ValleyButton *cButtonH;
     IBOutlet ValleyButton *cButtonB;
-    IBOutlet NSButton *cButtonL;
-    IBOutlet NSButton *cButtonS;
+    IBOutlet ValleyButton *cButtonL;
+    IBOutlet ValleyButton *cButtonS;
 
     IBOutlet NSButton *oButtonA;
     IBOutlet NSButton *oButtonR;
@@ -214,7 +214,7 @@
 // Utility Methods
 
 - (float)random;
-- (void)setKeys:(BOOL)state;
+- (void)setKeysAndClicks:(BOOL)state;
 
 
 @end
