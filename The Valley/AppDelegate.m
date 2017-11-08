@@ -2982,6 +2982,12 @@
     isGameInProgress = NO;
     newProfession = -1;
 
+    playerPicView.wantsLayer = YES;
+    playerPicView.layer.borderColor = [NSColor whiteColor].CGColor;
+    playerPicView.layer.borderWidth = 2.0;
+
+    newPlayerWindow.backgroundColor = [NSColor blackColor];
+
     [_window beginSheet:newPlayerWindow completionHandler:nil];
 }
 
