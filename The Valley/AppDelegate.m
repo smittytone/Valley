@@ -645,6 +645,7 @@
             {
                 theMessage.inputString = @"These stairs are blocked";
                 floor = tempFloor;
+                [self setKeysAndClicks:YES];
                 return;
             }
 
