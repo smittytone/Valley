@@ -14,7 +14,7 @@ The column was prompted by the discovery of Fraser Charlon’s [Valley fan page]
 
 It was eventually done and played, but never fully debugged. I’d come back to it every once in a while, play it, tweak a few things, and get distracted by something else. Returning to the code in the Autumn of 2017, I decided that, once and for all, I would complete the code, bring the rest up to date, debug it and make it available to the world.
 
-<p align="center"><img src="https://smittytone.github.io/images/valley_ss.png" ></p>
+<p align="center"><img src="https://smittytone.github.io/images/valleyss.png" ></p>
 
 ## Ownership ##
 
