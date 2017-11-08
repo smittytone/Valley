@@ -1226,9 +1226,9 @@
     if ((arc4random_uniform(100) + 1) >= 60)
     {
         // Give the player the initiative on a 40% chance
-        // Wait 1.5 seconds before asking the player to strike
+        // Wait 1.0 seconds before asking the player to strike
 
-        fightTimer = [NSTimer timerWithTimeInterval:1.5
+        fightTimer = [NSTimer timerWithTimeInterval:1.0
                                              target:self
                                            selector:@selector(managePlayerInitiative)
                                            userInfo:nil
@@ -3495,13 +3495,14 @@
     cButtonL.enableClicks = state;
     cButtonS.enableClicks = state;
 
+    button9.enableClicks = !isInCombat;
+    button8.enableClicks = !isInCombat;
+    button7.enableClicks = !isInCombat;
+    button6.enableClicks = !isInCombat;
+    button5.enableClicks = !isInCombat;
+    button4.enableClicks = !isInCombat;
+
     /*
-    button9.enabled = state;
-    button8.enabled = state;
-    button7.enabled = state;
-    button6.enabled = state;
-    button5.enabled = state;
-    button4.enabled = state;
     button3.enabled = state;
     button2.enabled = state;
     button1.enabled = state;

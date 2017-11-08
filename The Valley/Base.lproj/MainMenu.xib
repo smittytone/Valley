@@ -515,7 +515,7 @@
                             <rect key="frame" x="2" y="2" width="270" height="261"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NFf-kx-XnR">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NFf-kx-XnR" customClass="ValleyButton">
                                     <rect key="frame" x="20" y="172" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="72" id="1ND-UK-0mh"/>
@@ -530,7 +530,7 @@
                                         <action selector="move:" target="Voe-Tx-rLC" id="SB5-f4-lBy"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R2a-8P-elG">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R2a-8P-elG" customClass="ValleyButton">
                                     <rect key="frame" x="99" y="172" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="72" id="8I7-Td-WYw"/>
@@ -545,7 +545,7 @@
                                         <action selector="move:" target="Voe-Tx-rLC" id="MLZ-Sg-qyD"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gDe-pZ-KZJ">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gDe-pZ-KZJ" customClass="ValleyButton">
                                     <rect key="frame" x="178" y="172" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="72" id="FBy-HQ-Bup"/>
@@ -560,7 +560,7 @@
                                         <action selector="move:" target="Voe-Tx-rLC" id="6UM-FV-kgf"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qLY-6g-PZc">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qLY-6g-PZc" customClass="ValleyButton">
                                     <rect key="frame" x="20" y="94" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="72" id="2sL-CN-tDd"/>
@@ -575,7 +575,7 @@
                                         <action selector="move:" target="Voe-Tx-rLC" id="fWh-mG-FzD"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sY6-dY-QmM">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sY6-dY-QmM" customClass="ValleyButton">
                                     <rect key="frame" x="99" y="94" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="72" id="Axe-40-0LL"/>
@@ -590,7 +590,7 @@
                                         <action selector="move:" target="Voe-Tx-rLC" id="4tg-sN-LKK"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nfg-k9-zH4">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nfg-k9-zH4" customClass="ValleyButton">
                                     <rect key="frame" x="178" y="94" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="72" id="Wzf-av-ECU"/>
@@ -605,7 +605,7 @@
                                         <action selector="move:" target="Voe-Tx-rLC" id="Axc-Fe-KvC"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ptz-sd-f0c">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ptz-sd-f0c" customClass="ValleyButton">
                                     <rect key="frame" x="20" y="16" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="72" id="MxW-Wq-6MN"/>
@@ -620,7 +620,7 @@
                                         <action selector="move:" target="Voe-Tx-rLC" id="01a-Jk-ac9"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yw4-Vv-7yH">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yw4-Vv-7yH" customClass="ValleyButton">
                                     <rect key="frame" x="99" y="16" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="72" id="byU-Pz-lz4"/>
@@ -635,7 +635,7 @@
                                         <action selector="move:" target="Voe-Tx-rLC" id="i6Q-9S-d2s"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J8c-Hg-OPZ">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J8c-Hg-OPZ" customClass="ValleyButton">
                                     <rect key="frame" x="178" y="16" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="72" id="6P7-st-huU"/>
@@ -753,7 +753,7 @@
                             <constraint firstAttribute="height" constant="172" id="XiC-Kb-1d3"/>
                         </constraints>
                     </box>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nfd-f5-DaQ">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nfd-f5-DaQ" customClass="ValleyButton">
                         <rect key="frame" x="340" y="20" width="72" height="72"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="72" id="Bue-0R-Xcg"/>
@@ -768,7 +768,7 @@
                             <action selector="attack:" target="Voe-Tx-rLC" id="Kux-Hq-ocu"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wD3-p8-NX5">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wD3-p8-NX5" customClass="ValleyButton">
                         <rect key="frame" x="422" y="20" width="72" height="72"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="72" id="I8u-sf-dhV"/>
@@ -798,7 +798,7 @@
                             <action selector="castSpell:" target="Voe-Tx-rLC" id="udj-iM-Lro"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="54L-0Y-nSw">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="54L-0Y-nSw" customClass="ValleyButton">
                         <rect key="frame" x="586" y="20" width="72" height="72"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="72" id="3Zo-Jk-cCg"/>

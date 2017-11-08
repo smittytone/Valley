@@ -69,24 +69,24 @@
     IBOutlet NumberView *monsterStrengthView;
     IBOutlet NSImageView *monsterGraphic;
 
-    IBOutlet NSButton *button1;
-    IBOutlet NSButton *button2;
-    IBOutlet NSButton *button3;
-    IBOutlet NSButton *button4;
-    IBOutlet NSButton *button5;
-    IBOutlet NSButton *button6;
-    IBOutlet NSButton *button7;
-    IBOutlet NSButton *button8;
-    IBOutlet NSButton *button9;
+    IBOutlet ValleyButton *button1;
+    IBOutlet ValleyButton *button2;
+    IBOutlet ValleyButton *button3;
+    IBOutlet ValleyButton *button4;
+    IBOutlet ValleyButton *button5;
+    IBOutlet ValleyButton *button6;
+    IBOutlet ValleyButton *button7;
+    IBOutlet ValleyButton *button8;
+    IBOutlet ValleyButton *button9;
 
     IBOutlet ValleyButton *cButtonH;
     IBOutlet ValleyButton *cButtonB;
     IBOutlet ValleyButton *cButtonL;
     IBOutlet ValleyButton *cButtonS;
 
-    IBOutlet NSButton *oButtonA;
-    IBOutlet NSButton *oButtonR;
-    IBOutlet NSButton *oButtonE;
+    IBOutlet ValleyButton *oButtonA;
+    IBOutlet ValleyButton *oButtonR;
+    IBOutlet ValleyButton *oButtonE;
 
     // New Player Sheet
 
