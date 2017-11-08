@@ -22,7 +22,7 @@
     {
         [self clearBuffer];
 
-        characterSet = [NSImage imageNamed:@"petchars_b"];
+        characterSet = [NSImage imageNamed:@"petchars_c"];
         alphaBlend = [NSImage imageNamed:@"alpha"];
         space = 0;
     }
@@ -36,7 +36,7 @@
 {
     [self clearBuffer];
 
-    characterSet = [NSImage imageNamed:@"petchars_b"];
+    characterSet = [NSImage imageNamed:@"petchars_c"];
     alphaBlend = [NSImage imageNamed:@"alpha"];
     space = 0;
 }
@@ -100,6 +100,8 @@
 - (void)update:(NSString *)value
 {
     // Scroll buffer
+
+    if ([value compare:inputString] == NSOrderedSame) [self clearBuffer];
 
     inputString = value;
 
