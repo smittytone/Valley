@@ -25,7 +25,7 @@
 
 - (void)mouseDown:(NSEvent *)event
 {
-    if (!enableClicks)
+    if (!enableClicks && (event.type == NSEventTypeLeftMouseDown || event.type == NSEventTypeLeftMouseUp))
     {
         NSEvent *newEvent = [NSEvent mouseEventWithType:event.type
                                                location:NSMakePoint(0, 0)
@@ -38,7 +38,7 @@
                                                pressure:event.pressure];
 
         [super mouseDown:newEvent];
-        NSBeep();
+
         return;
     }
 
