@@ -2857,13 +2857,13 @@
 
                 // Place door in second vertical wall
 
-                if (i == 3) pokeCode = kGraphicSpace;
+                if (i == 3) pokeCode = kGraphicSpaceAlt;
                 screen[(tempPos + roomWidth[1] + roomWidth[2])] = pokeCode;
                 pokeCode = kGraphicTowerBorder;
 
                 // Place door in third vertical wall
 
-                if (i == 4) pokeCode = kGraphicSpace;
+                if (i == 4) pokeCode = kGraphicSpaceAlt;
                 screen[(tempPos + roomWidth[1] + roomWidth[2] + roomWidth[3])] = pokeCode;
                 pokeCode = kGraphicTowerBorder;
             }
@@ -2892,7 +2892,7 @@
                 {
                     // Put in a door in the wall, and a space above and below it
 
-                    screen[tempPos + k] = kGraphicSpace;
+                    screen[tempPos + k] = kGraphicSpaceAlt;
                     screen[tempPos + k - 40] = kGraphicSpace;
                     screen[tempPos + k + 40] = kGraphicSpace;
                 }

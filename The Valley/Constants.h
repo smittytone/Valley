@@ -9,6 +9,7 @@
 // Valley Graphics
 
 #define    kGraphicSpace           32
+#define    kGraphicSpaceAlt        96
 #define    kGraphicCharacter       81
 #define    kGraphicBorder          214
 #define    kGraphicSafeCastle      209
