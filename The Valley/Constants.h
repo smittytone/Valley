@@ -11,31 +11,31 @@
 #define    kGraphicSpace           32
 #define    kGraphicCharacter       81
 #define    kGraphicBorder          214
-#define    kGraphicSafeCastle      219
+#define    kGraphicSafeCastle      209
 #define    kGraphicPathUp          77
 #define    kGraphicPathDown        78
 #define    kGraphicWood            216
-#define    kGraphicSwamp           173
+#define    kGraphicSwamp           102
 #define    kGraphicTower           87
 
 // Wood Graphics
 
-#define    kGraphicWoodBorder      102
+#define    kGraphicWoodBorder      96
 #define    kGraphicTree            88
 #define    kGraphicLake            224
 #define    kGraphicCharInLake      209
-#define    kGraphicLair            230
+#define    kGraphicLair            124
 
 // Swamp Graphics
 
-#define    kGraphicSwampBorder     102
+#define    kGraphicSwampBorder     96
 #define    kGraphicTuft            104
-#define    kGraphicTemple          230
+#define    kGraphicTemple          124
 
 // Tower Graphics
 
-#define    kGraphicTowerBorder     160
-#define    kGraphicWall            160
+#define    kGraphicTowerBorder     230
+#define    kGraphicWall            230
 #define    kGraphicStairLeft       189
 #define    kGraphicStairRight      189
 #define    kGraphicDoor            80
@@ -96,4 +96,4 @@
 
 // Timings
 
-#define    kScrollMessagesTime     5
+#define    kScrollMessagesTime     8
