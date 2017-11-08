@@ -22,12 +22,11 @@
     // Game Arrays
 
     NSInteger valleyPath[78], places[6], screen[561];
-    NSInteger towerFloor[9], n[9], roomWidth[4], roomDepth[9], items[4];
-    NSInteger monsterStrength[19], monsterPsi[19], towerData[34];
-
+    NSInteger towerFloor[9], roomWidth[4], roomDepth[9], towerData[34];
+    NSInteger monsterStrength[19], monsterPsi[19];
     NSString *monsterName[19], *monsterCode[19], *charLevels[29];
 
-    NSString *monsterKind, *vg, *scenarioMonsterTypes, *savedfilePath;
+    NSString *monsterKind, *scenarioMonsterTypes, *savedfilePath;
 
     NSTimer *fightTimer;
 
@@ -36,15 +35,13 @@
     float newCombatGain, newPsiGain;
 
     NSInteger currentScenario, floor, stepCounter, wallDepth, dataPointer;
-
     NSInteger positionBeforeLair, valleyPos, nextPos, currentPos;
     NSInteger floorPattern, pokeCharacter, scenarioTurnTime;
     NSInteger nextPosContents, savedContents, tempFloor;
     NSInteger heartbeatCount, targetTime, delayTargetTime;
     NSInteger gVariable;
     NSInteger experienceGain;
-    NSInteger monsterCombatStrength, monsterCombatPsi, monsterStamina, waitKind, spellCast;
-    NSUInteger turnCount, timeFactor;
+    NSInteger monsterCombatStrength, monsterCombatPsi, monsterStamina, spellCast, timeFactor;
 
     BOOL isInCombat, monsterWasHitHard, playerHasInitiative, isMonstersTurn, isPlayersTurn, playerCastSpell;
     BOOL needToSave, isGameInProgress, generalDelayFlag, stairsFlag, loadFlag;

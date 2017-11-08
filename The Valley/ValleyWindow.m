@@ -29,7 +29,9 @@
     if (!enableKeys && (event.type == NSEventTypeKeyUp || event.type == NSEventTypeKeyDown))
     {
         NSString *c = event.characters;
-        BOOL value = [c compare:@"B"] || [c compare:@"L"] || [c compare:@"H"] || [c compare:@"S"];
+        BOOL value = [c compare:@"B"] || [c compare:@"L"] || [c compare:@"H"] || [c compare:@"S"] ||
+        [c compare:@"1"] || [c compare:@"2"] || [c compare:@"3"] || [c compare:@"4"] || [c compare:@"5"] ||
+        [c compare:@"6"] || [c compare:@"7"] || [c compare:@"8"] || [c compare:@"9"];
 
         if (value)
         {

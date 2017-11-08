@@ -506,7 +506,7 @@
         }
         else
         {
-            theMessage.inputString = [NSString stringWithFormat:@"...and %ld Amulet Stones", items[1]];
+            theMessage.inputString = [NSString stringWithFormat:@"...and %ld Amulet Stones", player.amuletStones];
         }
 
         fightTimer = [NSTimer timerWithTimeInterval:2
@@ -628,6 +628,8 @@
 
     // Are we going up or down stairs?
 
+    [self setKeysAndClicks:NO];
+
     if (stairsFlag)
     {
         tempFloor = floor;
@@ -733,6 +735,7 @@
         screen[currentPos] = pokeCharacter;
         [self drawScreen];
         [self updateStats];
+        [self setKeysAndClicks:YES];
         return;
     }
 
@@ -764,6 +767,7 @@
         theMessage.inputString = @"Go as the gods demand... trust no other";
 
         [self updateStats];
+        [self setKeysAndClicks:YES];
         return;
     }
 
@@ -775,6 +779,7 @@
         player.turns--;
         player.stamina = player.stamina - 10;
         [self updateStats];
+        [self setKeysAndClicks:YES];
         return;
     }
 
@@ -793,7 +798,7 @@
 
         // Check enough time has been spent before we quit
 
-        if (turnCount < (scenarioTurnTime + arc4random_uniform((uint32_t)timeFactor)))
+        if (player.turns < (scenarioTurnTime + arc4random_uniform((uint32_t)timeFactor)))
         {
             // Player hasn't played enough in the scenario so cancel the move
 
@@ -801,11 +806,13 @@
             player.turns--;
             player.stamina = player.stamina - 10;
             [self updateStats];
+            [self setKeysAndClicks:YES];
             return;
         }
 
         [self scenarioControl];
         [self updateStats];
+        [self setKeysAndClicks:YES];
         return;
     }
 
@@ -825,6 +832,7 @@
 
         [self scenarioControl];
         [self updateStats];
+        [self setKeysAndClicks:YES];
         return;
     }
 
@@ -836,6 +844,7 @@
         player.turns--;
         player.stamina = player.stamina - 10;
         [self updateStats];
+        [self setKeysAndClicks:YES];
         return;
     }
 
@@ -857,6 +866,7 @@
 
         [self drawScreen];
         [self updateStats];
+        [self setKeysAndClicks:YES];
         return;
     }
 
@@ -888,8 +898,12 @@
     [self drawScreen];
     [self updateStats];
 
-    if (nextPosContents == kGraphicStairLeft || nextPosContents == kGraphicStairRight) return;
-
+    if (nextPosContents == kGraphicStairLeft || nextPosContents == kGraphicStairRight)
+    {
+        [self setKeysAndClicks:YES];
+        return;
+    }
+    
     // Roll for a random find
 
     NSInteger roll = arc4random_uniform(100) + 1;
@@ -913,6 +927,7 @@
     // No monster or treasure found, so give player movement instructions for the next turn
 
     theMessage.inputString = @"Your move... Which direction?";
+    [self setKeysAndClicks:YES];
 }
 
 
@@ -996,7 +1011,7 @@
         theMessage.inputString = @"You find the Helm of Evanna!";
         needToSave = YES;
 
-        fightTimer = [NSTimer timerWithTimeInterval:2
+        fightTimer = [NSTimer timerWithTimeInterval:1.5
                                              target:self
                                            selector:@selector(postFind)
                                            userInfo:nil
@@ -1014,11 +1029,8 @@
         player.treasure = player.treasure + 100 * (player.amulet + player.amuletStones + player.helm + floor);
         theMessage.inputString = @"You find the Amulet of Alarian...";
         needToSave = YES;
-        [self midLineDelay:2.0];
-        theMessage.inputString = @"...empty!";
 
-        /*
-         fightTimer = [NSTimer timerWithTimeInterval:2
+        fightTimer = [NSTimer timerWithTimeInterval:1.5
                                              target:self
                                            selector:@selector(amuletEmpty)
                                            userInfo:nil
@@ -1027,15 +1039,12 @@
         [[NSRunLoop currentRunLoop] addTimer:fightTimer
                                      forMode:NSDefaultRunLoopMode];
 
-        */
-
         return;
     }
 
     if (currentScenario == kScenarioTower && roll > 70 && player.amulet == 1 && player.amuletStones < 6 && floor > player.amuletStones)
     {
         theMessage.inputString = @"You find an amulet stone...";
-        [self midLineDelay:1.5];
 
         if (roll > 85)
         {
@@ -1043,7 +1052,6 @@
             player.treasure = player.treasure + 100 * (player.amulet + player.amuletStones + player.helm + floor);
             theMessage.inputString = @"...and the stone fits!";
 
-            /*
             fightTimer = [NSTimer timerWithTimeInterval:1.5
                                                  target:self
                                                selector:@selector(amuletStoneFits)
@@ -1052,13 +1060,11 @@
 
             [[NSRunLoop currentRunLoop] addTimer:fightTimer
                                          forMode:NSDefaultRunLoopMode];
-            */
         }
         else
         {
             theMessage.inputString = @"...but the wrong one...";
 
-            /*
             fightTimer = [NSTimer timerWithTimeInterval:1.5
                                                  target:self
                                                selector:@selector(amuletStoneDoesntFit)
@@ -1067,7 +1073,6 @@
 
             [[NSRunLoop currentRunLoop] addTimer:fightTimer
                                          forMode:NSDefaultRunLoopMode];
-            */
         }
 
         needToSave = YES;
@@ -1100,6 +1105,15 @@
 - (void)amuletStoneFits
 {
     theMessage.inputString = @"...and the stone fits!";
+
+    fightTimer = [NSTimer timerWithTimeInterval:1.0
+                                         target:self
+                                       selector:@selector(postFind)
+                                       userInfo:nil
+                                        repeats:NO];
+
+    [[NSRunLoop currentRunLoop] addTimer:fightTimer
+                                 forMode:NSDefaultRunLoopMode];
 }
 
 
@@ -1107,6 +1121,15 @@
 - (void)amuletStoneDoesntFit
 {
     theMessage.inputString = @"...but the wrong one...";
+
+    fightTimer = [NSTimer timerWithTimeInterval:1.0
+                                         target:self
+                                       selector:@selector(postFind)
+                                       userInfo:nil
+                                        repeats:NO];
+
+    [[NSRunLoop currentRunLoop] addTimer:fightTimer
+                                 forMode:NSDefaultRunLoopMode];
 }
 
 
@@ -1114,6 +1137,15 @@
 - (void)amuletEmpty
 {
     theMessage.inputString = @"...empty!";
+
+    fightTimer = [NSTimer timerWithTimeInterval:1.0
+                                         target:self
+                                       selector:@selector(postFind)
+                                       userInfo:nil
+                                        repeats:NO];
+
+    [[NSRunLoop currentRunLoop] addTimer:fightTimer
+                                 forMode:NSDefaultRunLoopMode];
 }
 
 
@@ -1796,6 +1828,8 @@
         return;
     }
 
+    [self setKeysAndClicks:NO];
+
     float experienceFactor = player.experience == 0 ? 39 * log(1) / 3.14 : 39 * log(player.experience) / 3.14;
 
     if (monsterCombatStrength == 0)
@@ -2367,7 +2401,7 @@
 
     // Record the time spent in the scenario
 
-    scenarioTurnTime = turnCount;
+    scenarioTurnTime = player.turns;
 
     if (nextPosContents == kGraphicWoodBorder)
     {
@@ -3496,27 +3530,34 @@
 {
     _window.enableKeys = state;
 
-    cButtonB.enableClicks = state;
-    cButtonH.enableClicks = state;
-    cButtonL.enableClicks = state;
-    cButtonS.enableClicks = state;
+    if (isInCombat)
+    {
+        _window.enableKeys = state;
 
-    button9.enableClicks = !isInCombat;
-    button8.enableClicks = !isInCombat;
-    button7.enableClicks = !isInCombat;
-    button6.enableClicks = !isInCombat;
-    button5.enableClicks = !isInCombat;
-    button4.enableClicks = !isInCombat;
+        cButtonB.enableClicks = state;
+        cButtonH.enableClicks = state;
+        cButtonL.enableClicks = state;
+        cButtonS.enableClicks = state;
 
-    /*
-    button3.enabled = state;
-    button2.enabled = state;
-    button1.enabled = state;
-
-    oButtonA.enabled = state;
-    oButtonE.enabled = state;
-    oButtonR.enabled = state;
-     */
+        button9.enableClicks = NO;
+        button8.enableClicks = NO;
+        button7.enableClicks = NO;
+        button6.enableClicks = NO;
+        button5.enableClicks = NO;
+        button4.enableClicks = NO;
+    }
+    else
+    {
+        button9.enableClicks = state;
+        button8.enableClicks = state;
+        button7.enableClicks = state;
+        button6.enableClicks = state;
+        button5.enableClicks = state;
+        button4.enableClicks = state;
+        button3.enableClicks = state;
+        button2.enableClicks = state;
+        button1.enableClicks = state;
+    }
 }
 
 
