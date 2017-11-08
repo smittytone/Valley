@@ -2968,15 +2968,21 @@
 
     for (NSUInteger i = 0 ; i < a ; ++i)
     {
-        roll1 = [self random] * 19;
-        roll2 = [self random] * 12;
+        BOOL flag = NO;
 
-        if (screen[(1 + (40 * roll2) + roll1)] == kGraphicSpace)
-        {
-            // Place a treasure item on an empty space
+        do {
+            roll1 = [self random] * 19;
+            roll2 = [self random] * 12;
 
-            screen[(1 + (40 * roll2) + roll1)] = kGraphicTreasure;
+            if (screen[(1 + (40 * roll2) + roll1)] == kGraphicSpace)
+            {
+                // Place a treasure item on an empty space
+
+                screen[(1 + (40 * roll2) + roll1)] = kGraphicTreasure;
+                flag = YES;
+            }
         }
+        while (!flag);
     }
 
     [self drawScreen];
