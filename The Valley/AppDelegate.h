@@ -13,6 +13,8 @@
 #import "NumberView.h"
 #import "ScreenView.h"
 #import "Character.h"
+#import "ValleyWindow.h"
+#import "ValleyButton.h"
 
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
@@ -49,21 +51,11 @@
 
     Character *player;
 
+    // Main GameWindow
 
-    // Preferences Sheet
-
-    IBOutlet id prefsSheet;
-    IBOutlet id prefsAsciiCheckbox;
-    IBOutlet id prefsSaveCheckbox;
-    IBOutlet id prefsSoundCheckbox;
-
-    // Menu outlets
-
-    IBOutlet id menuItemSave;
-
-    // IBOutlet id messageField;
-
-    // Outlets on GameWindow
+    IBOutlet NSWindow *mainWindow;
+    IBOutlet ScreenView *theScreen;
+    IBOutlet MessageView *theMessage;
 
     IBOutlet NameView *playerNameView;
     IBOutlet NumberView *turnCountView;
@@ -88,46 +80,103 @@
     IBOutlet NSButton *button9;
 
     IBOutlet NSButton *cButtonH;
-    IBOutlet NSButton *cButtonB;
+    IBOutlet ValleyButton *cButtonB;
     IBOutlet NSButton *cButtonL;
     IBOutlet NSButton *cButtonS;
 
-    IBOutlet ScreenView *theScreen;
-    IBOutlet MessageView *theMessage;
+    IBOutlet NSButton *oButtonA;
+    IBOutlet NSButton *oButtonR;
+    IBOutlet NSButton *oButtonE;
+
+    // New Player Sheet
 
     IBOutlet NSWindow *newPlayerWindow;
     IBOutlet NSTextField *playerNameReadout;
+    IBOutlet NSImageView *playerPicView;
     IBOutlet NSButton *bWizard;
     IBOutlet NSButton *bThinker;
     IBOutlet NSButton *bBarbarian;
     IBOutlet NSButton *bWarrior;
     IBOutlet NSButton *bCleric;
 
+    // About Sheet
+
     IBOutlet NSWindow *aboutSheet;
 
-    IBOutlet NSWindow *mainWindow;
+    // Preferences Sheet
+
+    IBOutlet NSWindow *prefsSheet;
+    IBOutlet NSButton *prefsAsciiCheckbox;
+    IBOutlet NSButton *prefsSaveCheckbox;
+    IBOutlet NSButton *prefsSoundCheckbox;
+
+    // Menu outlets
+
+    IBOutlet NSMenuItem *menuItemSave;
 }
 
 
-- (void)initGameVariables;
-- (float)random;
+// Timing Methods
 
-- (IBAction)saveCharSheet:(id)sender;
-- (IBAction)cancelCharSheet:(id)sender;
-- (IBAction)setProfession:(id)sender;
+- (void)heartbeat;
+- (void)delayIsUp:(NSTimer*)theTimer;
+
+// Game Setup
+
+- (void)initGameVariables;
+
+// Graphics Methods
 
 - (void)clearScreen;
 - (void)drawScreen;
-- (void)updateStats;
-- (void)clearText;
+- (void)print:(NSString *)inputString at:(NSInteger)location;
 
-- (IBAction)move:(id)sender;
-- (IBAction)ego:(id)sender;
-- (IBAction)attack:(id)sender;
-- (IBAction)retreat:(id)sender;
+// Character Methods
+
+- (void)updateStats;
+- (void)death;
 - (void)rating;
 - (void)ratingExtra;
-- (void)death;
+- (IBAction)ego:(id)sender;
+
+// Movement Methods
+
+- (IBAction)move:(id)sender;
+
+// Search methods
+
+- (void)find;
+- (void)postFind;
+- (void)specialFind;
+- (void)amuletStoneFits;
+- (void)amuletStoneDoesntFit;
+- (void)amuletEmpty;
+
+// Monster and Combat Methods
+
+- (void)announceMonster;
+- (void)chooseMonster;
+- (void)launchMonsterAttack;
+- (void)monsterAttacks;
+- (void)monsterStrikes;
+- (void)monsterDoesDamage;
+- (void)monsterPsiAttack;
+- (void)monsterPsiStrike;
+- (void)monsterPsiDamage;
+- (void)managePlayerInitiative;
+- (IBAction)attack:(id)sender;
+- (IBAction)retreat:(id)sender;
+- (void)launchPlayerAttack;
+- (void)playerFight;
+- (void)timeIsUp:(NSTimer*)theTimer;
+- (IBAction)strike:(id)sender;
+- (void)playerDoesDamage;
+- (IBAction)castSpell:(id)sender;
+- (void)playerSpell:(NSInteger)keyValue;
+- (void)spellOutcome;
+- (NSInteger)magic:(NSInteger)keyValue;
+
+// Scenario Control and Setup Methods
 
 - (void)scenarioControl;
 - (void)scenarioValley;
@@ -136,53 +185,37 @@
 - (void)scenarioTower;
 - (void)scenarioCastles;
 
-- (void)find;
-- (void)postFind;
-- (void)specialFind;
-- (void)amuletStoneFits;
-- (void)amuletStoneDoesntFit;
-- (void)amuletEmpty;
-// - (void)stairs;
-
-- (void)announceMonster;
-- (void)chooseMonster;
-- (void)playerFight;
-- (void)playerDoesDamage;
-- (void)managePlayerInitiative;
-- (void)launchPlayerAttack;
-
-- (IBAction)strike:(id)sender;
-- (IBAction)castSpell:(id)sender;
-- (void)playerSpell:(NSInteger)keyValue;
-- (NSInteger)magic:(NSInteger)keyValue;
-- (void)spellOutcome;
-
-//- (void)startMonsterFight;
-- (void)launchMonsterAttack;
-- (void)monsterAttacks;
-- (void)monsterStrikes;
-- (void)monsterPsiAttack;
-- (void)monsterPsiStrike;
-
+// Menu Methods
 
 - (IBAction)newChar:(id)sender;
+- (void)showNewPlayerSheet;
+- (IBAction)saveCharSheet:(id)sender;
+- (IBAction)cancelCharSheet:(id)sender;
+- (IBAction)setProfession:(id)sender;
 - (IBAction)showAboutSheet:(id)sender;
 - (IBAction)closeAboutSheet:(id)sender;
-- (IBAction)toggleFullScreenMenu:(id)sender;
+
+//  Save and Load Methods
 
 - (IBAction)saveDocument:(id)sender;
+- (void)doSave;
 - (IBAction)saveDocumentAs:(id)sender;
-- (void)savePanelDidEnd:(NSURL *)fileURL;
 - (IBAction)openDocument:(id)sender;
+- (void)showOpenDialog;
 - (void)openFileHandler:(NSString *)path;
 - (NSString *)setProfString:(NSInteger)index;
 
-- (void)heartbeat;
-- (void)timeIsUp:(NSTimer*)theTimer;
-- (void)delayIsUp:(NSTimer*)theTimer;
+// Prefs Methods
 
-- (void)print:(NSString *)inputString at:(NSInteger)location;
-- (void)dummy;
+- (IBAction)prefsPanel:(id)sender;
+- (IBAction)prefsSheetCancel:(id)sender;
+- (IBAction)prefsSheetSave:(id)sender;
+
+// Utility Methods
+
+- (float)random;
+- (void)setKeys:(BOOL)state;
+
 
 @end
 

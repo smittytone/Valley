@@ -10,7 +10,7 @@
 
 @interface AppDelegate ()
 
-@property (weak) IBOutlet NSWindow *window;
+@property (weak) IBOutlet ValleyWindow *window;
 
 @end
 
@@ -22,11 +22,13 @@
     // Set up Key and Value arrays as template for Defaults
 
     NSArray *keyArray = [NSArray arrayWithObjects:@"le_Valley_Ascii_Graphics",
-                         @"le_Valley_Save_in_Castles", @"le_Valley_Do_Sounds",
+                         @"le_Valley_Save_in_Castles",
+                         @"le_Valley_Do_Sounds",
                          nil];
 
     NSArray *valueArray = [NSArray arrayWithObjects:[NSNumber numberWithBool:NO],
-                            [NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO],
+                           [NSNumber numberWithBool:YES],
+                           [NSNumber numberWithBool:NO],
                             nil];
 
     // Drop the arrays into the Defauts
@@ -56,16 +58,18 @@
     // Give the main window the option to go full-screen
 
     [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
-
+    
     savedfilePath = nil;
     needToSave = NO;
 
+    /*
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 
     [nc addObserver:self
            selector:@selector(dummy)
                name:@"AFCFileCopyBegin"
              object:nil];
+    */
 }
 
 
@@ -84,13 +88,6 @@
 
 
 #pragma mark - Full Screen Methods
-
-
-- (IBAction)toggleFullScreenMenu:(id)sender
-{
-    [_window toggleFullScreen:nil];
-}
-
 
 
 - (void)windowWillEnterFullScreen:(NSNotification *)notification
@@ -122,7 +119,7 @@
 
     // Are we timing a moment of surprise or a strike opportunity?
 
-    if (playerHasInitiative || isPlayersTurn)
+    if ((playerHasInitiative || isPlayersTurn || playerCastSpell) && targetTime != 0)
     {
         if (heartbeatCount <= targetTime)
         {
@@ -134,23 +131,7 @@
         {
             // Time's up, so play out the outcome
 
-            targetTime = 0;
             [self timeIsUp:nil];
-            return;
-        }
-    }
-
-    if (playerCastSpell)
-    {
-        if (heartbeatCount <= targetTime)
-        {
-            return;
-        }
-        else
-        {
-            targetTime = 0;
-            spellCast = 99;
-            [self spellOutcome];
             return;
         }
     }
@@ -178,7 +159,7 @@
     // Every x seconds, scroll the message field up a line
     // Leave it till last so its doesn't happen in specific waiting periods
 
-    if (heartbeatCount % kScrollMessagesTime == 0 && !stairsFlag) theMessage.inputString = @"";
+    //if (heartbeatCount % kScrollMessagesTime == 0 && !stairsFlag) theMessage.inputString = @"";
 }
 
 
@@ -186,6 +167,13 @@
 - (void)delayIsUp:(NSTimer*)theTimer
 {
     // THIS DOES NOTHING, BUT NEED TO FIGURE OUT HOW TO DELAY PROGRAM
+}
+
+
+
+- (void)midLineDelay:(NSTimeInterval)delay
+{
+    [NSThread sleepForTimeInterval:delay];
 }
 
 
@@ -388,6 +376,21 @@
 
 
 
+- (void)print:(NSString *)inputString at:(NSInteger)location
+{
+    // Prints the input string at the set location
+
+    for (NSUInteger i = 0 ; i < [inputString length] ; ++i)
+    {
+        char character = [inputString characterAtIndex:i];
+        NSInteger b = (character > 63 && character < 126) ? character - 64 : character;
+        if (character == 92) b = 77;
+        screen[location + i] = b;
+    }
+}
+
+
+
 #pragma mark - Character Methods
 
 
@@ -423,6 +426,8 @@
         monsterStrengthView.hidden = YES;
         monsterNameView.hidden = YES;
     }
+
+    menuItemSave.enabled = needToSave;
 }
 
 
@@ -436,8 +441,8 @@
         [self clearScreen];
         [theMessage clearBuffer];
 
-        [self print:@"Oh, what a frail shell" at:89];
-        [self print:@"is this that we call man?" at:126];
+        [self print:@"OH, WHAT A FRAIL SHELL" at:89];
+        [self print:@"IS THIS THAT WE CALL MAN?" at:126];
 
         heartbeatCount = 0;
         player.stamina = 0;
@@ -579,13 +584,15 @@
 
     if (isInCombat)
     {
+        targetTime = 0;
+
         if (playerHasInitiative)
         {
             // By pressing 1-9, the player fumbled the Attack or Retreat press,
             // so give the monster the initiative
 
-            targetTime = 0;
             playerHasInitiative = NO;
+            playerCastSpell = NO;
             isPlayersTurn = NO;
             isMonstersTurn = YES;
 
@@ -599,7 +606,6 @@
         {
             // The call to playerSpell: checks whether a spell has been cast
 
-            targetTime = 0;
             [self playerSpell:buttonValue];
         }
 
@@ -608,7 +614,6 @@
             // By pressing 1-9, the player fumbled a strike on the monster,
             // so give the monster the initiative
 
-            targetTime = 0;
             isPlayersTurn = NO;
             isMonstersTurn = YES;
 
@@ -893,7 +898,7 @@
     {
         // Rolled a wandering monster
 
-        //[self announceMonster];
+        [self announceMonster];
         return;
     }
 
@@ -974,6 +979,7 @@
 {
     theMessage.inputString = @"Your move... Which direction?";
 
+    [self setKeys:YES];
     [self updateStats];
 }
 
@@ -1008,8 +1014,11 @@
         player.treasure = player.treasure + 100 * (player.amulet + player.amuletStones + player.helm + floor);
         theMessage.inputString = @"You find the Amulet of Alarian...";
         needToSave = YES;
+        [self midLineDelay:2.0];
+        theMessage.inputString = @"...empty!";
 
-        fightTimer = [NSTimer timerWithTimeInterval:2
+        /*
+         fightTimer = [NSTimer timerWithTimeInterval:2
                                              target:self
                                            selector:@selector(amuletEmpty)
                                            userInfo:nil
@@ -1018,18 +1027,23 @@
         [[NSRunLoop currentRunLoop] addTimer:fightTimer
                                      forMode:NSDefaultRunLoopMode];
 
+        */
+
         return;
     }
 
     if (currentScenario == kScenarioTower && roll > 70 && player.amulet == 1 && player.amuletStones < 6 && floor > player.amuletStones)
     {
         theMessage.inputString = @"You find an amulet stone...";
+        [self midLineDelay:1.5];
 
         if (roll > 85)
         {
             player.amuletStones++;
             player.treasure = player.treasure + 100 * (player.amulet + player.amuletStones + player.helm + floor);
+            theMessage.inputString = @"...and the stone fits!";
 
+            /*
             fightTimer = [NSTimer timerWithTimeInterval:1.5
                                                  target:self
                                                selector:@selector(amuletStoneFits)
@@ -1038,9 +1052,13 @@
 
             [[NSRunLoop currentRunLoop] addTimer:fightTimer
                                          forMode:NSDefaultRunLoopMode];
+            */
         }
         else
         {
+            theMessage.inputString = @"...but the wrong one...";
+
+            /*
             fightTimer = [NSTimer timerWithTimeInterval:1.5
                                                  target:self
                                                selector:@selector(amuletStoneDoesntFit)
@@ -1049,6 +1067,7 @@
 
             [[NSRunLoop currentRunLoop] addTimer:fightTimer
                                          forMode:NSDefaultRunLoopMode];
+            */
         }
 
         needToSave = YES;
@@ -1104,6 +1123,8 @@
 - (void)announceMonster
 {
     // Announce the appearance of a monster - this is the preliminary round of combat
+
+    [self setKeys:NO];
 
     [theMessage clearBuffer];
 
@@ -1248,6 +1269,8 @@
 - (void)monsterAttacks
 {
     if (!isMonstersTurn) return;
+
+    [self setKeys:NO];
 
     // Announce the attack
 
@@ -1492,6 +1515,9 @@
 
         isInCombat = NO;
         isMonstersTurn = NO;
+        playerCastSpell = NO;
+        playerHasInitiative = NO;
+        isPlayersTurn = NO;
 
         theMessage.inputString = @"...using its last energy in the attempt";
         monsterCombatPsi = 0;
@@ -1613,6 +1639,7 @@
 {
     // Player has the initiative
 
+    [self setKeys:YES];
     theMessage.inputString = @"You have surprise... Attack or Retreat?";
     playerHasInitiative = YES;
 
@@ -1629,6 +1656,8 @@
 
     // Only worry about this routine if we're checking for surprise results
     // otherwise it will count as a fumble
+
+    targetTime = 0;
 
     if (playerHasInitiative)
     {
@@ -1652,12 +1681,15 @@
     // Only worry about this routine if we're checking for surprise results
     // otherwise it will count as a fumble
 
+    targetTime = 0;
+
     if (playerHasInitiative)
     {
         playerHasInitiative = NO;
         isMonstersTurn = NO;
         isInCombat = NO;
         monsterWasHitHard = NO;
+        playerCastSpell = NO;
 
         theMessage.inputString = @"Knavish coward!";
 
@@ -1709,6 +1741,8 @@
 
     theMessage.inputString = @"Strike Quickly!";
 
+    [self setKeys:YES];
+
     isPlayersTurn = YES;
 
     // Player now has 3 seconds in which to choose Head, Body or Legs to hit (via strike:)
@@ -1722,44 +1756,45 @@
 {
     // We come here when the player fails to hit H, B or L during an attack period
 
-    if (isInCombat && isPlayersTurn)
+    targetTime = 0;
+
+    if (isInCombat && (isPlayersTurn || playerHasInitiative || playerCastSpell))
     {
         // The player didn't press a key in time
 
         isPlayersTurn = NO;
-        monsterWasHitHard = NO;
         playerHasInitiative = NO;
+        playerCastSpell = NO;
+        monsterWasHitHard = NO;
 
         theMessage.inputString = @"Too slow!";
 
         // It's the monster's turn now, no matter what
 
-        [self launchMonsterAttack];
+        if (!isMonstersTurn) [self launchMonsterAttack];
     }
 }
 
 
 
--(IBAction)strike:(id)sender
+- (IBAction)strike:(id)sender
 {
     if (!isInCombat || isMonstersTurn) return;
+
+    targetTime = 0;
+    isPlayersTurn = NO;
 
     if (playerHasInitiative)
     {
         // By pressing H< B or L, the player fumbled the Attack or Retreat press,
         // so give the monster the initiative
 
-        targetTime = 0;
         playerHasInitiative = NO;
-        isPlayersTurn = NO;
         isMonstersTurn = YES;
 
         [self monsterAttacks];
         return;
     }
-
-
-    isPlayersTurn = NO;
 
     float experienceFactor = player.experience == 0 ? 39 * log(1) / 3.14 : 39 * log(player.experience) / 3.14;
 
@@ -1933,12 +1968,14 @@
 
     if (!isInCombat || isMonstersTurn) return;
 
+    targetTime = 0;
+
     if (playerHasInitiative)
     {
         // By pressing S, the player fumbled the Attack or Retreat press,
         // so give the monster the initiative
 
-        targetTime = 0;
+
         playerHasInitiative = NO;
         isPlayersTurn = NO;
         isMonstersTurn = YES;
@@ -1952,6 +1989,7 @@
 
     theMessage.inputString = @"Which spell seek ye?";
     playerCastSpell = YES;
+    isPlayersTurn = NO;
 
     // Set up a four-second timer and add it to the main run loop.
     // We will cancel it if the player presses a key before the time is up
@@ -1971,11 +2009,12 @@
 
     // Get the result of the spell
 
-    spellCast = (4 * player.psiStrength * [self random] <= monsterCombatPsi) ? 7 : [self magic:keyValue];
+    spellCast = [self magic:keyValue];
+    if (4 * player.psiStrength * [self random] <= monsterCombatPsi) spellCast = 7;
 
     // Wait three seconds before announcing result of spell
 
-    fightTimer = [NSTimer timerWithTimeInterval:3
+    fightTimer = [NSTimer timerWithTimeInterval:1.5
                                          target:self
                                        selector:@selector(spellOutcome)
                                        userInfo:nil
@@ -2172,6 +2211,7 @@
 
             [theMessage clearBuffer];
             theMessage.inputString = @"Sleep, foul fiend, that I may escape";
+            [self midLineDelay:1.0];
             theMessage.inputString = @"and preserve my miserable skin";
 
             // Roll success on 50% and up
@@ -2253,7 +2293,9 @@
 
             [theMessage clearBuffer];
             theMessage.inputString = @"With the might of my sword I smite thee";
+            [self midLineDelay:1.0];
             theMessage.inputString = @"With the power of my spell I curse thee";
+            [self midLineDelay:1.0];
             theMessage.inputString = @"Burn ye spawn of Hell and suffer...";
 
             needToSave = YES;
@@ -2516,38 +2558,37 @@
         // Place and store right-hand castle
 
         valleyPath[75] = kGraphicSafeCastle;
-
-        // Compute scenario positions
-
-        if (places[0] == -1)
-        {
-            for (NSUInteger i = 0 ; i < 5 ; ++i)
-            {
-                flag = NO;
-
-                while (!flag)
-                {
-                    roll1 = arc4random_uniform(11) + 1;
-                    roll2 = arc4random_uniform(34) + 1;
-                    a = 40 + (40 * roll1) + roll2;
-
-                    if (screen[a] == kGraphicSpace && screen[a + 1] == kGraphicSpace)
-                    {
-                        // Only place a scenario if there's empty space
-
-                        places[i] = a;
-                        flag = YES;
-                    }
-                }
-            }
-        }
-
         savedContents = kGraphicSafeCastle;
     }
 
-    // Draw Valley path
+    // Draw the Valley path
 
     for (NSUInteger i = 0 ; i < 75 ; i = i + 2) screen[valleyPath[i]] = valleyPath[i + 1];
+
+    // Compute scenario positions
+
+    if (places[0] == -1)
+    {
+        for (NSUInteger i = 0 ; i < 5 ; ++i)
+        {
+            flag = NO;
+
+            while (!flag)
+            {
+                roll1 = arc4random_uniform(11) + 1;
+                roll2 = arc4random_uniform(34) + 1;
+                a = 40 + (40 * roll1) + roll2;
+
+                if (screen[a] == kGraphicSpace && screen[a + 1] == kGraphicSpace)
+                {
+                    // Only place a scenario if there's empty space
+
+                    places[i] = a;
+                    flag = YES;
+                }
+            }
+        }
+    }
 
     // Draw scenario locations
 
@@ -2908,44 +2949,38 @@
 
 
 
-- (void)print:(NSString *)inputString at:(NSInteger)location
-{
-    // Prints the input string at the set location
-
-    for (NSUInteger i = 0 ; i < [inputString length] ; ++i)
-    {
-        char character = [inputString characterAtIndex:i];
-        NSInteger b = character == 92 ? 77 : character - 64;
-        screen[location + i] = b;
-    }
-}
-
-
-
 #pragma mark Menu Methods
 
 - (IBAction)newChar:(id)sender
 {
-    NSAlert *panel;
-    NSModalResponse choice;
-
     // Add game in progress / unsaved char warning
 
     if (isInCombat) return;
 
     if (isGameInProgress)
     {
-        panel = [[NSAlert alloc] init];
-        [panel setMessageText:@"You have a game in progress"];
-        [panel setInformativeText:@"Are you sure you want to end the current game and begin a new one?"];
-        [panel addButtonWithTitle:@"Yes"];
-        [panel addButtonWithTitle:@"No"];
-        choice = [panel runModal];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"You have a game in progress"];
+        [alert setInformativeText:@"Are you sure you want to end the current game and begin a new one?"];
+        [alert addButtonWithTitle:@"Yes"];
+        [alert addButtonWithTitle:@"No"];
 
-        if (choice >= NSAlertSecondButtonReturn) return;
+        [alert beginSheetModalForWindow:_window completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode == 1000) [self showNewPlayerSheet];
+        }];
+
+        return;
     }
 
+    [self showNewPlayerSheet];
+}
+
+
+
+- (void)showNewPlayerSheet
+{
     isGameInProgress = NO;
+    newProfession = -1;
 
     [_window beginSheet:newPlayerWindow completionHandler:nil];
 }
@@ -2960,14 +2995,29 @@
 
     player = [[Character alloc] init];
     player.name = playerNameReadout.stringValue;
-    playerNameView.inputString = [NSString stringWithFormat:@"%@ the %@", player.name, newProf];
 
-    player.comStrength = newComStrength;
-    player.psiStrength = newPsiStrength;
-    player.profession = newProfession;
-    player.stamina = newStamina;
-    player.comGain = newCombatGain;
-    player.psiGain = newPsiGain;
+    if (playerNameReadout.stringValue.length == 0 || [playerNameReadout.stringValue hasPrefix:@" "]) player.name = @"Mungo";
+    
+    if (newProfession != -1)
+    {
+        playerNameView.inputString = [NSString stringWithFormat:@"%@ the %@", player.name, newProf];
+        player.comStrength = newComStrength;
+        player.psiStrength = newPsiStrength;
+        player.profession = newProfession;
+        player.stamina = newStamina;
+        player.comGain = newCombatGain;
+        player.psiGain = newPsiGain;
+    }
+    else
+    {
+        playerNameView.inputString = [NSString stringWithFormat:@"%@ the Dolt", player.name];
+        player.comStrength = 20;
+        player.psiStrength = 20;
+        player.profession = kCharDolt;
+        player.stamina = 113;
+        player.comGain = 1.0;
+        player.psiGain = 1.0;
+    }
 
     // Update the info display
 
@@ -3014,6 +3064,7 @@
         newProf = @"Wizard";
         newCombatGain = 0.5;
         newPsiGain = 2.0;
+        playerPicView.image = [NSImage imageNamed:@"figure_wizard"];
     }
 
     if (sender == bWarrior)
@@ -3025,6 +3076,7 @@
         newProf = @"Warrior";
         newCombatGain = 1.25;
         newPsiGain = 1.0;
+        playerPicView.image = [NSImage imageNamed:@"figure_warrior"];
     }
 
     if (sender == bThinker)
@@ -3036,6 +3088,7 @@
         newProf = @"Thinker";
         newCombatGain = 0.75;
         newPsiGain = 1.5;
+        playerPicView.image = [NSImage imageNamed:@"figure_thinker"];
     }
 
     if (sender == bBarbarian)
@@ -3047,6 +3100,7 @@
         newProf = @"Barbarian";
         newCombatGain = 2.0;
         newPsiGain = 0.5;
+        playerPicView.image = [NSImage imageNamed:@"figure_barbarian"];
     }
 
     if (sender == bCleric)
@@ -3058,6 +3112,7 @@
         newCombatGain = 1.0;
         newPsiGain = 1.25;
         newProf = @"Cleric";
+        playerPicView.image = [NSImage imageNamed:@"figure_cleric"];
     }
 }
 
@@ -3085,67 +3140,71 @@
 
 - (IBAction)saveDocument:(id)sender
 {
-    if (isGameInProgress && !isInCombat)
+    if (!needToSave || !isGameInProgress || isInCombat) return;
+
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"le_Valley_Save_in_Castles"] == YES)
     {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"le_Valley_Save_in_Castles"] == YES)
+        if (currentScenario != kScenarioValley || (currentPos != valleyPath[0] && currentPos != valleyPath[74]))
         {
-            if (currentScenario != kScenarioValley || (currentPos != valleyPath[0] && currentPos != valleyPath[74]))
-            {
-                // Can't save mid-game - you have to return to the safe castle
+            // Can't save mid-game - you have to return to the safe castle
 
-                NSAlert *alert = [[NSAlert alloc] init];
-                alert.messageText = @"You can't save your game here";
-                alert.informativeText = @"You can't save the game unless you enter one of the Valley's two Safe Castles, at either end of the safe path. This can be disabled in the Preferences.";
-                [alert addButtonWithTitle:@"OK"];
-                [alert beginSheetModalForWindow:_window completionHandler:nil];
-                return;
-            }
-        }
-
-        if (savedfilePath != nil)
-        {
-            // We have saved this file already, so no need to re-present the dialog
-
-            if (needToSave)
-            {
-                player.cPos = currentPos;
-                player.tPos = positionBeforeLair;
-                player.vPos = valleyPos;
-                player.scenario = currentScenario;
-                player.saveSquare = savedContents;
-                player.floor = floor;
-
-                player.places0 = places[0];
-                player.places1 = places[1];
-                player.places2 = places[2];
-                player.places3 = places[3];
-                player.places4 = places[4];
-
-                for (NSUInteger i = 0 ; i < 78 ; ++i) [player.valleyPath addObject:[NSNumber numberWithInteger:valleyPath[i]]];
-
-                // Create a character model to save
-
-                Character *saveChar = [player copy];
-                BOOL result = [NSKeyedArchiver archiveRootObject:saveChar toFile:savedfilePath];
-
-                if (!result)
-                {
-                    NSFileManager *fileManager = [NSFileManager defaultManager];
-                    NSString *path = [savedfilePath stringByAppendingString:@"_tmp"];
-                    result = [NSKeyedArchiver archiveRootObject:saveChar toFile:path];
-                    [fileManager removeItemAtPath:savedfilePath error:nil];
-                    [fileManager copyItemAtPath:path toPath:savedfilePath error:nil];
-                    [fileManager removeItemAtPath:path error:nil];
-                }
-
-                saveChar = nil;
-            }
-
-            needToSave = NO;
+            NSAlert *alert = [[NSAlert alloc] init];
+            alert.messageText = @"You can't save your game here";
+            alert.informativeText = @"You can't save the game unless you enter one of the Valley's two Safe Castles, at either end of the safe path. This can be disabled in the Preferences.";
+            [alert addButtonWithTitle:@"OK"];
+            [alert beginSheetModalForWindow:_window completionHandler:nil];
             return;
         }
+    }
 
-        // If we are here, the player hasn't save a file for this game before
+    [self doSave];
+}
+
+
+
+- (void)doSave
+{
+    if (savedfilePath != nil)
+    {
+        // We have saved this file already, so no need to re-present the dialog
+
+        player.cPos = currentPos;
+        player.tPos = positionBeforeLair;
+        player.vPos = valleyPos;
+        player.scenario = currentScenario;
+        player.saveSquare = savedContents;
+        player.floor = floor;
+
+        player.places0 = places[0];
+        player.places1 = places[1];
+        player.places2 = places[2];
+        player.places3 = places[3];
+        player.places4 = places[4];
+
+        for (NSUInteger i = 0 ; i < 78 ; ++i) [player.valleyPath addObject:[NSNumber numberWithInteger:valleyPath[i]]];
+
+        // Create a character model to save
+
+        Character *saveChar = [player copy];
+        BOOL result = [NSKeyedArchiver archiveRootObject:saveChar toFile:savedfilePath];
+
+        if (!result)
+        {
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            NSString *path = [savedfilePath stringByAppendingString:@"_tmp"];
+            result = [NSKeyedArchiver archiveRootObject:saveChar toFile:path];
+            [fileManager removeItemAtPath:savedfilePath error:nil];
+            [fileManager copyItemAtPath:path toPath:savedfilePath error:nil];
+            [fileManager removeItemAtPath:path error:nil];
+        }
+
+        saveChar = nil;
+
+        needToSave = NO;
+    }
+    else
+    {
+        // No saved file location, so get one
 
         [self saveDocumentAs:nil];
     }
@@ -3155,7 +3214,7 @@
 
 - (IBAction)saveDocumentAs:(id)sender
 {
-    if (isGameInProgress && !isInCombat)
+    if (!isInCombat)
     {
         if ([[NSUserDefaults standardUserDefaults] boolForKey:@"le_Valley_Save_in_Castles"] == YES)
         {
@@ -3182,36 +3241,22 @@
              {
                  // Close sheet first and stop it hogging the event queue
 
-                 [NSApp stopModal];
-                 [NSApp endSheet:saveDialog];
-                 [saveDialog orderOut: self];
-                 [self savePanelDidEnd:[saveDialog URL]];
+                 NSURL *fileURL = [saveDialog URL];
+                 savedfilePath = fileURL.path;
+                 [self doSave];
              }
 
              saveDialog = nil;
-         }
-         ];
+         }];
     }
     else
     {
-        if (isInCombat)
-        {
-            NSAlert *alert = [[NSAlert alloc] init];
-            alert.messageText = @"You are in combat.";
-            alert.informativeText = @"You can't save a game while your character is fighting.";
-            [alert addButtonWithTitle:@"OK"];
-            [alert beginSheetModalForWindow:_window completionHandler:nil];
-            return;
-        }
+        NSAlert *alert = [[NSAlert alloc] init];
+        alert.messageText = @"You are in combat.";
+        alert.informativeText = @"You can't save a game while your character is fighting.";
+        [alert addButtonWithTitle:@"OK"];
+        [alert beginSheetModalForWindow:_window completionHandler:nil];
     }
-}
-
-
-
-- (void)savePanelDidEnd:(NSURL *)fileURL
-{
-    savedfilePath = fileURL.absoluteString;
-    [self saveDocument:nil];
 }
 
 
@@ -3227,6 +3272,7 @@
             alert.informativeText = @"Are you sure you want to end the current game and open a different one?";
             [alert addButtonWithTitle:@"Yes"];
             [alert addButtonWithTitle:@"No"];
+
             [alert beginSheetModalForWindow:_window completionHandler:^(NSModalResponse returnCode) {
                 if (returnCode == 1000) [self showOpenDialog];
             }];
@@ -3284,7 +3330,6 @@
 
 
 - (void)openFileHandler:(NSString *)path
-
 {
     Character *loadChar = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
 
@@ -3292,6 +3337,25 @@
     {
         player = loadChar;
         nextPosContents = 0;
+
+        currentPos = player.cPos;
+        positionBeforeLair = player.tPos;
+        valleyPos = player.vPos;
+        currentScenario = player.scenario;
+        savedContents = player.saveSquare;
+        floor = player.floor;
+
+        places[0] = player.places0;
+        places[1] = player.places1;
+        places[2] = player.places2;
+        places[3] = player.places3;
+        places[4] = player.places4;
+
+        for (NSUInteger i = 0 ; i < 78 ; ++i)
+        {
+            NSNumber *n = [player.valleyPath objectAtIndex:i];
+            valleyPath[i] = n.integerValue;
+        }
 
         // Set up one-second heartbeat
 
@@ -3310,6 +3374,9 @@
         // Write the player's name
 
         playerNameView.inputString = [NSString stringWithFormat:@"%@ the %@", player.name, [self setProfString:player.profession]];
+
+        [theMessage clearBuffer];
+        theMessage.inputString = @"Your adventure continues...";
 
         // Update the info display
 
@@ -3364,32 +3431,9 @@
 
     // Set window elements according to the Defaults values
 
-    if ([defaults boolForKey:@"le_Valley_Ascii_Graphics"] == YES)
-    {
-        [prefsAsciiCheckbox setState:NSOnState];
-    }
-    else
-    {
-        [prefsAsciiCheckbox setState:NSOffState];
-    }
-
-    if ([defaults boolForKey:@"le_Valley_Save_in_Castles"] == YES)
-    {
-        [prefsSaveCheckbox setState:NSOnState];
-    }
-    else
-    {
-        [prefsSaveCheckbox setState:NSOffState];
-    }
-
-    if ([defaults boolForKey:@"le_Valley_Do_Sounds"] == YES)
-    {
-        [prefsSoundCheckbox setState:NSOnState];
-    }
-    else
-    {
-        [prefsSoundCheckbox setState:NSOffState];
-    }
+    prefsAsciiCheckbox.state = [defaults boolForKey:@"le_Valley_Ascii_Graphics"] == YES ? NSOnState : NSOffState;
+    prefsSaveCheckbox.state = [defaults boolForKey:@"le_Valley_Save_in_Castles"] == YES ? NSOnState : NSOffState;
+    prefsSoundCheckbox.state = [defaults boolForKey:@"le_Valley_Do_Sounds"] == YES ? NSOnState : NSOffState;
 
     // Roll out the Preferences sheet
 
@@ -3404,7 +3448,6 @@
     // User has clicked on the Delete sheet's Cancel button
 
     [_window endSheet:prefsSheet];
-    [self closePrefsSheet:NSModalResponseCancel];
 }
 
 
@@ -3414,47 +3457,17 @@
 {
     // User has clicked on the Delete sheet's OK-to-delete button
 
-    [_window endSheet:prefsSheet];[self closePrefsSheet:NSModalResponseOK];
-}
+    [_window endSheet:prefsSheet];
 
-
-
-- (void)closePrefsSheet:(NSInteger)outcome
-{
     // Tidies up after the Prefs sheet is closed
-
-    if (outcome == NSModalResponseCancel) return;
 
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
 
     // Apply the new preferences to Defaults based on window element settings
 
-    if ([prefsAsciiCheckbox state] == NSOnState)
-    {
-        [defaults setBool:YES forKey:@"le_Valley_Ascii_Graphics"];
-    }
-    else
-    {
-        [defaults setBool:NO forKey:@"le_Valley_Ascii_Graphics"];
-    }
-
-    if ([prefsSaveCheckbox state] == NSOnState)
-    {
-        [defaults setBool:YES forKey:@"le_Valley_Save_in_Castles"];
-    }
-    else
-    {
-        [defaults setBool:NO forKey:@"le_Valley_Save_in_Castles"];
-    }
-
-    if ([prefsSoundCheckbox state] == NSOnState)
-    {
-        [defaults setBool:YES forKey:@"le_Valley_Do_Sounds"];
-    }
-    else
-    {
-        [defaults setBool:NO forKey:@"le_Valley_Do_Sounds"];
-    }
+    [defaults setBool:([prefsAsciiCheckbox state] == NSOnState) forKey:@"le_Valley_Ascii_Graphics"];
+    [defaults setBool:([prefsSaveCheckbox state] == NSOnState) forKey:@"le_Valley_Save_in_Castles"];
+    [defaults setBool:([prefsSoundCheckbox state] == NSOnState) forKey:@"le_Valley_Do_Sounds"];
 
     [defaults synchronize];
 }
@@ -3471,6 +3484,33 @@
     return roll / 100;
 }
 
+
+
+- (void)setKeys:(BOOL)state
+{
+    _window.enableKeys = state;
+
+    /*
+    button9.enabled = state;
+    button8.enabled = state;
+    button7.enabled = state;
+    button6.enabled = state;
+    button5.enabled = state;
+    button4.enabled = state;
+    button3.enabled = state;
+    button2.enabled = state;
+    button1.enabled = state;
+
+    cButtonB.enabled = state;
+    cButtonH.enabled = state;
+    cButtonL.enabled = state;
+    cButtonS.enabled = state;
+
+    oButtonA.enabled = state;
+    oButtonE.enabled = state;
+    oButtonR.enabled = state;
+     */
+}
 
 
 @end
