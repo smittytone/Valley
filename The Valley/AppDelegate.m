@@ -444,20 +444,15 @@
     {
         // Player doesn't have the Amulet of Alarian, so has no protection from death
 
-        [self clearScreen];
-        theScreen.splashImage = [NSImage imageNamed:@"skull"];
         [theMessage clearBuffer];
+        [self clearScreen];
 
-<<<<<<< HEAD
-        [self print:@"OH, WHAT A FRAIL SHELL" at:89];
-        [self print:@"IS THIS THAT WE CALL MAN?" at:127];
-=======
-        [self print:@"OH, WHAT A FRAIL SHELL" at:88];
-        [self print:@"IS THIS THAT WE CALL MAN?" at:126];
-        [self print:@"YOUR ADVENTURE IS OVER" at:529];
+        //[self print:@"OH, WHAT A FRAIL SHELL" at:88];
+        //[self print:@"IS THIS THAT WE CALL MAN?" at:126];
+        //[self print:@"YOUR ADVENTURE IS OVER" at:529];
+        //[self drawScreen];
 
-        [self drawScreen];
->>>>>>> origin/master
+        theScreen.splashImage = [NSImage imageNamed:@"skull"];
 
         heartbeatCount = 0;
         player.stamina = 0;

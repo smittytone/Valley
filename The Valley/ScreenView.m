@@ -44,39 +44,42 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-	if (!splashFlag && screenArray != 0)
+	if (splashFlag)
     {
-        for (NSUInteger y = 0 ; y < 14 ; ++y)
+        splashFlag = NO;
+
+        if (splashImage != nil)
         {
-            for (NSUInteger x = 0 ; x < 40 ; ++x)
-            {
-                // Get the type of graphic to draw out of the GameController screen array
-
-                NSUInteger theGraphicCode = screenArray[y * 40 + x];
-
-                // Calculate the co-ords on the char image from the code
-
-                NSUInteger row = theGraphicCode / 16;
-                NSUInteger col = theGraphicCode - (row * 16);
-                NSRect rect = NSMakeRect(col * 16, 240 - (row * 16), 16 , 16);
-
-                [theGraphics drawAtPoint: NSMakePoint((x * 16), 208 - (y * 16))
-                                fromRect: rect
-                               operation: NSCompositingOperationCopy
-                                fraction: 1.0];
-            }
+            [splashImage drawAtPoint: NSMakePoint(0, 0)
+                            fromRect: NSZeroRect
+                           operation: NSCompositingOperationCopy
+                            fraction: 1.0];
         }
     }
     else
     {
-        splashFlag = NO;
-        
-        if (splashImage != nil)
+        if (screenArray)
         {
-            [splashImage drawAtPoint: NSMakePoint(0, 0)
-                            fromRect: dirtyRect
-                           operation: NSCompositingOperationCopy
-                            fraction: 1.0];
+            for (NSUInteger y = 0 ; y < 14 ; ++y)
+            {
+                for (NSUInteger x = 0 ; x < 40 ; ++x)
+                {
+                    // Get the type of graphic to draw out of the GameController screen array
+
+                    NSUInteger theGraphicCode = screenArray[y * 40 + x];
+
+                    // Calculate the co-ords on the char image from the code
+
+                    NSUInteger row = theGraphicCode / 16;
+                    NSUInteger col = theGraphicCode - (row * 16);
+                    NSRect rect = NSMakeRect(col * 16, 240 - (row * 16), 16 , 16);
+
+                    [theGraphics drawAtPoint: NSMakePoint((x * 16), 208 - (y * 16))
+                                    fromRect: rect
+                                   operation: NSCompositingOperationCopy
+                                    fraction: 1.0];
+                }
+            }
         }
     }
 }
@@ -97,7 +100,7 @@
 {
 	// Tell the view to draw itself in its entirety
 	
-	[self setNeedsDisplayInRect:(NSMakeRect(0, 0, 640 , 224))];
+    self.needsDisplay = YES;
 }
 
 
@@ -116,38 +119,6 @@
 - (BOOL)acceptsFirstResponder
 {
 	return NO;
-}
-
-
-
-- (BOOL)resignFirstResponder
-{
-	return NO;
-}
-
-
-
-- (BOOL)becomeFirstResponder
-{
-	return YES;
-}
-
-
-
-- (void)keyDown:(NSEvent *)event
-{
-	[self interpretKeyEvents:[NSArray arrayWithObject:event]];
-}
-
-
-
-- (void)insertText:(NSString *)input
-{
-	// This is where typed text will be dealt with. We send post a
-	// 'ValleyKeyClick' notification with the typed key as its packaged
-	// object to be dealt with by the main program code.
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"ValleyKeyClick" object:input];
 }
 
 
