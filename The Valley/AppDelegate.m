@@ -63,6 +63,7 @@
     // Give the main window the option to go full-screen
 
     [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
+    [_window center];
 
     savedfilePath = nil;
     needToSave = NO;
@@ -444,10 +445,14 @@
         // Player doesn't have the Amulet of Alarian, so has no protection from death
 
         [self clearScreen];
+        theScreen.splashImage = [NSImage imageNamed:@"skull"];
         [theMessage clearBuffer];
 
-        [self print:@"OH, WHAT A FRAIL SHELL" at:89];
+        [self print:@"OH, WHAT A FRAIL SHELL" at:88];
         [self print:@"IS THIS THAT WE CALL MAN?" at:126];
+        [self print:@"YOUR ADVENTURE IS OVER" at:529];
+
+        [self drawScreen];
 
         heartbeatCount = 0;
         player.stamina = 0;
@@ -585,6 +590,13 @@
     if (sender == button8) buttonValue = 8;
     if (sender == button9) buttonValue = 9;
 
+#ifdef DEBUG
+    if (buttonValue == 5) {
+        [self death];
+        return;
+    }
+#endif
+    
     // Are we hitting one of the number keys during a fight?
 
     if (isInCombat)
