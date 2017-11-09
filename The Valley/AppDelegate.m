@@ -33,8 +33,9 @@
 
     // Drop the arrays into the Defauts
 
+    NSUserDefaults *sd = [NSUserDefaults standardUserDefaults];
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObjects:valueArray forKeys:keyArray];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    [sd registerDefaults:appDefaults];
 
     // Initialise game variables
 
@@ -54,6 +55,10 @@
 
     NSImage *image = [NSImage imageNamed:@"valley_logo_digital"];
     theScreen.splashImage = image;
+
+    // Set up sound
+
+    [self setSounds:[sd boolForKey:@"le_Valley_Do_Sounds"]];
 
     // Give the main window the option to go full-screen
 
@@ -605,6 +610,7 @@
         if (playerCastSpell)
         {
             // The call to playerSpell: checks whether a spell has been cast
+            // Number keys are valid in this case
 
             [self playerSpell:buttonValue];
         }
@@ -628,18 +634,19 @@
 
     // Are we going up or down stairs?
 
+    // Disable key presses while we process
+
     [self setKeysAndClicks:NO];
+
+    // Is the player pressing 8 or 2 to go up or down stairs?
 
     if (stairsFlag)
     {
-        tempFloor = floor;
-
-        if (buttonValue == 8) floor++;
-        if (buttonValue == 2) floor--;
-
         if (buttonValue == 2 || buttonValue == 8)
         {
             stairsFlag = NO;
+            tempFloor = floor;
+            floor = floor + (buttonValue == 8 ? 1 : -1);
 
             if (floor > 7 || floor < 2)
             {
@@ -766,7 +773,7 @@
         player.stamina = 150;
         if (player.comStrength < 20) player.comStrength = 20;
 
-        theMessage.inputString = @"Go as the gods demand... trust no other";
+        theMessage.inputString = @"Go as the gods demand...trust no other";
 
         [self updateStats];
         [self setKeysAndClicks:YES];
@@ -777,7 +784,7 @@
     {
         // Can't move on to these squares, so keep the player where he is and undo the move
 
-        theMessage.inputString = @"That way is blocked... choose another path";
+        theMessage.inputString = @"That way is blocked, choose another path";
         player.turns--;
         player.stamina = player.stamina - 10;
         [self updateStats];
@@ -790,7 +797,6 @@
         // About to enter a new scenario from the Valley - we deal with preserving scenario locations there
 
         [self scenarioControl];
-        [self updateStats];
         return;
     }
 
@@ -804,7 +810,7 @@
         {
             // Player hasn't played enough in the scenario so cancel the move
 
-            theMessage.inputString = @"The way is barred, try again later";;
+            theMessage.inputString = @"The way is barred, try again later";
             player.turns--;
             player.stamina = player.stamina - 10;
             [self updateStats];
@@ -813,8 +819,6 @@
         }
 
         [self scenarioControl];
-        [self updateStats];
-        [self setKeysAndClicks:YES];
         return;
     }
 
@@ -833,8 +837,6 @@
         // We preserve the current position on the scenario routines
 
         [self scenarioControl];
-        [self updateStats];
-        [self setKeysAndClicks:YES];
         return;
     }
 
@@ -877,7 +879,7 @@
         // Climb stairs
 
         stairsFlag = YES;
-        theMessage.inputString = @"A stairway... Up (8) or Down (2)?";
+        theMessage.inputString = @"A stairway...Up (8) or Down (2)?";
     }
 
     // Player can move and is not entering or exiting a scenario, or dealing with a special character
@@ -928,7 +930,7 @@
 
     // No monster or treasure found, so give player movement instructions for the next turn
 
-    theMessage.inputString = @"Your move... Which direction?";
+    theMessage.inputString = @"Nothing of value...search on";
     [self setKeysAndClicks:YES];
 }
 
@@ -994,7 +996,7 @@
 
 - (void)postFind
 {
-    theMessage.inputString = @"Your move... Which direction?";
+    theMessage.inputString = @"Your move...Which direction?";
 
     [self setKeysAndClicks:YES];
     [self updateStats];
@@ -2495,6 +2497,9 @@
         default:
             break;
     }
+
+    [self updateStats];
+    [self setKeysAndClicks:YES];
 }
 
 
@@ -2677,44 +2682,25 @@
     }
 
     // Draw in Lake
-    // Random y co-ord : 0-3 multplied by 40 to get the correct row
+    // Random y co-ord : 0-9 multplied by 40 to get the correct row
 
-    a = arc4random_uniform(4) * 40;
+    a = (1 + arc4random_uniform(6)) * 40;
 
     // Random x co-ord: 0-26 added to the current row
 
-    a = a + arc4random_uniform(27);
+    a = a + (towerFloor[2] > 0 ? towerFloor[2] : towerFloor[2] + 2);
 
-    NSUInteger tempPos = 85 + a;
+    NSUInteger tempPos = a;
 
     // Draw the lake
 
-    screen[tempPos] = kGraphicLake;
-    screen[tempPos + 1] = kGraphicLake;
-    screen[tempPos + 39] = kGraphicLake;
-    screen[tempPos + 40] = kGraphicLake;
-    screen[tempPos + 41] = kGraphicLake;
-    screen[tempPos + 42] = kGraphicLake;
-    screen[tempPos + 43] = kGraphicLake;
-    screen[tempPos + 78] = kGraphicLake;
-    screen[tempPos + 79] = kGraphicLake;
-    screen[tempPos + 82] = kGraphicLake;
-    screen[tempPos + 83] = kGraphicLake;
-    screen[tempPos + 84] = kGraphicLake;
-    screen[tempPos + 118] = kGraphicLake;
-    screen[tempPos + 119] = kGraphicLake;
-    screen[tempPos + 122] = kGraphicLake;
-    screen[tempPos + 123] = kGraphicLake;
-    screen[tempPos + 124] = kGraphicLake;
-    screen[tempPos + 159] = kGraphicLake;
-    screen[tempPos + 160] = kGraphicLake;
-    screen[tempPos + 161] = kGraphicLake;
-    screen[tempPos + 162] = kGraphicLake;
-    screen[tempPos + 164] = kGraphicLake;
-    screen[tempPos + 165] = kGraphicLake;
-    screen[tempPos + 201] = kGraphicLake;
-    screen[tempPos + 202] = kGraphicLake;
-    screen[tempPos + 242] = kGraphicLake;
+    NSInteger pokeLocations[26] = {0, 1, 39, 40, 41, 42, 43, 78, 79, 82, 83, 84, 118, 119, 122, 123, 124, 159, 160, 161, 162, 164, 165, 201, 202, 242};
+
+    for (NSUInteger i = 0 ; i < 26 ; ++i)
+    {
+        a = pokeLocations[i];
+        if (tempPos + a < 561) screen[tempPos + a] = kGraphicLake;
+    }
 
     // Draw the island
 
@@ -3520,8 +3506,11 @@
     [defaults setBool:([prefsAsciiCheckbox state] == NSOnState) forKey:@"le_Valley_Ascii_Graphics"];
     [defaults setBool:([prefsSaveCheckbox state] == NSOnState) forKey:@"le_Valley_Save_in_Castles"];
     [defaults setBool:([prefsSoundCheckbox state] == NSOnState) forKey:@"le_Valley_Do_Sounds"];
-
     [defaults synchronize];
+
+    // Make sure we enable/disable sounds as required by the user
+
+    [self setSounds:([prefsSoundCheckbox state] == NSOnState)];
 }
 
 
@@ -3572,5 +3561,30 @@
     }
 }
 
+
+
+- (void)setSounds:(BOOL)state
+{
+    NSSound *clickSound = state ? [NSSound soundNamed:@"click"] : nil;
+
+    button9.sound = clickSound;
+    button8.sound = clickSound;
+    button7.sound = clickSound;
+    button6.sound = clickSound;
+    button5.sound = clickSound;
+    button4.sound = clickSound;
+    button3.sound = clickSound;
+    button3.sound = clickSound;
+    button1.sound = clickSound;
+
+    cButtonB.sound = clickSound;
+    cButtonH.sound = clickSound;
+    cButtonL.sound = clickSound;
+    cButtonS.sound = clickSound;
+
+    oButtonA.sound = clickSound;
+    oButtonR.sound = clickSound;
+    oButtonE.sound = clickSound;
+}
 
 @end
