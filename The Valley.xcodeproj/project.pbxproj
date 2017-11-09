@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B62236D1FB49D8900AAFF10 /* click.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 3B62236C1FB49D8900AAFF10 /* click.aiff */; };
 		3BA0A3A01FB380E50024C2F9 /* ValleyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA0A39F1FB380E50024C2F9 /* ValleyWindow.m */; };
 		3BA0A3A31FB38BEB0024C2F9 /* ValleyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA0A3A21FB38BEB0024C2F9 /* ValleyButton.m */; };
 		3BC6433F1FB0C3F000E57E65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6433E1FB0C3F000E57E65 /* AppDelegate.m */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		3B50A4B81FB1B263004AD973 /* The Valley.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "The Valley.entitlements"; sourceTree = "<group>"; };
+		3B62236C1FB49D8900AAFF10 /* click.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = click.aiff; sourceTree = "<group>"; };
 		3BA0A39E1FB380E50024C2F9 /* ValleyWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValleyWindow.h; sourceTree = "<group>"; };
 		3BA0A39F1FB380E50024C2F9 /* ValleyWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValleyWindow.m; sourceTree = "<group>"; };
 		3BA0A3A11FB38BEB0024C2F9 /* ValleyButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValleyButton.h; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				3BC643501FB0C51B00E57E65 /* Character.h */,
 				3BC643511FB0C51B00E57E65 /* Character.m */,
 				3BC643401FB0C3F000E57E65 /* Assets.xcassets */,
+				3B62236C1FB49D8900AAFF10 /* click.aiff */,
 				3BC643421FB0C3F000E57E65 /* MainMenu.xib */,
 				3BC643451FB0C3F000E57E65 /* Info.plist */,
 				3BC643461FB0C3F000E57E65 /* main.m */,
@@ -165,6 +168,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B62236D1FB49D8900AAFF10 /* click.aiff in Resources */,
 				3BC643411FB0C3F000E57E65 /* Assets.xcassets in Resources */,
 				3BC643441FB0C3F000E57E65 /* MainMenu.xib in Resources */,
 			);

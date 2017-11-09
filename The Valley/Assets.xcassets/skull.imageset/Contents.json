@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "valley_logo.png",
+      "filename" : "skull.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "valley_logo@2x.png",
+      "filename" : "skull@2x.png",
       "scale" : "2x"
     },
     {
