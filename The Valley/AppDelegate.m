@@ -715,6 +715,7 @@
     if (buttonValue == 5)
     {
         [self updateStats];
+        [self setKeysAndClicks:YES];
         return;
     }
 
@@ -755,7 +756,7 @@
         {
             // Only allowed to save the game if we're in a castle
 
-            theMessage.inputString = @"Wilt thou save your game? Here you may";
+            theMessage.inputString = @"Wilt thou save your game? Here you may.";
         }
         else
         {
@@ -3090,6 +3091,7 @@
     currentScenario = kScenarioValley;
     floor = 1;
 
+    [self setKeysAndClicks:YES];
     [self scenarioValley];
 }
 
@@ -3191,7 +3193,7 @@
 
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"le_Valley_Save_in_Castles"] == YES)
     {
-        if (currentScenario != kScenarioValley || (currentPos != valleyPath[0] && currentPos != valleyPath[74]))
+        if (currentScenario != kScenarioValley || nextPosContents != kGraphicSafeCastle)
         {
             // Can't save mid-game - you have to return to the safe castle
 
@@ -3267,12 +3269,15 @@
         {
             // Can't save mid-game - you have to return to the safe castle
 
-            NSAlert *alert = [[NSAlert alloc] init];
-            alert.messageText = @"You can't save your game here";
-            alert.informativeText = @"You can't save the game unless you enter on of the Valley's two Safe Castles. This can be disable in the Preferences.";
-            [alert addButtonWithTitle:@"OK"];
-            [alert beginSheetModalForWindow:_window completionHandler:nil];
-            return;
+            if (currentScenario != kScenarioValley || nextPosContents != kGraphicSafeCastle)
+            {
+                NSAlert *alert = [[NSAlert alloc] init];
+                alert.messageText = @"You can't save your game here";
+                alert.informativeText = @"You can't save the game unless you enter on of the Valley's two Safe Castles. This can be disable in the Preferences.";
+                [alert addButtonWithTitle:@"OK"];
+                [alert beginSheetModalForWindow:_window completionHandler:nil];
+                return;
+            }
         }
 
         __block NSSavePanel *saveDialog = [NSSavePanel savePanel];
