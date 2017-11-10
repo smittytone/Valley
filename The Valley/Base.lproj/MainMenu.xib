@@ -57,6 +57,7 @@
                 <outlet property="storySheet" destination="95w-2X-eLE" id="Hq5-A7-CDl"/>
                 <outlet property="storyTextView" destination="4da-rh-wcU" id="knC-ML-iYQ"/>
                 <outlet property="storyView" destination="uh8-IV-ZCw" id="qST-sA-2ny"/>
+                <outlet property="theBackground" destination="6t6-1X-uyM" id="OnU-62-Id7"/>
                 <outlet property="theMessage" destination="xnx-9W-YA8" id="a3d-cO-dGZ"/>
                 <outlet property="theScreen" destination="cgL-ga-Q8i" id="BzX-Rw-vAM"/>
                 <outlet property="treasureView" destination="WJP-Gn-eb7" id="CwX-z3-yxk"/>
@@ -401,7 +402,7 @@
             </items>
             <point key="canvasLocation" x="-538" y="434"/>
         </menu>
-        <window title="The Valley" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="ValleyWindow">
+        <window title="The Valley" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="ValleyWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="680" height="740"/>
@@ -893,7 +894,7 @@
                             <constraint firstAttribute="height" constant="21" id="5ow-9n-2aR"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="M0m-YG-5sW"/>
                         </constraints>
-                        <buttonCell key="cell" type="push" title="Wizard" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qL7-LQ-3Q5">
+                        <buttonCell key="cell" type="push" title="Wizard" bezelStyle="rounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qL7-LQ-3Q5">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -974,12 +975,12 @@ DQ
                             <action selector="saveCharSheet:" target="Voe-Tx-rLC" id="eMQ-bZ-Wyo"/>
                         </connections>
                     </button>
-                    <textField focusRingType="exterior" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6F-8A-ZqF">
+                    <textField focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6F-8A-ZqF">
                         <rect key="frame" x="20" y="249" width="266" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="NDq-gL-uyN"/>
                         </constraints>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="exterior" alignment="left" drawsBackground="YES" usesSingleLineMode="YES" id="Hzv-iQ-8TI">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" drawsBackground="YES" usesSingleLineMode="YES" id="Hzv-iQ-8TI">
                             <font key="font" metaFont="systemBold"/>
                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
