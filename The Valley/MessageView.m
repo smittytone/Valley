@@ -103,7 +103,7 @@
 {
     // Scroll buffer
 
-    if ([value compare:inputString] == NSOrderedSame) [self clearBuffer];
+    // if ([value compare:inputString] == NSOrderedSame) [self clearBuffer];
 
     inputString = value;
 
