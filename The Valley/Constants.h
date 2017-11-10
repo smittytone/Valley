@@ -97,4 +97,4 @@
 
 // Timings
 
-#define    kScrollMessagesTime     8
+#define    kScrollMessagesTime     20
