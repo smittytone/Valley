@@ -2319,7 +2319,6 @@
 
             if (damage < 1)
             {
-                damage = 0;
                 outcome = 7;
                 break;
             }
@@ -2370,7 +2369,6 @@
 
             if (damage < 1)
             {
-                damage = 0;
                 outcome = 7;
                 break;
             }
@@ -2870,7 +2868,6 @@
 
                 if (i == 4) pokeCode = kGraphicSpaceAlt;
                 screen[(tempPos + roomWidth[1] + roomWidth[2] + roomWidth[3])] = pokeCode;
-                pokeCode = kGraphicTowerBorder;
             }
         }
 
@@ -3248,9 +3245,13 @@
             NSFileManager *fileManager = [NSFileManager defaultManager];
             NSString *path = [savedfilePath stringByAppendingString:@"_tmp"];
             result = [NSKeyedArchiver archiveRootObject:saveChar toFile:path];
-            [fileManager removeItemAtPath:savedfilePath error:nil];
-            [fileManager copyItemAtPath:path toPath:savedfilePath error:nil];
-            [fileManager removeItemAtPath:path error:nil];
+
+            if (result)
+            {
+                [fileManager removeItemAtPath:savedfilePath error:nil];
+                [fileManager copyItemAtPath:path toPath:savedfilePath error:nil];
+                [fileManager removeItemAtPath:path error:nil];
+            }
         }
 
         saveChar = nil;
