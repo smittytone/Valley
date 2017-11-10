@@ -93,6 +93,36 @@
 
 
 
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSNotification *)notification
+{
+    // Check for unsaved changes
+
+    if (!needToSave)
+    {
+        return NSTerminateNow;
+    }
+    else
+    {
+        // Warn the user to save the character
+
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"You have a game in progress"];
+        [alert setInformativeText:@"Are you sure you want to quit?"];
+        [alert addButtonWithTitle:@"Yes"];
+        [alert addButtonWithTitle:@"No"];
+
+        [alert beginSheetModalForWindow:_window completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode == 1000) [NSApp replyToApplicationShouldTerminate:YES];
+        }];
+
+        // Tell the system we'll shutdown shortly
+
+        return NSTerminateLater;
+    }
+}
+
+
+
 #pragma mark - Full Screen Methods
 
 
@@ -146,39 +176,18 @@
 
     if (isInCombat) return;
 
-    // Process a general delay
-
-    if (generalDelayFlag)
-    {
-        if (heartbeatCount <= delayTargetTime)
-        {
-            return;
-        }
-        else
-        {
-            delayTargetTime = 0;
-            [self delayIsUp:nil];
-            return;
-        }
-    }
-
     // Every x seconds, scroll the message field up a line
     // Leave it till last so its doesn't happen in specific waiting periods
 
-    //if (heartbeatCount % kScrollMessagesTime == 0 && !stairsFlag) theMessage.inputString = @"";
-}
-
-
-
-- (void)delayIsUp:(NSTimer*)theTimer
-{
-    // THIS DOES NOTHING, BUT NEED TO FIGURE OUT HOW TO DELAY PROGRAM
+    if (heartbeatCount % kScrollMessagesTime == 0 && !stairsFlag) theMessage.inputString = @"";
 }
 
 
 
 - (void)midLineDelay:(NSTimeInterval)delay
 {
+    // Pause the game between multi-line messages
+
     [NSThread sleepForTimeInterval:delay];
 }
 
@@ -198,7 +207,6 @@
     dataPointer = 1;
     spellCast = 0;
     targetTime = 0;
-    delayTargetTime = 0;
 
     // Initialise Monster Arrays
 
@@ -446,11 +454,6 @@
 
         [theMessage clearBuffer];
         [self clearScreen];
-
-        //[self print:@"OH, WHAT A FRAIL SHELL" at:88];
-        //[self print:@"IS THIS THAT WE CALL MAN?" at:126];
-        //[self print:@"YOUR ADVENTURE IS OVER" at:529];
-        //[self drawScreen];
 
         theScreen.splashImage = [NSImage imageNamed:@"skull"];
 
@@ -970,7 +973,7 @@
         case 2:
         case 3:
             theMessage.inputString = @"A Hoard of Gold!";
-            player.treasure = player.treasure + 100 + (floor * arc4random_uniform(100));
+            player.treasure = player.treasure + 100 + (floor * [self random] * 100 + 100);
             needToSave = YES;
             break;
 
@@ -1238,16 +1241,18 @@
         {
             // One of the nasty creatures rolled, but only select it on a further 15% chance
 
-            if (rollTwo > 85)
+            if (rollTwo < 85)
             {
                 rolledFiend = rollOne;
+
+                // Can we have the selected monster in the current scenario?
 
                 NSRange result = [scenarioMonsterTypes rangeOfString:monsterCode[rolledFiend]];
                 if (result.location != NSNotFound) monsterSelected = YES;
 
                 // Reject a Balrog except in all but 5% of the time
 
-                if (rolledFiend == 16 && rollTwo < 75) monsterSelected = NO;
+                if (rolledFiend == 16 && arc4random_uniform(100) < 70) monsterSelected = NO;
 
                 // Reject a Ring Wraith on floor levels 0-4
 
@@ -2017,6 +2022,12 @@
 {
     // The player has hit 'S' to cast a magic spell
 
+    if (!isGameInProgress)
+    {
+        [self showStory:nil];
+        return;
+    }
+    
     if (!isInCombat || isMonstersTurn) return;
 
     targetTime = 0;
@@ -2992,6 +3003,8 @@
 
 #pragma mark Menu Methods
 
+
+
 - (IBAction)newChar:(id)sender
 {
     // Add game in progress / unsaved char warning
@@ -3524,6 +3537,39 @@
     // Make sure we enable/disable sounds as required by the user
 
     [self setSounds:([prefsSoundCheckbox state] == NSOnState)];
+}
+
+
+
+#pragma mark - Story Methods
+
+
+- (IBAction)showStory:(id)sender
+{
+    NSError *error = nil;
+
+    NSString *path = @"story";
+    path = [[NSBundle mainBundle] pathForResource:path ofType:@"txt"];
+    NSString *story = [NSString stringWithContentsOfFile:path
+                                                encoding:NSUTF8StringEncoding
+                                                   error:&error];
+
+    if (error == nil)
+    {
+        storyTextView.string = story;
+        [[NSColor clearColor] set];
+        NSRectFill(storyView.frame);
+        [storySheet center];
+        [storySheet makeKeyAndOrderFront:self];
+    }
+}
+
+
+
+- (IBAction)closeStory:(id)sender
+{
+    [storySheet orderOut:self];
+    [storySheet close];
 }
 
 

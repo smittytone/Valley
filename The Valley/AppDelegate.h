@@ -15,6 +15,8 @@
 #import "Character.h"
 #import "ValleyWindow.h"
 #import "ValleyButton.h"
+#import "ValleyStoryWindow.h"
+
 
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
@@ -44,7 +46,7 @@
     NSInteger monsterCombatStrength, monsterCombatPsi, monsterStamina, spellCast, timeFactor;
 
     BOOL isInCombat, monsterWasHitHard, playerHasInitiative, isMonstersTurn, isPlayersTurn, playerCastSpell;
-    BOOL needToSave, isGameInProgress, generalDelayFlag, stairsFlag, loadFlag;
+    BOOL needToSave, isGameInProgress, stairsFlag, loadFlag;
 
     Character *player;
 
@@ -107,6 +109,12 @@
     IBOutlet NSButton *prefsSaveCheckbox;
     IBOutlet NSButton *prefsSoundCheckbox;
 
+    // Story Window
+
+    IBOutlet ValleyStoryWindow *storySheet;
+    IBOutlet NSView *storyView;
+    IBOutlet NSTextView *storyTextView;
+
     // Menu outlets
 
     IBOutlet NSMenuItem *menuItemSave;
@@ -116,7 +124,6 @@
 // Timing Methods
 
 - (void)heartbeat;
-- (void)delayIsUp:(NSTimer*)theTimer;
 
 // Game Setup
 
@@ -208,10 +215,16 @@
 - (IBAction)prefsSheetCancel:(id)sender;
 - (IBAction)prefsSheetSave:(id)sender;
 
+// Story Methods
+
+- (IBAction)showStory:(id)sender;
+- (IBAction)closeStory:(id)sender;
+
 // Utility Methods
 
 - (float)random;
 - (void)setKeysAndClicks:(BOOL)state;
+
 
 
 @end
