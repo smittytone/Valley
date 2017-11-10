@@ -20,11 +20,14 @@ It was eventually done and played, but never fully debugged. I’d come back to 
 
 My code is architecturally quite different from the original, and operates in a very different way: it doesn’t run under a Basic interpreter in a single-task system, for starters. However, it uses the game design of the original and most of the original algorithms, so this is not all my own work. The original was written primarily by Peter Freebrey and Peter Green, with additional work by Henry Budgett, so the code in this repo is arguably as much theirs as mine. *Computing Today* was published by Argus Specialist Publications; as Argus employees, Freebrey, Green and Budgett wouldn’t have owned their work, their employer would. The magazine’s Publisher, Ron Harris, was also credited as a joint author; he managed the development project.
 
-
 ASP’s parent company, Argus Press, sold the company in the mid-1990s, and it’s no longer clear who, if anyone, claims ownership of the original source code now. The same goes for the artwork included in the article, which I have used here. I also used it in the *Register* article, but no one stepped forward to claim it. I’d be happy to acknowledge them, if they did now.
 
 My code also includes the Commodore Pet character set in three variations. Again, I use them in a spririt of fair use given their age and the certain lack of interest in such things by anyone of who might own Commodore’s assets today.
 
 The macOS icon is based on The Valley’s iconic Dwarf and a swords-and-shield graphic by [PSD Graphics](http://psdgraphics.com).
+
+<p align="center"><img src="https://smittytone.github.io/images/valleychars.jpg" width="800" ></p>
+
+The character images are Games Workshop figures from the *Dungeonquest* and *Warlock of Firetop Mountain* boardgames of the mid- to late 1980s, painted by me back in the day but photographed recently.
 
 Tony Smith<br>@smittytone
