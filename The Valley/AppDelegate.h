@@ -55,6 +55,7 @@
     IBOutlet NSWindow *mainWindow;
     IBOutlet ScreenView *theScreen;
     IBOutlet MessageView *theMessage;
+    IBOutlet NSImageView *theBackground;
 
     IBOutlet NameView *playerNameView;
     IBOutlet NumberView *turnCountView;

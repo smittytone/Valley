@@ -60,28 +60,16 @@
 
     [self setSounds:[sd boolForKey:@"le_Valley_Do_Sounds"]];
 
-    // Give the main window the option to go full-screen
-
-    [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
-    [_window center];
-
     savedfilePath = nil;
     needToSave = NO;
 
-    /*
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    // Give the main window the option to go full-screen
 
-    [nc addObserver:self
-           selector:@selector(dummy)
-               name:@"AFCFileCopyBegin"
-             object:nil];
-    */
-}
+    _window.delegate = self;
 
-
-- (void)applicationWillTerminate:(NSNotification *)aNotification
-{
-    // Insert code here to tear down your application
+    [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
+    [_window center];
+    [_window makeKeyAndOrderFront:self];
 }
 
 
@@ -93,13 +81,13 @@
 
 
 
-- (NSApplicationTerminateReply)applicationShouldTerminate:(NSNotification *)notification
+- (BOOL)windowShouldClose:(NSNotification *)notification
 {
     // Check for unsaved changes
 
     if (!needToSave)
     {
-        return NSTerminateNow;
+        return YES;
     }
     else
     {
@@ -112,12 +100,12 @@
         [alert addButtonWithTitle:@"No"];
 
         [alert beginSheetModalForWindow:_window completionHandler:^(NSModalResponse returnCode) {
-            if (returnCode == 1000) [NSApp replyToApplicationShouldTerminate:YES];
+            if (returnCode == 1000) [_window close];
         }];
 
         // Tell the system we'll shutdown shortly
 
-        return NSTerminateLater;
+        return NO;
     }
 }
 
@@ -128,6 +116,10 @@
 
 - (void)windowWillEnterFullScreen:(NSNotification *)notification
 {
+    theBackground.wantsLayer = YES;
+    theBackground.layer.borderColor = [NSColor greenColor].CGColor;
+    theBackground.layer.borderWidth = 2.0;
+
     [_window setStyleMask:NSWindowStyleMaskBorderless];
 }
 
@@ -135,8 +127,10 @@
 
 - (void)windowWillExitFullScreen:(NSNotification *)notification
 {
+    theBackground.layer.borderColor = [NSColor clearColor].CGColor;
+
     [_window setStyleMask:(NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskClosable)];
-    [_window setTitle:@"The Valley"];
+    [_window setTitle:@"The Valley 2"];
 }
 
 
@@ -174,12 +168,12 @@
 
     // No need to go further if the player is in combat
 
-    if (isInCombat) return;
+    // if (isInCombat) return;
 
     // Every x seconds, scroll the message field up a line
     // Leave it till last so its doesn't happen in specific waiting periods
 
-    if (heartbeatCount % kScrollMessagesTime == 0 && !stairsFlag) theMessage.inputString = @"";
+    // if (heartbeatCount % kScrollMessagesTime == 0 && !stairsFlag) theMessage.inputString = @"";
 }
 
 
