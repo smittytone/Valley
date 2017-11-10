@@ -11,7 +11,6 @@
 		3BA0A3A01FB380E50024C2F9 /* ValleyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA0A39F1FB380E50024C2F9 /* ValleyWindow.m */; };
 		3BA0A3A31FB38BEB0024C2F9 /* ValleyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA0A3A21FB38BEB0024C2F9 /* ValleyButton.m */; };
 		3BC6433F1FB0C3F000E57E65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6433E1FB0C3F000E57E65 /* AppDelegate.m */; };
-		3BC643411FB0C3F000E57E65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BC643401FB0C3F000E57E65 /* Assets.xcassets */; };
 		3BC643441FB0C3F000E57E65 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC643421FB0C3F000E57E65 /* MainMenu.xib */; };
 		3BC643471FB0C3F000E57E65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC643461FB0C3F000E57E65 /* main.m */; };
 		3BC643531FB0C51B00E57E65 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC643511FB0C51B00E57E65 /* Character.m */; };
@@ -19,6 +18,9 @@
 		3BC643611FB0CA4D00E57E65 /* NumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6435C1FB0CA4C00E57E65 /* NumberView.m */; };
 		3BC643621FB0CA4D00E57E65 /* NameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6435D1FB0CA4C00E57E65 /* NameView.m */; };
 		3BC643631FB0CA4D00E57E65 /* ScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6435F1FB0CA4D00E57E65 /* ScreenView.m */; };
+		3BE3E6EA1FB5175800C5C94A /* story.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BE3E6E91FB5175800C5C94A /* story.txt */; };
+		3BE3E6ED1FB5188800C5C94A /* ValleyStoryWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE3E6EC1FB5188800C5C94A /* ValleyStoryWindow.m */; };
+		3BE3E6F51FB5A07900C5C94A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BE3E6F41FB5A07900C5C94A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +32,6 @@
 		3BC6433A1FB0C3F000E57E65 /* The Valley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Valley.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC6433D1FB0C3F000E57E65 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3BC6433E1FB0C3F000E57E65 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3BC643401FB0C3F000E57E65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BC643431FB0C3F000E57E65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		3BC643451FB0C3F000E57E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BC643461FB0C3F000E57E65 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -45,6 +46,10 @@
 		3BC6435D1FB0CA4C00E57E65 /* NameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameView.m; sourceTree = "<group>"; };
 		3BC6435E1FB0CA4D00E57E65 /* NumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberView.h; sourceTree = "<group>"; };
 		3BC6435F1FB0CA4D00E57E65 /* ScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenView.m; sourceTree = "<group>"; };
+		3BE3E6E91FB5175800C5C94A /* story.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = story.txt; sourceTree = "<group>"; };
+		3BE3E6EB1FB5188800C5C94A /* ValleyStoryWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValleyStoryWindow.h; sourceTree = "<group>"; };
+		3BE3E6EC1FB5188800C5C94A /* ValleyStoryWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValleyStoryWindow.m; sourceTree = "<group>"; };
+		3BE3E6F41FB5A07900C5C94A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +89,8 @@
 				3BA0A39F1FB380E50024C2F9 /* ValleyWindow.m */,
 				3BA0A3A11FB38BEB0024C2F9 /* ValleyButton.h */,
 				3BA0A3A21FB38BEB0024C2F9 /* ValleyButton.m */,
+				3BE3E6EB1FB5188800C5C94A /* ValleyStoryWindow.h */,
+				3BE3E6EC1FB5188800C5C94A /* ValleyStoryWindow.m */,
 				3BC643591FB0CA4C00E57E65 /* MessageView.h */,
 				3BC6435A1FB0CA4C00E57E65 /* MessageView.m */,
 				3BC643581FB0CA4C00E57E65 /* NameView.h */,
@@ -94,8 +101,9 @@
 				3BC6435F1FB0CA4D00E57E65 /* ScreenView.m */,
 				3BC643501FB0C51B00E57E65 /* Character.h */,
 				3BC643511FB0C51B00E57E65 /* Character.m */,
-				3BC643401FB0C3F000E57E65 /* Assets.xcassets */,
 				3B62236C1FB49D8900AAFF10 /* click.aiff */,
+				3BE3E6E91FB5175800C5C94A /* story.txt */,
+				3BE3E6F41FB5A07900C5C94A /* Assets.xcassets */,
 				3BC643421FB0C3F000E57E65 /* MainMenu.xib */,
 				3BC643451FB0C3F000E57E65 /* Info.plist */,
 				3BC643461FB0C3F000E57E65 /* main.m */,
@@ -166,8 +174,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BE3E6EA1FB5175800C5C94A /* story.txt in Resources */,
 				3B62236D1FB49D8900AAFF10 /* click.aiff in Resources */,
-				3BC643411FB0C3F000E57E65 /* Assets.xcassets in Resources */,
+				3BE3E6F51FB5A07900C5C94A /* Assets.xcassets in Resources */,
 				3BC643441FB0C3F000E57E65 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,6 +196,7 @@
 				3BC643631FB0CA4D00E57E65 /* ScreenView.m in Sources */,
 				3BC643531FB0C51B00E57E65 /* Character.m in Sources */,
 				3BA0A3A01FB380E50024C2F9 /* ValleyWindow.m in Sources */,
+				3BE3E6ED1FB5188800C5C94A /* ValleyStoryWindow.m in Sources */,
 				3BC643621FB0CA4D00E57E65 /* NameView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
