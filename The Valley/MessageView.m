@@ -7,6 +7,8 @@
 
 
 #import "MessageView.h"
+#import "Constants.h"
+
 
 @implementation MessageView
 
@@ -38,7 +40,7 @@
 
     characterSet = [NSImage imageNamed:@"petchars_c"];
     alphaBlend = [NSImage imageNamed:@"alpha"];
-    space = 0;
+    space = kGraphicSpace;
 }
 
 
@@ -149,24 +151,6 @@
     [self setNeedsDisplay:YES];
 }
 
-
-
-- (void)keyDown:(NSEvent *)theEvent
-{
-    NSString *theArrow = [theEvent charactersIgnoringModifiers];
-
-    // Reject dead keys
-
-    if ([theArrow length] == 0) return;
-
-    if ([theArrow length] == 1)
-    {
-        if ([theArrow characterAtIndex:0] == NSDownArrowFunctionKey)
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"AFCFileCopyBegin" object:self userInfo:nil];
-        }
-    }
-}
 
 
 @end
