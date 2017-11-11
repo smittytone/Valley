@@ -1221,7 +1221,7 @@ Gw
                                     <constraints>
                                         <constraint firstAttribute="height" constant="14" id="oYZ-3O-nIT"/>
                                     </constraints>
-                                    <buttonCell key="cell" type="check" title="Use new graphics" bezelStyle="regularSquare" imagePosition="left" inset="2" id="KCF-Vt-n3u">
+                                    <buttonCell key="cell" type="check" title="Use new graphics" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="KCF-Vt-n3u">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
@@ -1288,7 +1288,7 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="HRn-Yf-ugw">
                             <rect key="frame" x="0.0" y="0.0" width="564" height="705"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView ambiguous="YES" editable="NO" selectable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" allowsCharacterPickerTouchBarItem="NO" quoteSubstitution="YES" dashSubstitution="YES" textCompletion="NO" smartInsertDelete="YES" id="4da-rh-wcU">
                                     <rect key="frame" x="0.0" y="0.0" width="564" height="705"/>
