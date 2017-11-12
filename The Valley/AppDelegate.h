@@ -102,6 +102,7 @@
     // About Sheet
 
     IBOutlet NSWindow *aboutSheet;
+    IBOutlet NSTextField *aboutLabel;
 
     // Preferences Sheet
 
