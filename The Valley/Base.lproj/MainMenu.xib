@@ -15,6 +15,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="aboutLabel" destination="zS5-OU-swR" id="pn5-iH-jsc"/>
                 <outlet property="aboutSheet" destination="LB0-3C-aU3" id="sej-Cd-q5Q"/>
                 <outlet property="bBarbarian" destination="fbU-5V-9zf" id="oiY-Mh-50S"/>
                 <outlet property="bCleric" destination="TFm-a0-HaH" id="3Fh-Ka-G7W"/>
@@ -1300,7 +1301,7 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="HRn-Yf-ugw">
                             <rect key="frame" x="0.0" y="0.0" width="564" height="705"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView ambiguous="YES" editable="NO" selectable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" allowsCharacterPickerTouchBarItem="NO" quoteSubstitution="YES" dashSubstitution="YES" textCompletion="NO" smartInsertDelete="YES" id="4da-rh-wcU">
                                     <rect key="frame" x="0.0" y="0.0" width="564" height="705"/>
