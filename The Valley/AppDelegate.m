@@ -509,6 +509,8 @@
         [self updateStats];
         [self scenarioValley];
     }
+
+    [self setKeysAndClicks:YES];
 }
 
 
@@ -3194,9 +3196,11 @@
 
 
 
+#pragma mark About Sheet Methods
+
 - (IBAction)showAboutSheet:(id)sender
 {
-    // Centre aboutBox within main app window (assumes fixed sizes)
+    aboutLabel.stringValue = [NSString stringWithFormat:@"macOS version coded by Tony Smith 2009-2017 (v%@)", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
 
     [_window beginSheet:aboutSheet completionHandler:nil];
 }
