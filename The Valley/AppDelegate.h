@@ -46,7 +46,7 @@
     NSInteger monsterCombatStrength, monsterCombatPsi, monsterStamina, spellCast, timeFactor;
 
     BOOL isInCombat, monsterWasHitHard, playerHasInitiative, isMonstersTurn, isPlayersTurn, playerCastSpell;
-    BOOL needToSave, isGameInProgress, stairsFlag, loadFlag;
+    BOOL needToSave, isGameInProgress, stairsFlag, loadFlag, isStoryShowing, isFullScreen;
 
     Character *player;
 

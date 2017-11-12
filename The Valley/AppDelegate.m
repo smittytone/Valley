@@ -62,11 +62,14 @@
 
     savedfilePath = nil;
     needToSave = NO;
+    isFullScreen = NO;
+    isStoryShowing = YES;
 
     // Give the main window the option to go full-screen
 
     _window.delegate = self;
 
+    [storySheet setCollectionBehavior:NSWindowCollectionBehaviorFullScreenAuxiliary];
     [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
     [_window center];
     [_window makeKeyAndOrderFront:self];
@@ -116,21 +119,42 @@
 
 - (void)windowWillEnterFullScreen:(NSNotification *)notification
 {
+    isFullScreen = YES;
+
+    // In full screen mode, add a green line around the black gameplay area
+    // because the app background will also be black
+
     theBackground.wantsLayer = YES;
     theBackground.layer.borderColor = [NSColor greenColor].CGColor;
     theBackground.layer.borderWidth = 2.0;
 
-    [_window setStyleMask:NSWindowStyleMaskBorderless];
+    [_window setStyleMask:NSWindowStyleMaskBorderless | NSWindowStyleMaskFullScreen | NSWindowStyleMaskFullSizeContentView];
 }
 
 
 
 - (void)windowWillExitFullScreen:(NSNotification *)notification
 {
-    theBackground.layer.borderColor = [NSColor clearColor].CGColor;
+    isFullScreen = NO;
 
+    // Remove the green line
+
+    theBackground.layer.borderColor = [NSColor clearColor].CGColor;
+    theBackground.wantsLayer = NO;
+    
     [_window setStyleMask:(NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskClosable)];
-    [_window setTitle:@"The Valley 2"];
+    [_window setTitle:@"The Valley"];
+}
+
+
+
+- (void)windowDidExitFullScreen:(NSNotification *)notification
+{
+    if (isStoryShowing)
+    {
+        [_window endSheet:storySheet];
+        [self showStory:nil];
+    }
 }
 
 
@@ -3549,13 +3573,26 @@
                                                 encoding:NSUTF8StringEncoding
                                                    error:&error];
 
+    // Present the story window
+
     if (error == nil)
     {
         storyTextView.string = story;
-        [[NSColor clearColor] set];
-        NSRectFill(storyView.frame);
-        [storySheet center];
-        [storySheet makeKeyAndOrderFront:self];
+        isStoryShowing = YES;
+
+        if (isFullScreen)
+        {
+            // If we're full screen, present the story window as a sheet
+
+            [_window beginSheet:storySheet completionHandler:nil];
+        }
+        else
+        {
+            // Present the story window as a separate window
+
+            [storySheet center];
+            [storySheet makeKeyAndOrderFront:self];
+        }
     }
 }
 
@@ -3563,8 +3600,23 @@
 
 - (IBAction)closeStory:(id)sender
 {
-    [storySheet orderOut:self];
-    [storySheet close];
+    isStoryShowing = NO;
+
+    if (isFullScreen)
+    {
+        // End the sheet
+
+        [_window endSheet:storySheet];
+    }
+    else
+    {
+        // Close the window
+
+        [storySheet orderOut:self];
+        [storySheet close];
+    }
+
+    [_window makeKeyAndOrderFront:self];
 }
 
 
