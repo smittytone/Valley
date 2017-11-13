@@ -16,6 +16,8 @@
 
 - (void)awakeFromNib
 {
+    // Enable clicks on UI buttons from the get-go
+
     enableClicks = YES;
 
     [super awakeFromNib];
@@ -25,8 +27,12 @@
 
 - (void)mouseDown:(NSEvent *)event
 {
-    if (!enableClicks && (event.type == NSEventTypeLeftMouseDown || event.type == NSEventTypeLeftMouseUp))
+    // Trap mouse clicks if 'enableClicks' is false
+
+    if (!enableClicks)
     {
+        // Create a dummy event to pass up the chain
+        
         NSEvent *newEvent = [NSEvent mouseEventWithType:event.type
                                                location:NSMakePoint(0, 0)
                                           modifierFlags:event.modifierFlags
