@@ -30,7 +30,7 @@
 
     NSString *monsterKind, *scenarioMonsterTypes, *savedfilePath;
 
-    NSTimer *fightTimer;
+    NSTimer *fightTimer, *heartbeatTimer;
 
     NSString *newProf;
     NSInteger newProfession, newStamina, newComStrength, newPsiStrength;

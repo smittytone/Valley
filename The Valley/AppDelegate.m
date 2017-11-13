@@ -17,9 +17,10 @@
 
 @implementation AppDelegate
 
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Set up Key and Value arrays as template for Defaults
+    // Set up Key and Value arrays as template for the default preferences
 
     NSArray *keyArray = [NSArray arrayWithObjects:@"le_Valley_Ascii_Graphics",
                          @"le_Valley_Save_in_Castles",
@@ -31,7 +32,7 @@
                            [NSNumber numberWithBool:NO],
                             nil];
 
-    // Drop the arrays into the Defauts
+    // Drop the arrays into the UserDefauts
 
     NSUserDefaults *sd = [NSUserDefaults standardUserDefaults];
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObjects:valueArray forKeys:keyArray];
@@ -41,6 +42,14 @@
 
     [self initGameVariables];
 
+    heartbeatTimer = nil;
+    savedfilePath = nil;
+    needToSave = NO;
+    isFullScreen = NO;
+    isStoryShowing = NO;
+
+    // Initialise the UI
+
     monsterNameView.inverse = YES;
     monsterNameView.hidden = YES;
     monsterStrengthView.inverse = YES;
@@ -49,7 +58,7 @@
 
     theMessage.space = kGraphicSpace;
 
-    // Do the initial splash Screen
+    // Show the splash Screen
 
     [self clearScreen];
 
@@ -60,17 +69,16 @@
 
     [self setSounds:[sd boolForKey:@"le_Valley_Do_Sounds"]];
 
-    savedfilePath = nil;
-    needToSave = NO;
-    isFullScreen = NO;
-    isStoryShowing = YES;
-
     // Give the main window the option to go full-screen
-
-    _window.delegate = self;
 
     [storySheet setCollectionBehavior:NSWindowCollectionBehaviorFullScreenAuxiliary];
     [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
+
+    // Set AppDelegate as the main window's delegate too
+    _window.delegate = self;
+
+    // Center the main window and show it
+
     [_window center];
     [_window makeKeyAndOrderFront:self];
 }
@@ -90,20 +98,24 @@
 
     if (!needToSave)
     {
+        // No changes in the game state so close the window
+
         return YES;
     }
     else
     {
-        // Warn the user to save the character
+        // Ask the player if they want to save their character
 
         NSAlert *alert = [[NSAlert alloc] init];
         [alert setMessageText:@"You have a game in progress"];
         [alert setInformativeText:@"Are you sure you want to quit?"];
-        [alert addButtonWithTitle:@"Yes"];
         [alert addButtonWithTitle:@"No"];
+        [alert addButtonWithTitle:@"Yes"];
 
         [alert beginSheetModalForWindow:_window completionHandler:^(NSModalResponse returnCode) {
-            if (returnCode == 1000) [_window close];
+            // If the user clicks 'Yes', close the window - this will cause app to quit
+            // thanks to applicationShouldTerminateAfterLastWindowClosed:
+            if (returnCode == 1001) [_window close];
         }];
 
         // Tell the system we'll shutdown shortly
@@ -116,8 +128,16 @@
 
 #pragma mark - Full Screen Methods
 
-
 - (void)windowWillEnterFullScreen:(NSNotification *)notification
+{
+    // Prep the window for full screen
+
+    [_window setStyleMask:NSWindowStyleMaskBorderless | NSWindowStyleMaskFullScreen | NSWindowStyleMaskFullSizeContentView];
+}
+
+
+
+- (void)windowDidEnterFullScreen:(NSNotification *)notification
 {
     isFullScreen = YES;
 
@@ -127,21 +147,19 @@
     theBackground.wantsLayer = YES;
     theBackground.layer.borderColor = [NSColor greenColor].CGColor;
     theBackground.layer.borderWidth = 2.0;
-
-    [_window setStyleMask:NSWindowStyleMaskBorderless | NSWindowStyleMaskFullScreen | NSWindowStyleMaskFullSizeContentView];
 }
 
 
 
 - (void)windowWillExitFullScreen:(NSNotification *)notification
 {
-    isFullScreen = NO;
-
     // Remove the green line
 
     theBackground.layer.borderColor = [NSColor clearColor].CGColor;
     theBackground.wantsLayer = NO;
-    
+
+    // Reset the window
+
     [_window setStyleMask:(NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskClosable)];
     [_window setTitle:@"The Valley"];
 }
@@ -150,6 +168,11 @@
 
 - (void)windowDidExitFullScreen:(NSNotification *)notification
 {
+    isFullScreen = NO;
+
+    // If the story window is showing as a sheet,
+    // close it then re-open it as a winow
+
     if (isStoryShowing)
     {
         [_window endSheet:storySheet];
@@ -204,7 +227,7 @@
 
 - (void)midLineDelay:(NSTimeInterval)delay
 {
-    // Pause the game between multi-line messages
+    // Pause the game between the lines of multi-line messages, eg. magic spells
 
     [NSThread sleepForTimeInterval:delay];
 }
@@ -212,7 +235,6 @@
 
 
 #pragma mark - Game Setup
-
 
 - (void)initGameVariables
 {
@@ -226,7 +248,17 @@
     spellCast = 0;
     targetTime = 0;
 
-    // Initialise Monster Arrays
+    isGameInProgress = NO;
+    isInCombat = NO;
+    playerCastSpell = NO;
+    isMonstersTurn = NO;
+    isPlayersTurn = NO;
+    monsterWasHitHard = NO;
+    playerHasInitiative = NO;
+
+    menuItemSave.enabled = NO;
+
+    // Initialise Monster Arrays: Names...
 
     monsterName[0] = @"Wolfen";
     monsterName[1] = @"Hobgoblin";
@@ -248,6 +280,8 @@
     monsterName[17] = @"Water Imp";
     monsterName[18] = @"Kraken";
 
+    // ...which scenarios the monster can appear in...
+
     monsterCode[0] = @"A";
     monsterCode[1] = @"A";
     monsterCode[2] = @"A";
@@ -268,6 +302,7 @@
     monsterCode[17] = @"L";
     monsterCode[18] = @"L";
 
+    // ...its magical ability...
     monsterPsi[0] = 0;
     monsterPsi[1] = 0;
     monsterPsi[2] = 0;
@@ -287,6 +322,8 @@
     monsterPsi[16] = 50;
     monsterPsi[17] = 15;
     monsterPsi[18] = 0;
+
+    // ...its physical strength
 
     monsterStrength[0] = 9;
     monsterStrength[1] = 9;
@@ -373,23 +410,15 @@
     charLevels[26] = @"Demon Killer";
     charLevels[27] = @"Lord of the Valley";
     charLevels[28] = @"Master of Destiny";
-
-    isGameInProgress = NO;
-    isInCombat = NO;
-    playerCastSpell = NO;
-    isMonstersTurn = NO;
-    isPlayersTurn = NO;
-    monsterWasHitHard = NO;
 }
 
 
 
 #pragma mark - Graphics Methods
 
-
 - (void)clearScreen
 {
-    // Clear the screen by filling the buffer array with spaces
+    // Clear the main display screen by filling the buffer array with spaces
 
     for (NSUInteger i = 0 ; i < 561 ; ++i) screen[i] = kGraphicSpace;
     [self drawScreen];
@@ -410,7 +439,7 @@
 
 - (void)print:(NSString *)inputString at:(NSInteger)location
 {
-    // Prints the input string at the set location
+    // Prints the input string at the set location (a value between 0 and 561
 
     for (NSUInteger i = 0 ; i < [inputString length] ; ++i)
     {
@@ -425,17 +454,18 @@
 
 #pragma mark - Character Methods
 
-
 - (void)updateStats
 {
-    // Enforce player stats maxima
+    // Update the displayed player stats
+
+    // Enforce maxima and minima
 
     if (player.stamina > (125 - (player.comGain * 12.5))) player.stamina = 125 - (player.comGain * 12.5);
     if (player.comStrength > 77 - 2 * pow(player.comGain, 2)) player.comStrength = 77 - 2 * pow(player.comGain, 2);
     if (player.psiStrength < 7 ) player.psiStrength = 7;
     if (player.psiStrength > (42 * pow((player.psiGain + 1), log(pow(player.psiGain, 3.7)))) + 75) player.psiStrength = (42 * pow((player.psiGain + 1), log(pow(player.psiGain, 3.7)))) + 75;
 
-    // Update Stats
+    // Update the stats readouts
 
     experienceView.inputValue = player.experience;
     treasureView.inputValue = player.treasure;
@@ -446,7 +476,7 @@
 
     if (isInCombat)
     {
-        // There's a fight going on, so display the Monster details...
+        // There's a fight going on, so display the Monster details
 
         monsterStrengthView.inputValue = monsterCombatStrength == 0 ? monsterCombatPsi : monsterCombatStrength;
     }
@@ -466,21 +496,34 @@
 
 - (void)death
 {
+    // The player was killed, but may get a second chance if they have a complete Amulet
+
+    // Clear 'targetTime' just in case...
+
+    targetTime = 0;
+
+    if (isInCombat)
+    {
+        // If we got here through a fight, reset the combat keys
+
+        [self setKeysAndClicks:YES];
+        isInCombat = NO;
+    }
+
+    // Check for reincarnation
+
     if (player.amuletStones < 6)
     {
         // Player doesn't have the Amulet of Alarian, so has no protection from death
 
-        [theMessage clearBuffer];
         [self clearScreen];
+        [theMessage clearBuffer];
 
         theScreen.splashImage = [NSImage imageNamed:@"skull"];
 
-        heartbeatCount = 0;
         player.stamina = 0;
         player.psiStrength = 0;
         player.comStrength = 0;
-        isInCombat = NO;
-        isGameInProgress = NO;
 
         [self updateStats];
     }
@@ -491,26 +534,26 @@
         theMessage.inputString = @"Alarian's Amulet protects thy soul...";
         theMessage.inputString = @"Live again!";
 
-        heartbeatCount = 0;
+        // Reset the player - all but their experience
 
         player.treasure = 0;
-        player.comStrength = 30;
         player.stamina = 150;
+        player.comStrength = 30;
         player.psiStrength = 30;
         player.amulet = 0;
         player.amuletStones = 0;
+        isGameInProgress = YES;
 
         // Put the reincarnated player in a Safe Castle
 
-        player.cPos = valleyPath[0];
-        nextPos = player.cPos;
+        valleyPos = valleyPath[0];
+        currentPos = valleyPos;
+        nextPos = currentPos;
         currentScenario = kScenarioValley;
 
-        [self updateStats];
         [self scenarioValley];
+        [self postFind];
     }
-
-    [self setKeysAndClicks:YES];
 }
 
 
@@ -519,7 +562,7 @@
 {
     // Calculate the player's rating
 
-    float floatcalc = (0.067 * sqrt(player.experience + (player.treasure / 3))) + log(player.experience/(pow((player.turns + 1), 1.5)));
+    float floatcalc = 0.067 * sqrt(player.experience + player.treasure / 3) + log(player.experience/(pow((player.turns + 1), 1.5)));
     player.rating = (NSInteger)floatcalc;
 
     if (player.rating > 28) player.rating = 28;
@@ -591,6 +634,8 @@
 
     player.stamina = player.stamina - 10;
     needToSave = YES;
+
+    [self updateStats];
 }
 
 
@@ -645,7 +690,7 @@
         if (playerCastSpell)
         {
             // The call to playerSpell: checks whether a spell has been cast
-            // Number keys are valid in this case
+            // Number keys are valid in this case so forward the one pressed
 
             [self playerSpell:buttonValue];
         }
@@ -667,9 +712,8 @@
         return;
     }
 
-    // Are we going up or down stairs?
-
-    // Disable key presses while we process
+    // Disable further key presses while we process the press
+    // NOTE make sure they are re-enabled when the method exits
 
     [self setKeysAndClicks:NO];
 
@@ -831,6 +875,7 @@
     if (nextPosContents == kGraphicWood || nextPosContents == kGraphicSwamp || nextPosContents == kGraphicTower)
     {
         // About to enter a new scenario from the Valley - we deal with preserving scenario locations there
+        // Also we enable keys and update stats at the end of it, so don't do it here
 
         [self scenarioControl];
         return;
@@ -860,10 +905,34 @@
 
     if (nextPosContents == kGraphicLake || (buttonValue == 5 && savedContents == kGraphicLake))
     {
-        // Is the player staying put in the lake, or entering it?
+        // Is the player treading water in the lake, or entering it?
 
         pokeCharacter = kGraphicCharInLake;
         player.stamina = player.stamina - 20;
+
+        if (player.stamina < 1)
+        {
+            // The player is dead
+
+            theMessage.inputString = @"You sink to a watery grave";
+            isGameInProgress = NO;
+            needToSave = NO;
+            player.stamina = 0;
+
+            // Wait 3 seconds then process death
+
+            fightTimer = [NSTimer timerWithTimeInterval:3
+                                                 target:self
+                                               selector:@selector(death)
+                                               userInfo:nil
+                                                repeats:NO];
+
+            [[NSRunLoop currentRunLoop] addTimer:fightTimer
+                                         forMode:NSDefaultRunLoopMode];
+
+            return;
+        }
+
         [self updateStats];
     }
 
@@ -931,7 +1000,7 @@
 
     savedContents = nextPosContents;
 
-    // Put the player's graphic into the square he's entering
+    // Put the player's graphic into the square they're entering
 
     screen[currentPos] = pokeCharacter;
 
@@ -940,6 +1009,8 @@
 
     if (nextPosContents == kGraphicStairLeft || nextPosContents == kGraphicStairRight)
     {
+        // Don't look for finds or monsters on the stairs
+
         [self setKeysAndClicks:YES];
         return;
     }
@@ -951,14 +1022,16 @@
     if (roll < 30)
     {
         // Rolled a wandering monster
+        // NOTE announceMonster: will re-enable the movement keys
 
         [self announceMonster];
         return;
     }
 
-    if (roll > 75)
+    if (roll > 75 && nextPosContents != kGraphicLake)
     {
         // Rolled a treasure discovery
+        // NOTE find: will re-enable the movement keys
 
         [self find];
         return;
@@ -966,7 +1039,7 @@
 
     // No monster or treasure found, so give player movement instructions for the next turn
 
-    theMessage.inputString = @"Nothing of value...search on";
+    theMessage.inputString = nextPosContents == kGraphicLake ? @"Swim on...Which direction?" : @"Nothing of value...Search on";
     [self setKeysAndClicks:YES];
 }
 
@@ -978,7 +1051,7 @@
 {
     [theMessage clearBuffer];
 
-    NSInteger roll = arc4random_uniform(6) + 1;
+    NSUInteger roll = arc4random_uniform(6) + 1;
 
     switch (roll)
     {
@@ -986,7 +1059,7 @@
             theMessage.inputString = @"A Circle of Evil... Depart in haste!";
             player.stamina = player.stamina - 20;
             player.psiStrength = player.psiStrength - ((floor + 1) / 2);
-            player.comStrength = player.comStrength + ((floor + 1) / 2);
+            player.comStrength = player.comStrength - ((floor + 1) / 2);
             needToSave = YES;
             break;
 
@@ -1059,7 +1132,6 @@
 
         [[NSRunLoop currentRunLoop] addTimer:fightTimer
                                      forMode:NSDefaultRunLoopMode];
-
         return;
     }
 
@@ -1078,7 +1150,6 @@
 
         [[NSRunLoop currentRunLoop] addTimer:fightTimer
                                      forMode:NSDefaultRunLoopMode];
-
         return;
     }
 
@@ -1513,11 +1584,10 @@
     {
         // The player is dead
 
+        theMessage.inputString = [self random] > 50 ? @"Your corpse falls to the floor" : @"You are dead";
         isGameInProgress = NO;
         isMonstersTurn = NO;
-        isInCombat = NO;
         needToSave = NO;
-
         player.stamina = 0;
 
         // Wait 3 seconds then process death
@@ -1675,14 +1745,13 @@
     {
         // Player is dead
 
+        theMessage.inputString = [self random] > 50 ? @"Your corpse drops to the floor" : @"You are dead";
         isGameInProgress = NO;
         isMonstersTurn = NO;
-        isInCombat = NO;
         needToSave = NO;
-
         player.stamina = 0;
 
-        // Wait 3 seconds then report deat
+        // Wait 3 seconds then report death
 
         fightTimer = [NSTimer timerWithTimeInterval:3
                                              target:self
@@ -1891,14 +1960,11 @@
     {
         // The player died making a final attack
 
+        theMessage.inputString = @"You fatally exhaust yourself";
         isGameInProgress = NO;
-        isInCombat = NO;
         isMonstersTurn = NO;
         needToSave = NO;
-
         player.stamina = 0;
-
-        theMessage.inputString = @"You fatally exhaust yourself.";
 
         fightTimer = [NSTimer timerWithTimeInterval:3
                                              target:self
@@ -2154,7 +2220,6 @@
             theMessage.inputString = @"The spell saps your strength!";
 
             isGameInProgress = NO;
-            isInCombat = NO;
             isMonstersTurn = NO;
             needToSave = NO;
 
@@ -2769,6 +2834,10 @@
         screen[i * 40 + 39] = kGraphicWoodBorder;
     }
 
+    BOOL flag = NO;
+    for (NSUInteger i = 0 ; i < 26 ; ++i) { if (pokeLocations[i] + a == currentPos) flag = YES; }
+    if (flag) currentPos = 519 - tempPos;
+
     nextPos = currentPos;
     savedContents = screen[currentPos];
     screen[currentPos] = kGraphicCharacter;
@@ -2886,13 +2955,13 @@
 
                 // Place door in second vertical wall
 
-                if (i == 3) pokeCode = kGraphicSpaceAlt;
+                if (i == 3) pokeCode = kGraphicSpace;
                 screen[(tempPos + roomWidth[1] + roomWidth[2])] = pokeCode;
                 pokeCode = kGraphicTowerBorder;
 
                 // Place door in third vertical wall
 
-                if (i == 4) pokeCode = kGraphicSpaceAlt;
+                if (i == 4) pokeCode = kGraphicSpace;
                 screen[(tempPos + roomWidth[1] + roomWidth[2] + roomWidth[3])] = pokeCode;
             }
         }
@@ -2920,7 +2989,7 @@
                 {
                     // Put in a door in the wall, and a space above and below it
 
-                    screen[tempPos + k] = kGraphicSpaceAlt;
+                    screen[tempPos + k] = kGraphicSpace;
                     screen[tempPos + k - 40] = kGraphicSpace;
                     screen[tempPos + k + 40] = kGraphicSpace;
                 }
@@ -3106,11 +3175,14 @@
 
     heartbeatCount = 0;
 
-    [NSTimer scheduledTimerWithTimeInterval:1.0
-                                     target:self
-                                   selector:@selector(heartbeat)
-                                   userInfo:nil
-                                    repeats:YES];
+    if (heartbeatTimer == nil)
+    {
+        heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                          target:self
+                                                        selector:@selector(heartbeat)
+                                                        userInfo:nil
+                                                         repeats:YES];
+    }
 
     isGameInProgress = YES;
     needToSave = YES;
@@ -3283,8 +3355,8 @@
         }
 
         saveChar = nil;
-
         needToSave = NO;
+        menuItemSave.enabled = NO;
     }
     else
     {
@@ -3416,6 +3488,7 @@
 }
 
 
+
 - (void)openFileHandler:(NSString *)path
 {
     Character *loadChar = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
@@ -3448,11 +3521,14 @@
 
         heartbeatCount = 0;
 
-        [NSTimer scheduledTimerWithTimeInterval:1.0
-                                         target:self
-                                       selector:@selector(heartbeat)
-                                       userInfo:nil
-                                        repeats:YES];
+        if (heartbeatTimer == nil)
+        {
+            heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                              target:self
+                                                            selector:@selector(heartbeat)
+                                                            userInfo:nil
+                                                             repeats:YES];
+        }
 
         isGameInProgress = YES;
         loadFlag = YES;
@@ -3643,8 +3719,6 @@
 
     if (isInCombat)
     {
-        _window.enableKeys = state;
-
         cButtonB.enableClicks = state;
         cButtonH.enableClicks = state;
         cButtonL.enableClicks = state;
