@@ -15,18 +15,24 @@
 
 - (void)awakeFromNib
 {
+    // Enable buttons' key clicks from the start
+
     enableKeys = YES;
 
     [super awakeFromNib];
 }
 
 
+
 - (void)sendEvent:(NSEvent *)event
 {
-    // Intercept key presses during combat, if 'enableKeys' is false
+    // Intercept key presses during combat
 
     if (event.type == NSEventTypeKeyUp || event.type == NSEventTypeKeyDown)
     {
+        // If 'enableKeys' is false, trap the key-press for certain keys
+        // and replace it with an action-less press
+
         if (!enableKeys)
         {
             NSString *c = event.characters;
@@ -58,9 +64,9 @@
             }
         }
 
-        // Block all key repeat events
+        // If the key press is good to go, just make sure it's not a repeat event
 
-        if ((event.type == NSEventTypeKeyUp || event.type == NSEventTypeKeyDown) && event.isARepeat) return;
+        if (event.isARepeat) return;
     }
 
     [super sendEvent:event];
