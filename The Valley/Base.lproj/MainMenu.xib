@@ -17,11 +17,12 @@
             <connections>
                 <outlet property="aboutLabel" destination="zS5-OU-swR" id="pn5-iH-jsc"/>
                 <outlet property="aboutSheet" destination="LB0-3C-aU3" id="sej-Cd-q5Q"/>
-                <outlet property="bBarbarian" destination="fbU-5V-9zf" id="oiY-Mh-50S"/>
-                <outlet property="bCleric" destination="TFm-a0-HaH" id="3Fh-Ka-G7W"/>
-                <outlet property="bThinker" destination="ptd-TO-wnt" id="g1n-N1-q8i"/>
-                <outlet property="bWarrior" destination="gLI-M7-PYp" id="g1K-fa-UGA"/>
-                <outlet property="bWizard" destination="0Gf-tc-tKf" id="heY-Fn-AyL"/>
+                <outlet property="bBarbarian" destination="98K-WS-4r1" id="ssH-fa-WeG"/>
+                <outlet property="bCleric" destination="9jw-mU-1QD" id="Q0X-Lc-Ci9"/>
+                <outlet property="bThief" destination="Dp0-Ax-KSu" id="nqm-FD-I3f"/>
+                <outlet property="bThinker" destination="zAm-hs-Gel" id="vRf-UO-rkt"/>
+                <outlet property="bWarrior" destination="reS-y0-K8R" id="3ej-FO-Jd1"/>
+                <outlet property="bWizard" destination="QgD-Ad-GUQ" id="F1K-cg-6G1"/>
                 <outlet property="button1" destination="ptz-sd-f0c" id="Rw6-rq-nlb"/>
                 <outlet property="button2" destination="yw4-Vv-7yH" id="bQU-2h-vQa"/>
                 <outlet property="button3" destination="J8c-Hg-OPZ" id="KpS-uF-fsL"/>
@@ -878,203 +879,196 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="qnZ-LR-KbU">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="283" y="305" width="306" height="316"/>
+            <rect key="contentRect" x="283" y="305" width="436" height="436"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <value key="minSize" type="size" width="306" height="316"/>
-            <value key="maxSize" type="size" width="306" height="316"/>
-            <view key="contentView" id="ewN-Zi-AvS">
-                <rect key="frame" x="0.0" y="0.0" width="306" height="316"/>
+            <value key="minSize" type="size" width="436" height="436"/>
+            <value key="maxSize" type="size" width="436" height="436"/>
+            <view key="contentView" wantsLayer="YES" id="ewN-Zi-AvS">
+                <rect key="frame" x="0.0" y="0.0" width="436" height="436"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BPN-3D-Znv">
-                        <rect key="frame" x="0.0" y="0.0" width="306" height="316"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="new_back" id="G8Q-9c-Dng"/>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BPN-3D-Znv">
+                        <rect key="frame" x="0.0" y="0.0" width="436" height="436"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="char_back" id="G8Q-9c-Dng"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TDb-on-u4R">
-                        <rect key="frame" x="18" y="224" width="270" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="17" id="j07-Gd-jUb"/>
-                        </constraints>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="...and select a Character Class..." id="njR-7D-SxN">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Gf-tc-tKf">
-                        <rect key="frame" x="14" y="182" width="100" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="5ow-9n-2aR"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="M0m-YG-5sW"/>
-                        </constraints>
-                        <buttonCell key="cell" type="push" title="Wizard" bezelStyle="rounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qL7-LQ-3Q5">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="setProfession:" target="Voe-Tx-rLC" id="z2P-bL-Q87"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ptd-TO-wnt">
-                        <rect key="frame" x="14" y="150" width="100" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="YCS-zh-K79"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="ild-C9-XoB"/>
-                        </constraints>
-                        <buttonCell key="cell" type="push" title="Thinker" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TZG-80-OrS">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="setProfession:" target="Voe-Tx-rLC" id="JLn-t7-zbo"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fbU-5V-9zf">
-                        <rect key="frame" x="14" y="118" width="100" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="jaR-SE-gfH"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="vsk-cE-vcQ"/>
-                        </constraints>
-                        <buttonCell key="cell" type="push" title="Barbarian" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pQL-xD-ibh">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="setProfession:" target="Voe-Tx-rLC" id="95v-3J-f9W"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gLI-M7-PYp">
-                        <rect key="frame" x="14" y="86" width="100" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="CPh-TK-doh"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="Gqw-Ww-kaR"/>
-                        </constraints>
-                        <buttonCell key="cell" type="push" title="Warrior" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VHU-Im-jLw">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="setProfession:" target="Voe-Tx-rLC" id="HJg-fl-f95"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TFm-a0-HaH">
-                        <rect key="frame" x="14" y="54" width="100" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="6x7-5H-wYB"/>
-                            <constraint firstAttribute="height" constant="21" id="F5E-pD-gH2"/>
-                        </constraints>
-                        <buttonCell key="cell" type="push" title="Cleric" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VB8-8w-zeQ">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="setProfession:" target="Voe-Tx-rLC" id="qMo-Pl-cRR"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BaT-nV-0J6">
-                        <rect key="frame" x="196" y="13" width="96" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="KIG-aU-60T"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="84" id="WGu-rB-PGN"/>
-                        </constraints>
-                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u19-Ca-sOK">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="saveCharSheet:" target="Voe-Tx-rLC" id="eMQ-bZ-Wyo"/>
-                        </connections>
-                    </button>
                     <textField focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6F-8A-ZqF">
-                        <rect key="frame" x="20" y="249" width="266" height="22"/>
+                        <rect key="frame" x="20" y="353" width="396" height="26"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="22" id="NDq-gL-uyN"/>
+                            <constraint firstAttribute="height" constant="26" id="HLO-Q6-UgH"/>
                         </constraints>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" drawsBackground="YES" usesSingleLineMode="YES" id="Hzv-iQ-8TI">
-                            <font key="font" metaFont="systemBold"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="center" placeholderString="Enter your name here" drawsBackground="YES" usesSingleLineMode="YES" id="Hzv-iQ-8TI">
+                            <font key="font" size="20" name="Apple-Chancery"/>
                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ny7-Kr-FRn">
-                        <rect key="frame" x="18" y="279" width="270" height="17"/>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3PD-F0-4hP">
+                        <rect key="frame" x="100" y="78" width="236" height="236"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="17" id="PPu-UA-F9U"/>
+                            <constraint firstAttribute="width" constant="236" id="0i0-7D-FFc"/>
+                            <constraint firstAttribute="height" constant="236" id="aNT-1F-fwK"/>
                         </constraints>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Enter your character's name..." id="2sF-3h-FyO">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ax3-aO-USa">
-                        <rect key="frame" x="114" y="13" width="82" height="32"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="figure_base" id="dlZ-si-xgR"/>
+                    </imageView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QgD-Ad-GUQ">
+                        <rect key="frame" x="20" y="242" width="72" height="72"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="It5-hb-tZU"/>
-                            <constraint firstAttribute="height" constant="21" id="V44-ko-VRh"/>
+                            <constraint firstAttribute="width" constant="72" id="1a2-4P-1aR"/>
+                            <constraint firstAttribute="height" constant="72" id="Yl1-PQ-W8W"/>
                         </constraints>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="z2K-e0-Dzx">
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_wizard" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="OFb-zY-ksA">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
                         </buttonCell>
                         <connections>
-                            <action selector="cancelCharSheet:" target="Voe-Tx-rLC" id="6cu-ha-szt"/>
+                            <action selector="setProfession:" target="Voe-Tx-rLC" id="Oxz-HX-eoK"/>
                         </connections>
                     </button>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3PD-F0-4hP">
-                        <rect key="frame" x="131" y="61" width="155" height="148"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="98K-WS-4r1">
+                        <rect key="frame" x="20" y="160" width="72" height="72"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="155" id="bHA-hB-2kc"/>
-                            <constraint firstAttribute="height" constant="148" id="ehp-li-0Ud"/>
+                            <constraint firstAttribute="height" constant="72" id="LB5-Us-eXd"/>
+                            <constraint firstAttribute="width" constant="72" id="MGg-jS-Ye7"/>
                         </constraints>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="figure_base" id="dlZ-si-xgR"/>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_barbarian" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="VXC-tL-q3r">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setProfession:" target="Voe-Tx-rLC" id="4Di-Ox-tXQ"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zAm-hs-Gel">
+                        <rect key="frame" x="20" y="78" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="Q2A-Ce-UTS"/>
+                            <constraint firstAttribute="height" constant="72" id="zDS-ZS-9y4"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_thinker" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="fWm-kP-KAp">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setProfession:" target="Voe-Tx-rLC" id="gOn-DK-wxs"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="reS-y0-K8R">
+                        <rect key="frame" x="344" y="242" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="cHa-s1-Vbu"/>
+                            <constraint firstAttribute="height" constant="72" id="wzD-wv-Gvk"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_warrior" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="dnr-Bc-Me1">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setProfession:" target="Voe-Tx-rLC" id="hQe-39-d67"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9jw-mU-1QD">
+                        <rect key="frame" x="344" y="160" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="72" id="1GI-ym-SfW"/>
+                            <constraint firstAttribute="width" constant="72" id="IRz-mL-iBx"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_cleric" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="zgH-2W-uHH">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setProfession:" target="Voe-Tx-rLC" id="liU-LM-l7s"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dp0-Ax-KSu">
+                        <rect key="frame" x="344" y="78" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="DWI-Fv-GB3"/>
+                            <constraint firstAttribute="height" constant="72" id="EpZ-2o-v9U"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_thief" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="J9w-5u-R4k">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setProfession:" target="Voe-Tx-rLC" id="QYR-sF-8v8"/>
+                        </connections>
+                    </button>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L8o-b1-Blr">
+                        <rect key="frame" x="20" y="387" width="396" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="29" id="vMe-dK-Cd9"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="char_text_line_1" id="bzk-zR-qmR"/>
+                    </imageView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BhB-WX-5G2">
+                        <rect key="frame" x="218" y="20" width="126" height="47"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="126" id="7dd-bT-SJF"/>
+                            <constraint firstAttribute="height" constant="47" id="I49-T4-YEY"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_play" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="qFe-xm-PeO">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="saveCharSheet:" target="Voe-Tx-rLC" id="ZiC-12-dJy"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c83-GJ-lGl">
+                        <rect key="frame" x="93" y="20" width="126" height="47"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="126" id="8lU-rT-UeM"/>
+                            <constraint firstAttribute="height" constant="47" id="TlY-Oa-e7p"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_cancel" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="W7o-fA-AdW">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelCharSheet:" target="Voe-Tx-rLC" id="ETI-67-waO"/>
+                        </connections>
+                    </button>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cis-Jf-tgO">
+                        <rect key="frame" x="20" y="322" width="396" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="29" id="2ol-95-Syi"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="char_text_line_2" id="0pG-0P-LEn"/>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="TDb-on-u4R" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="0jc-bb-jbX"/>
-                    <constraint firstItem="TFm-a0-HaH" firstAttribute="top" secondItem="gLI-M7-PYp" secondAttribute="bottom" constant="11" id="1a8-1l-e8D"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TFm-a0-HaH" secondAttribute="trailing" constant="20" symbolic="YES" id="4WC-uI-Pg3"/>
-                    <constraint firstItem="ptd-TO-wnt" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="CmB-Mp-Jir"/>
-                    <constraint firstAttribute="bottom" secondItem="ax3-aO-USa" secondAttribute="bottom" constant="20" id="DSF-tF-3YV"/>
-                    <constraint firstItem="3PD-F0-4hP" firstAttribute="top" secondItem="TDb-on-u4R" secondAttribute="bottom" constant="15" id="DrL-ig-U23"/>
-                    <constraint firstItem="BPN-3D-Znv" firstAttribute="top" secondItem="ewN-Zi-AvS" secondAttribute="top" id="Et6-Hi-9l7"/>
-                    <constraint firstItem="fbU-5V-9zf" firstAttribute="top" secondItem="ptd-TO-wnt" secondAttribute="bottom" constant="11" id="FgP-U3-6Fs"/>
-                    <constraint firstAttribute="trailing" secondItem="g6F-8A-ZqF" secondAttribute="trailing" constant="20" id="Lw4-lc-ym1"/>
-                    <constraint firstAttribute="trailing" secondItem="TDb-on-u4R" secondAttribute="trailing" constant="20" id="Mpm-U1-UYL"/>
-                    <constraint firstAttribute="trailing" secondItem="ny7-Kr-FRn" secondAttribute="trailing" constant="20" id="NMI-b9-6lf"/>
-                    <constraint firstItem="BaT-nV-0J6" firstAttribute="leading" secondItem="ax3-aO-USa" secondAttribute="trailing" constant="12" id="Oq9-Iq-n7j"/>
-                    <constraint firstItem="ny7-Kr-FRn" firstAttribute="top" secondItem="ewN-Zi-AvS" secondAttribute="top" constant="20" id="SCW-Fn-lod"/>
-                    <constraint firstItem="gLI-M7-PYp" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="U13-oJ-GEM"/>
-                    <constraint firstItem="gLI-M7-PYp" firstAttribute="top" secondItem="fbU-5V-9zf" secondAttribute="bottom" constant="11" id="WC0-dg-DpN"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Gf-tc-tKf" secondAttribute="trailing" constant="20" symbolic="YES" id="XEy-zn-p7C"/>
-                    <constraint firstItem="TFm-a0-HaH" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="XJb-cM-9Zc"/>
-                    <constraint firstItem="g6F-8A-ZqF" firstAttribute="top" secondItem="ny7-Kr-FRn" secondAttribute="bottom" constant="8" id="cKq-LD-Aro"/>
-                    <constraint firstAttribute="trailing" secondItem="BPN-3D-Znv" secondAttribute="trailing" id="d8j-yn-uMI"/>
-                    <constraint firstItem="0Gf-tc-tKf" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="fIb-hD-Wau"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ptd-TO-wnt" secondAttribute="trailing" constant="20" symbolic="YES" id="fSd-gA-dh4"/>
-                    <constraint firstItem="g6F-8A-ZqF" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="fTe-yd-3IM"/>
-                    <constraint firstItem="ptd-TO-wnt" firstAttribute="top" secondItem="0Gf-tc-tKf" secondAttribute="bottom" constant="11" id="hwG-K6-EHx"/>
-                    <constraint firstItem="0Gf-tc-tKf" firstAttribute="top" secondItem="TDb-on-u4R" secondAttribute="bottom" constant="14" id="j6E-28-KF5"/>
-                    <constraint firstItem="fbU-5V-9zf" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="k8k-CO-qHz"/>
-                    <constraint firstItem="ax3-aO-USa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" symbolic="YES" id="lNy-hi-nLt"/>
-                    <constraint firstAttribute="bottom" secondItem="BaT-nV-0J6" secondAttribute="bottom" constant="20" id="oMN-by-613"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fbU-5V-9zf" secondAttribute="trailing" constant="20" symbolic="YES" id="omx-dm-kcg"/>
-                    <constraint firstItem="TDb-on-u4R" firstAttribute="top" secondItem="g6F-8A-ZqF" secondAttribute="bottom" constant="8" id="pcb-j5-F7l"/>
-                    <constraint firstAttribute="trailing" secondItem="BaT-nV-0J6" secondAttribute="trailing" constant="20" id="sSW-JA-eND"/>
-                    <constraint firstAttribute="bottom" secondItem="BPN-3D-Znv" secondAttribute="bottom" id="tiY-yh-C1F"/>
-                    <constraint firstItem="BPN-3D-Znv" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" id="tzA-33-X9p"/>
-                    <constraint firstItem="ny7-Kr-FRn" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="vPP-rK-N3I"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gLI-M7-PYp" secondAttribute="trailing" constant="20" symbolic="YES" id="xF3-0Z-SS3"/>
-                    <constraint firstAttribute="trailing" secondItem="3PD-F0-4hP" secondAttribute="trailing" constant="20" id="ySO-Dy-PkM"/>
+                    <constraint firstItem="Dp0-Ax-KSu" firstAttribute="top" secondItem="9jw-mU-1QD" secondAttribute="bottom" constant="10" id="3jm-EQ-vSA"/>
+                    <constraint firstAttribute="trailing" secondItem="BhB-WX-5G2" secondAttribute="trailing" constant="92" id="3kV-ae-zGl"/>
+                    <constraint firstAttribute="trailing" secondItem="reS-y0-K8R" secondAttribute="trailing" constant="20" id="3l4-7C-0G6"/>
+                    <constraint firstItem="3PD-F0-4hP" firstAttribute="centerX" secondItem="ewN-Zi-AvS" secondAttribute="centerX" id="74X-b6-bd4"/>
+                    <constraint firstItem="9jw-mU-1QD" firstAttribute="top" secondItem="reS-y0-K8R" secondAttribute="bottom" constant="10" id="7T4-4u-JYt"/>
+                    <constraint firstItem="QgD-Ad-GUQ" firstAttribute="top" secondItem="cis-Jf-tgO" secondAttribute="bottom" constant="8" id="ArO-12-5bB"/>
+                    <constraint firstItem="cis-Jf-tgO" firstAttribute="top" secondItem="g6F-8A-ZqF" secondAttribute="bottom" constant="2" id="EIA-xQ-uWW"/>
+                    <constraint firstItem="c83-GJ-lGl" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="93" id="EbE-hM-g4K"/>
+                    <constraint firstItem="zAm-hs-Gel" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="Eeh-WQ-t7s"/>
+                    <constraint firstAttribute="trailing" secondItem="g6F-8A-ZqF" secondAttribute="trailing" constant="20" id="Exj-Ld-a1E"/>
+                    <constraint firstItem="cis-Jf-tgO" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="GRZ-mA-ojs"/>
+                    <constraint firstItem="g6F-8A-ZqF" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="IVJ-1J-Dsd"/>
+                    <constraint firstAttribute="trailing" secondItem="9jw-mU-1QD" secondAttribute="trailing" constant="20" id="JTp-ix-qQq"/>
+                    <constraint firstItem="zAm-hs-Gel" firstAttribute="top" secondItem="98K-WS-4r1" secondAttribute="bottom" constant="10" id="KPR-cK-xCX"/>
+                    <constraint firstItem="98K-WS-4r1" firstAttribute="top" secondItem="QgD-Ad-GUQ" secondAttribute="bottom" constant="10" id="Qwl-pU-6Ds"/>
+                    <constraint firstAttribute="trailing" secondItem="cis-Jf-tgO" secondAttribute="trailing" constant="20" id="SPX-P4-MEI"/>
+                    <constraint firstAttribute="trailing" secondItem="L8o-b1-Blr" secondAttribute="trailing" constant="20" id="Trn-Oe-OBO"/>
+                    <constraint firstAttribute="bottom" secondItem="c83-GJ-lGl" secondAttribute="bottom" constant="20" id="UHb-Kc-4No"/>
+                    <constraint firstItem="98K-WS-4r1" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="Y6J-wM-U3X"/>
+                    <constraint firstItem="L8o-b1-Blr" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="YhL-Py-KZI"/>
+                    <constraint firstItem="QgD-Ad-GUQ" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="cIj-4G-xNL"/>
+                    <constraint firstAttribute="bottom" secondItem="BhB-WX-5G2" secondAttribute="bottom" constant="20" id="hkf-bm-WBL"/>
+                    <constraint firstAttribute="trailing" secondItem="Dp0-Ax-KSu" secondAttribute="trailing" constant="20" id="mbp-QN-eak"/>
+                    <constraint firstItem="reS-y0-K8R" firstAttribute="top" secondItem="cis-Jf-tgO" secondAttribute="bottom" constant="8" id="p8C-16-asL"/>
+                    <constraint firstItem="L8o-b1-Blr" firstAttribute="top" secondItem="ewN-Zi-AvS" secondAttribute="top" constant="20" id="qkO-hC-TtM"/>
+                    <constraint firstItem="3PD-F0-4hP" firstAttribute="top" secondItem="cis-Jf-tgO" secondAttribute="bottom" constant="8" id="sUI-S8-kg0"/>
+                    <constraint firstItem="g6F-8A-ZqF" firstAttribute="top" secondItem="L8o-b1-Blr" secondAttribute="bottom" constant="8" id="zUy-vJ-hsv"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="-437" y="48"/>
+            <point key="canvasLocation" x="-274" y="146"/>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="LB0-3C-aU3">
             <windowStyleMask key="styleMask" titled="YES"/>
@@ -1377,8 +1371,19 @@ DQ
         <image name="about_back" width="640" height="320"/>
         <image name="back_combat" width="220" height="110"/>
         <image name="background" width="680" height="442"/>
+        <image name="button_barbarian" width="72" height="72"/>
+        <image name="button_cancel" width="126" height="47"/>
+        <image name="button_cleric" width="72" height="72"/>
+        <image name="button_play" width="126" height="47"/>
         <image name="button_seal" width="72" height="72"/>
-        <image name="figure_base" width="155" height="148"/>
+        <image name="button_thief" width="72" height="72"/>
+        <image name="button_thinker" width="72" height="72"/>
+        <image name="button_warrior" width="72" height="72"/>
+        <image name="button_wizard" width="72" height="72"/>
+        <image name="char_back" width="436" height="436"/>
+        <image name="char_text_line_1" width="396" height="30"/>
+        <image name="char_text_line_2" width="396" height="30"/>
+        <image name="figure_base" width="236" height="236"/>
         <image name="key_1" width="72" height="72"/>
         <image name="key_2" width="72" height="72"/>
         <image name="key_3" width="72" height="72"/>
@@ -1397,7 +1402,6 @@ DQ
         <image name="key_s" width="72" height="72"/>
         <image name="keyboard_backing" width="680" height="295"/>
         <image name="mstr" width="103" height="32"/>
-        <image name="new_back" width="306" height="316"/>
         <image name="scroll" width="640" height="822"/>
         <image name="scroll_mask_bot" width="640" height="114"/>
         <image name="scroll_mask_top" width="640" height="159"/>
