@@ -12,7 +12,7 @@
 
 @implementation MessageView
 
-@synthesize inputString, space;
+@synthesize inputString, space, doDelay;
 
 
 
@@ -132,7 +132,25 @@
         bufferRowThree[lineInset + i] = [inputString characterAtIndex:i];
     }
     
+    if (doDelay) [NSThread sleepForTimeInterval:0.7];
+
     [self setNeedsDisplay:YES];
+}
+
+
+
+- (void)checkForSameLines
+{
+    same = YES;
+
+    for (NSUInteger i = 0 ; i < 40 ; ++i)
+    {
+        if (bufferRowOne[i] != bufferRowTwo[i] || bufferRowTwo[i] != bufferRowThree[i])
+        {
+            same = NO;
+            break;
+        }
+    }
 }
 
 

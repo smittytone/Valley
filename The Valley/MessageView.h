@@ -17,6 +17,7 @@
     NSInteger bufferRowThree[40];
     NSImage *characterSet;
     NSImage *alphaBlend;
+    BOOL same;
 }
 
 
@@ -26,6 +27,7 @@
 
 @property (nonatomic, strong, setter=update:) NSString *inputString;
 @property (readwrite) NSInteger space;
+@property (readwrite) BOOL doDelay;
 
 
 @end
