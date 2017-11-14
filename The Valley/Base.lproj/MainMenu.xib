@@ -37,6 +37,7 @@
                 <outlet property="cButtonL" destination="cPD-sr-E7l" id="zRh-ul-7tD"/>
                 <outlet property="cButtonS" destination="LAL-ew-NJg" id="QwS-Ug-Jv3"/>
                 <outlet property="experienceView" destination="xLF-0o-XJl" id="pQ0-c3-eR3"/>
+                <outlet property="fullScreenCheckbox" destination="AeV-WO-2ed" id="g7R-M5-of5"/>
                 <outlet property="mainWindow" destination="QvC-M9-y7g" id="gXI-gL-kiS"/>
                 <outlet property="menuItemSave" destination="pxx-59-PXV" id="G6k-Bm-aoj"/>
                 <outlet property="monsterGraphic" destination="eH6-yn-W6Y" id="8Wg-j9-qwp"/>
@@ -1162,14 +1163,16 @@ DQ
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="AkV-NT-lAw">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="283" y="305" width="480" height="181"/>
+            <rect key="contentRect" x="283" y="305" width="480" height="217"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <value key="minSize" type="size" width="480" height="217"/>
+            <value key="maxSize" type="size" width="480" height="217"/>
             <view key="contentView" id="WnT-aI-PUP">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="181"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="217"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDm-co-opd">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="181"/>
+                        <rect key="frame" x="0.0" y="-9" width="480" height="226"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" image="keyboard_backing" id="qgc-if-dcz"/>
                     </imageView>
@@ -1208,56 +1211,47 @@ Gw
                         </connections>
                     </button>
                     <box autoresizesSubviews="NO" borderType="line" title="Valley Preferences" translatesAutoresizingMaskIntoConstraints="NO" id="IRn-xL-RqL">
-                        <rect key="frame" x="17" y="57" width="446" height="104"/>
+                        <rect key="frame" x="17" y="61" width="446" height="136"/>
                         <view key="contentView" id="6vx-b8-Z40">
-                            <rect key="frame" x="1" y="1" width="444" height="88"/>
+                            <rect key="frame" x="1" y="1" width="444" height="120"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xCY-vL-Sgi">
-                                    <rect key="frame" x="18" y="55" width="408" height="18"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="14" id="JGj-Cw-BKZ"/>
-                                    </constraints>
+                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xCY-vL-Sgi">
+                                    <rect key="frame" x="18" y="84" width="408" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Only allow games to be saved in a Safe Castle" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="63j-ec-hFz">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                 </button>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yI7-ti-Yxb">
-                                    <rect key="frame" x="18" y="35" width="408" height="18"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="14" id="oYZ-3O-nIT"/>
-                                    </constraints>
+                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yI7-ti-Yxb">
+                                    <rect key="frame" x="18" y="64" width="408" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Use new graphics" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="KCF-Vt-n3u">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                 </button>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a1R-y3-VLC">
-                                    <rect key="frame" x="18" y="15" width="408" height="18"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="14" id="KDr-8E-Btu"/>
-                                    </constraints>
+                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a1R-y3-VLC">
+                                    <rect key="frame" x="18" y="44" width="408" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Play sounds" bezelStyle="regularSquare" imagePosition="left" inset="2" id="WQT-gw-MvX">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                 </button>
+                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AeV-WO-2ed">
+                                    <rect key="frame" x="18" y="24" width="408" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Begin game in full screen" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="UUz-Yy-ZPK">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                </button>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="xCY-vL-Sgi" firstAttribute="leading" secondItem="6vx-b8-Z40" secondAttribute="leading" constant="20" id="6ep-ZI-5hI"/>
-                                <constraint firstItem="a1R-y3-VLC" firstAttribute="top" secondItem="yI7-ti-Yxb" secondAttribute="bottom" constant="6" id="AKB-fW-Tfd"/>
-                                <constraint firstItem="xCY-vL-Sgi" firstAttribute="top" secondItem="6vx-b8-Z40" secondAttribute="top" constant="17" id="Aia-Oz-Nq1"/>
-                                <constraint firstItem="yI7-ti-Yxb" firstAttribute="top" secondItem="xCY-vL-Sgi" secondAttribute="bottom" constant="6" id="BGP-hv-IoD"/>
-                                <constraint firstAttribute="trailing" secondItem="a1R-y3-VLC" secondAttribute="trailing" constant="20" id="C4r-W5-81Q"/>
-                                <constraint firstItem="a1R-y3-VLC" firstAttribute="leading" secondItem="6vx-b8-Z40" secondAttribute="leading" constant="20" id="GQY-Bt-yd2"/>
-                                <constraint firstAttribute="trailing" secondItem="yI7-ti-Yxb" secondAttribute="trailing" constant="20" id="NW4-oQ-Xoi"/>
-                                <constraint firstAttribute="trailing" secondItem="xCY-vL-Sgi" secondAttribute="trailing" constant="20" id="THO-SL-OVg"/>
-                                <constraint firstItem="yI7-ti-Yxb" firstAttribute="leading" secondItem="6vx-b8-Z40" secondAttribute="leading" constant="20" id="ee4-su-pD7"/>
-                            </constraints>
                         </view>
                         <constraints>
-                            <constraint firstAttribute="height" constant="100" id="oSE-hg-A7y"/>
+                            <constraint firstAttribute="height" constant="132" id="oSE-hg-A7y"/>
                         </constraints>
                     </box>
                 </subviews>
@@ -1272,7 +1266,7 @@ Gw
                     <constraint firstAttribute="trailing" secondItem="IRn-xL-RqL" secondAttribute="trailing" constant="20" id="yzz-kO-xm6"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="135" y="818.5"/>
+            <point key="canvasLocation" x="135" y="836.5"/>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="documentWindow" frameAutosaveName="" tabbingMode="disallowed" id="95w-2X-eLE" customClass="ValleyStoryWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
