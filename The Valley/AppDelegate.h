@@ -32,7 +32,6 @@
 
     NSTimer *fightTimer, *heartbeatTimer;
 
-    NSString *newProf;
     NSInteger newProfession, newStamina, newComStrength, newPsiStrength;
     float newCombatGain, newPsiGain;
 
@@ -98,6 +97,7 @@
     IBOutlet NSButton *bBarbarian;
     IBOutlet NSButton *bWarrior;
     IBOutlet NSButton *bCleric;
+    IBOutlet NSButton *bThief;
 
     // About Sheet
 
@@ -226,7 +226,7 @@
 
 - (float)random;
 - (void)setKeysAndClicks:(BOOL)state;
-
+- (void)setSounds:(BOOL)state;
 
 
 @end
