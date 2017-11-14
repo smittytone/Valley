@@ -2752,6 +2752,7 @@
 
     currentPos = valleyPos;
     nextPos = valleyPos;
+    loadFlag = NO;
 
     savedContents = screen[currentPos];
     screen[currentPos] = kGraphicCharacter;
@@ -2834,9 +2835,25 @@
         screen[i * 40 + 39] = kGraphicWoodBorder;
     }
 
-    BOOL flag = NO;
-    for (NSUInteger i = 0 ; i < 26 ; ++i) { if (pokeLocations[i] + a == currentPos) flag = YES; }
-    if (flag) currentPos = 519 - tempPos;
+    if (loadFlag && screen[currentPos] != kGraphicSpace)
+    {
+        // Player's loaded position is not a space - scenario items have moved between loads
+
+        BOOL flag = NO;
+        NSInteger a = currentPos;
+
+        do
+        {
+            --a;
+
+            if (screen[a] == kGraphicSpace || screen[a] == kGraphicTuft) flag = YES;
+            if (a < 40) a = 519;
+        }
+        while (!flag);
+
+        currentPos = a;
+        loadFlag = NO;
+    }
 
     nextPos = currentPos;
     savedContents = screen[currentPos];
@@ -3022,6 +3039,28 @@
     if (currentScenario == kScenarioTower || currentScenario == kScenarioTemple)
     {
         roomDepth[floor + 1] = roomDepth[floor] + floorPattern;
+    }
+
+    // Check the player's loaded position
+
+    if (loadFlag && screen[currentPos] != kGraphicSpace)
+    {
+        // Player's loaded position is not a space - scenario items have moved between loads
+
+        BOOL flag = NO;
+        NSInteger a = currentPos;
+
+        do
+        {
+            ++a;
+
+            if (screen[a] == kGraphicSpace) flag = YES;
+            if (a > 499) a = 42;
+        }
+        while (!flag);
+
+        currentPos = a;
+        loadFlag = NO;
     }
 
     nextPos = currentPos;
