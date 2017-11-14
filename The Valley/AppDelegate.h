@@ -110,6 +110,7 @@
     IBOutlet NSButton *prefsAsciiCheckbox;
     IBOutlet NSButton *prefsSaveCheckbox;
     IBOutlet NSButton *prefsSoundCheckbox;
+    IBOutlet NSButton *fullScreenCheckbox;
 
     // Story Window
 
