@@ -36,9 +36,9 @@
 
     // Drop the arrays into the UserDefauts
 
-    NSUserDefaults *sd = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObjects:valueArray forKeys:keyArray];
-    [sd registerDefaults:appDefaults];
+    [defaults registerDefaults:appDefaults];
 
     // Initialise game variables
 
@@ -67,7 +67,8 @@
 
     // Set up sound
 
-    [self setSounds:[sd boolForKey:@"le_Valley_Do_Sounds"]];
+    NSNumber *n = [defaults objectForKey:@"le_Valley_Do_Sounds"];
+    [self setSounds:n.boolValue];
 
     // Give the main window the option to go full-screen
 
@@ -75,13 +76,16 @@
     [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
 
     // Set AppDelegate as the main window's delegate too
+
     _window.delegate = self;
 
     // Center the main window and show it
 
     [_window center];
 
-    if ([sd boolForKey:@"le_Valley_Do_Fullscreen_Start"] == YES) [_window toggleFullScreen:self];
+    n = [defaults objectForKey:@"le_Valley_Do_Fullscreen_Start"];
+
+    if (n.boolValue) [_window toggleFullScreen:self];
 
     [_window makeKeyAndOrderFront:self];
 }
@@ -831,18 +835,11 @@
         screen[currentPos] = pokeCharacter;
         [self drawScreen];
 
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        NSNumber *n = [[NSUserDefaults standardUserDefaults] objectForKey:@"le_Valley_Save_in_Castles"];
 
-        if ([defaults boolForKey:@"le_Valley_Save_in_Castles"] == YES)
-        {
-            // Only allowed to save the game if we're in a castle
+        // Only allowed to save the game if we're in a castle
 
-            theMessage.inputString = @"Wilt thou save your game? Here you may.";
-        }
-        else
-        {
-            theMessage.inputString = @"Thy wounds healed... thy sword sharp";
-        }
+        theMessage.inputString = n.boolValue ? @"Wilt thou save your game? Here you may." : @"Thy wounds healed... thy sword sharp";
 
         player.stamina = 150;
         if (player.comStrength < 20) player.comStrength = 20;
@@ -3362,7 +3359,9 @@
 {
     if (!needToSave || !isGameInProgress || isInCombat) return;
 
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"le_Valley_Save_in_Castles"] == YES)
+    NSNumber *n = [[NSUserDefaults standardUserDefaults] objectForKey:@"le_Valley_Save_in_Castles"];
+
+    if (n.boolValue)
     {
         if (currentScenario != kScenarioValley || nextPosContents != kGraphicSafeCastle)
         {
@@ -3440,7 +3439,9 @@
 {
     if (!isInCombat)
     {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"le_Valley_Save_in_Castles"] == YES)
+        NSNumber *n = [[NSUserDefaults standardUserDefaults] objectForKey:@"le_Valley_Save_in_Castles"];
+
+        if (n.boolValue)
         {
             // Can't save mid-game - you have to return to the safe castle
 
@@ -3672,10 +3673,17 @@
 
     // Set window elements according to the Defaults values
 
-    prefsAsciiCheckbox.state = [defaults boolForKey:@"le_Valley_Ascii_Graphics"] == YES ? NSOnState : NSOffState;
-    prefsSaveCheckbox.state = [defaults boolForKey:@"le_Valley_Save_in_Castles"] == YES ? NSOnState : NSOffState;
-    prefsSoundCheckbox.state = [defaults boolForKey:@"le_Valley_Do_Sounds"] == YES ? NSOnState : NSOffState;
-    fullScreenCheckbox.state = [defaults boolForKey:@"le_Valley_Do_Fullscreen_Start"] == YES ? NSOnState : NSOffState;
+    NSNumber *n = [defaults objectForKey:@"le_Valley_Ascii_Graphic"];
+    prefsAsciiCheckbox.state = n.boolValue ? NSOnState : NSOffState;
+
+    n = [defaults objectForKey:@"le_Valley_Save_in_Castles"];
+    prefsSaveCheckbox.state = n.boolValue ? NSOnState : NSOffState;
+
+    n = [defaults objectForKey:@"le_Valley_Do_Sounds"];
+    prefsSoundCheckbox.state = n.boolValue ? NSOnState : NSOffState;
+
+    n = [defaults objectForKey:@"le_Valley_Do_Fullscreen_Start"];
+    fullScreenCheckbox.state = n.boolValue ? NSOnState : NSOffState;
 
     // Roll out the Preferences sheet
 
@@ -3707,10 +3715,18 @@
 
     // Apply the new preferences to Defaults based on window element settings
 
-    [defaults setBool:([prefsAsciiCheckbox state] == NSOnState) forKey:@"le_Valley_Ascii_Graphics"];
-    [defaults setBool:([prefsSaveCheckbox state] == NSOnState) forKey:@"le_Valley_Save_in_Castles"];
-    [defaults setBool:([prefsSoundCheckbox state] == NSOnState) forKey:@"le_Valley_Do_Sounds"];
-    [defaults setBool:([prefsSoundCheckbox state] == NSOnState) forKey:@"le_Valley_Do_Fullscreen_Start"];
+    NSNumber *n = [NSNumber numberWithBool:([prefsAsciiCheckbox state] == NSOnState)];
+    [defaults setObject:n forKey:@"le_Valley_Ascii_Graphics"];
+
+    n = [NSNumber numberWithBool:([prefsSaveCheckbox state] == NSOnState)];
+    [defaults setObject:n forKey:@"le_Valley_Save_in_Castles"];
+
+    n = [NSNumber numberWithBool:([prefsSoundCheckbox state] == NSOnState)];
+    [defaults setObject:n forKey:@"le_Valley_Do_Sounds"];
+
+    n = [NSNumber numberWithBool:([fullScreenCheckbox state] == NSOnState)];
+    [defaults setObject:n forKey:@"le_Valley_Do_Fullscreen_Start"];
+
     [defaults synchronize];
 
     // Make sure we enable/disable sounds as required by the user
