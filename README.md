@@ -24,6 +24,11 @@ The death routine is modified slightly with new (but appropriate) 8-bit graphics
 
 For a true Pet experience, enable sound in the Preferences...
 
+## Downloads ##
+
+You can download a compiled, packaged version of the game [here](https://smittytone.github.io/valley/index.html).
+
+
 ## Ownership ##
 
 My code is architecturally quite different from the original, and operates in a very different way: it doesn’t run under a Basic interpreter in a single-task system, for starters. However, it uses the game design of the original and most of the original algorithms, so this is not all my own work. The original was written primarily by Peter Freebrey and Peter Green, with additional work by Henry Budgett, so the code in this repo is arguably as much theirs as mine. *Computing Today* was published by Argus Specialist Publications; as Argus employees, Freebrey, Green and Budgett wouldn’t have owned their work, their employer would. The magazine’s Publisher, Ron Harris, was also credited as a joint author; he managed the development project.
