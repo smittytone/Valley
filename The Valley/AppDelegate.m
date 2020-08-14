@@ -1,7 +1,7 @@
 
 
-// macOS software © Tony Smith 2012-17, based on work
-// by by Henry Budget, Peter Freebrey, Peter Green and Ron Harris.
+// macOS software © Tony Smith 2012-20, based on work
+// by Henry Budget, Peter Freebrey, Peter Green and Ron Harris.
 // Originally published by Computing Today
 // magazine in its April 1982 issue.
 
@@ -83,6 +83,10 @@
 
     [_window center];
 
+    backingView.wantsLayer = YES;
+    backingView.layer.backgroundColor = [NSColor blackColor].CGColor;
+    backingView.wantsLayer = NO;
+
     n = [defaults objectForKey:@"le_Valley_Do_Fullscreen_Start"];
 
     if (n.boolValue) [_window toggleFullScreen:self];
@@ -122,7 +126,7 @@
         [alert beginSheetModalForWindow:_window completionHandler:^(NSModalResponse returnCode) {
             // If the user clicks 'Yes', close the window - this will cause app to quit
             // thanks to applicationShouldTerminateAfterLastWindowClosed:
-            if (returnCode == 1001) [_window close];
+            if (returnCode == 1001) [self.window close];
         }];
 
         // Tell the system we'll shutdown shortly
@@ -137,9 +141,10 @@
 
 - (void)windowWillEnterFullScreen:(NSNotification *)notification
 {
+    // FROM 1.0.8 -- turn this off
     // Prep the window for full screen
-
-    [_window setStyleMask:NSWindowStyleMaskBorderless | NSWindowStyleMaskFullScreen | NSWindowStyleMaskFullSizeContentView];
+    
+    //[_window setStyleMask:NSWindowStyleMaskBorderless | NSWindowStyleMaskFullScreen | NSWindowStyleMaskFullSizeContentView];
 }
 
 
@@ -149,11 +154,12 @@
     isFullScreen = YES;
 
     // In full screen mode, add a green line around the black gameplay area
-    // because the app background will also be black
+    // because the app backgrou nd will also be black
 
-    theBackground.wantsLayer = YES;
-    theBackground.layer.borderColor = [NSColor greenColor].CGColor;
-    theBackground.layer.borderWidth = 2.0;
+    backingView.wantsLayer = YES;
+    backingView.layer.borderColor = [NSColor greenColor].CGColor;
+    backingView.layer.borderWidth = 1.0;
+    backingView.wantsLayer = NO;
 }
 
 
@@ -162,13 +168,15 @@
 {
     // Remove the green line
 
-    theBackground.layer.borderColor = [NSColor clearColor].CGColor;
-    theBackground.wantsLayer = NO;
+    backingView.wantsLayer = YES;
+    backingView.layer.borderWidth = 0.0;
+    backingView.wantsLayer = NO;
 
+    // FROM 1.0.8 -- turn this off
     // Reset the window
 
-    [_window setStyleMask:(NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskClosable)];
-    [_window setTitle:@"The Valley"];
+    //[_window setStyleMask:(NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskClosable)];
+    //[_window setTitle:@"The Valley"];
 }
 
 
@@ -3337,7 +3345,7 @@
 
 - (IBAction)showAboutSheet:(id)sender
 {
-    aboutLabel.stringValue = [NSString stringWithFormat:@"macOS version coded by Tony Smith 2009-2017 (v%@)", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    aboutLabel.stringValue = [NSString stringWithFormat:@"macOS version coded by Tony Smith 2009-2020 (v%@)", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
 
     [_window beginSheet:aboutSheet completionHandler:nil];
 }
@@ -3470,7 +3478,7 @@
                  // Close sheet first and stop it hogging the event queue
 
                  NSURL *fileURL = [saveDialog URL];
-                 savedfilePath = fileURL.path;
+                 self->savedfilePath = fileURL.path;
                  [self doSave];
              }
 
