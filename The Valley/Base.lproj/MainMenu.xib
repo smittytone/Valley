@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -410,7 +410,7 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="680" height="740"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="680" height="740"/>
             <value key="maxSize" type="size" width="680" height="740"/>
             <value key="minFullScreenContentSize" type="size" width="680" height="740"/>
@@ -841,21 +841,6 @@
                             <action selector="castSpell:" target="Voe-Tx-rLC" id="udj-iM-Lro"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="54L-0Y-nSw" customClass="ValleyButton">
-                        <rect key="frame" x="586" y="20" width="72" height="72"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="72" id="3Zo-Jk-cCg"/>
-                            <constraint firstAttribute="width" constant="72" id="bec-I0-NK6"/>
-                        </constraints>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_e" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="vl7-JE-Lwo">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent">e</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="ego:" target="Voe-Tx-rLC" id="loM-YF-E8g"/>
-                        </connections>
-                    </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KhN-tC-9Uj">
                         <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
                         <constraints>
@@ -869,6 +854,21 @@
                         </buttonCell>
                         <connections>
                             <action selector="newChar:" target="Voe-Tx-rLC" id="8T6-sQ-0aI"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="54L-0Y-nSw" customClass="ValleyButton">
+                        <rect key="frame" x="586" y="20" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="72" id="3Zo-Jk-cCg"/>
+                            <constraint firstAttribute="width" constant="72" id="bec-I0-NK6"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_e" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="vl7-JE-Lwo">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent">e</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="ego:" target="Voe-Tx-rLC" id="loM-YF-E8g"/>
                         </connections>
                     </button>
                 </subviews>
@@ -909,7 +909,7 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="436" height="436"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="436" height="436"/>
             <value key="maxSize" type="size" width="436" height="436"/>
             <view key="contentView" wantsLayer="YES" id="ewN-Zi-AvS">
@@ -1109,7 +1109,7 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="640" height="320"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="640" height="320"/>
             <value key="maxSize" type="size" width="640" height="320"/>
             <view key="contentView" id="PkO-xz-L2r">
@@ -1148,7 +1148,7 @@ Fraser  Charlton</string>
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EwX-hz-H93">
-                        <rect key="frame" x="540" y="13" width="86" height="32"/>
+                        <rect key="frame" x="539" y="13" width="88" height="33"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="74" id="27b-CE-lWE"/>
                             <constraint firstAttribute="height" constant="21" id="wAd-Qq-fib"/>
@@ -1202,7 +1202,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="480" height="217"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="480" height="217"/>
             <value key="maxSize" type="size" width="480" height="217"/>
             <view key="contentView" id="WnT-aI-PUP">
@@ -1210,7 +1210,7 @@ DQ
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xs4-PO-hhe">
-                        <rect key="frame" x="396" y="13" width="70" height="32"/>
+                        <rect key="frame" x="395" y="13" width="72" height="33"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="0Vq-sd-wAK"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="58" id="KHF-LK-9sW"/>
@@ -1227,7 +1227,7 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lIk-Xa-InB">
-                        <rect key="frame" x="314" y="13" width="82" height="32"/>
+                        <rect key="frame" x="313" y="13" width="84" height="33"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="Bz9-9m-rcy"/>
                             <constraint firstAttribute="height" constant="21" id="mH0-OX-nsy"/>
@@ -1250,7 +1250,7 @@ Gw
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xCY-vL-Sgi">
-                                    <rect key="frame" x="18" y="84" width="404" height="18"/>
+                                    <rect key="frame" x="18" y="85" width="402" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="14" id="Eay-97-qL1"/>
                                     </constraints>
@@ -1261,7 +1261,7 @@ Gw
                                     <color key="contentTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yI7-ti-Yxb">
-                                    <rect key="frame" x="18" y="62" width="404" height="18"/>
+                                    <rect key="frame" x="18" y="63" width="402" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="14" id="ljw-DE-xTz"/>
                                     </constraints>
@@ -1272,7 +1272,7 @@ Gw
                                     <color key="contentTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a1R-y3-VLC">
-                                    <rect key="frame" x="18" y="40" width="404" height="18"/>
+                                    <rect key="frame" x="18" y="41" width="402" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="14" id="qUQ-w9-PYM"/>
                                     </constraints>
@@ -1283,7 +1283,7 @@ Gw
                                     <color key="contentTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AeV-WO-2ed">
-                                    <rect key="frame" x="18" y="18" width="404" height="18"/>
+                                    <rect key="frame" x="18" y="19" width="402" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="14" id="GJN-C2-N9X"/>
                                     </constraints>
@@ -1332,7 +1332,7 @@ Gw
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="131" y="158" width="640" height="822"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="640" height="822"/>
             <value key="maxSize" type="size" width="640" height="822"/>
             <view key="contentView" wantsLayer="YES" id="uh8-IV-ZCw">
@@ -1349,7 +1349,7 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="HRn-Yf-ugw">
                             <rect key="frame" x="0.0" y="0.0" width="564" height="705"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" selectable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" allowsCharacterPickerTouchBarItem="NO" quoteSubstitution="YES" dashSubstitution="YES" textCompletion="NO" smartInsertDelete="YES" id="4da-rh-wcU">
                                     <rect key="frame" x="0.0" y="0.0" width="564" height="705"/>

@@ -1,4 +1,4 @@
-# The Valley 1.0.8
+# The Valley 1.0.9
 
 A macOS adaptation of a ground-breaking real-time RPG from 1982
 
