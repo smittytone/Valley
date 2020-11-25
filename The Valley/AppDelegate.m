@@ -92,6 +92,10 @@
     if (n.boolValue) [_window toggleFullScreen:self];
 
     [_window makeKeyAndOrderFront:self];
+    
+    // Use the following line to render text for graphical use
+    // during development
+    //theMessage.inputString = @"THE VALLEY";
 }
 
 
