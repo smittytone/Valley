@@ -8,13 +8,13 @@ The Valley was a type-in-yourself program published in the UK in *Computing Toda
 
 I wrote about it in my ‘Forgotten Tech’ column in *The Register*, back in 2009. You can read the article [here](https://www.theregister.co.uk/2009/11/27/back_into_the_valley/). The [comments section](https://forums.theregister.co.uk/forum/1/2009/11/27/back_into_the_valley/) is particularly illuminating.
 
-<p align="center"><img src="https://smittytone.net/images/valley/valley_logo.png" width="800" ></p>
+<p align="center"><img src="https://smittytone.net/images/valley/logo.svg" width="800" ></p>
 
 The column was prompted by the discovery of Fraser Charlton’s [Valley fan page](https://www.staff.ncl.ac.uk/fraser.charlton/otherstuff/Valley/valley_index.html). I got in touch with Fraser and he was kind enough to scan and email me a copy of the listing (mine had long since been dropped in the bin). Thus began an on-again-off-again project to create a macOS version that was true to the spirit of the original: a UI that mimicked the machine on which the game had been first presented (a Commodore Pet).
 
 It was eventually done and played, but never fully debugged. I’d come back to it every once in a while, play it, tweak a few things, and get distracted by something else. Returning to the code in the Autumn of 2017, I decided that, once and for all, I would complete the code, bring the rest up to date, debug it and make it available to the world.
 
-<p align="center"><img src="https://smittytone.net/images/valley/valleyss.png" ></p>
+<p align="center"><img src="https://smittytone.net/images/valley/valleyss@2x.webp" ></p>
 
 ## Implementation ##
 
@@ -38,7 +38,7 @@ My code also includes the Commodore Pet character set in three variations. Again
 
 The macOS icon is based on The Valley’s iconic Dwarf and a swords-and-shield graphic by [PSD Graphics](http://psdgraphics.com).
 
-<p align="center"><img src="https://smittytone.net/images/valley/valleychars.jpg" width="800" ></p>
+<p align="center"><img src="https://smittytone.net/images/valley/valleychars@2x.webp" width="800" ></p>
 
 The character images are Games Workshop figures from the *Dungeonquest* and *Warlock of Firetop Mountain* boardgames of the mid- to late 1980s, painted by me back in the day but photographed recently.
 
