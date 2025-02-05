@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -410,7 +410,7 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="680" height="740"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
             <value key="minSize" type="size" width="680" height="740"/>
             <value key="maxSize" type="size" width="680" height="740"/>
             <value key="minFullScreenContentSize" type="size" width="680" height="740"/>
@@ -560,135 +560,135 @@
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NFf-kx-XnR" customClass="ValleyButton">
                                     <rect key="frame" x="20" y="170" width="72" height="72"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="72" id="1ND-UK-0mh"/>
-                                        <constraint firstAttribute="height" constant="72" id="Wto-JB-gYT"/>
-                                    </constraints>
                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_7" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="wbJ-Yf-GYt">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <string key="keyEquivalent">7</string>
                                     </buttonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="72" id="1ND-UK-0mh"/>
+                                        <constraint firstAttribute="height" constant="72" id="Wto-JB-gYT"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="move:" target="Voe-Tx-rLC" id="SB5-f4-lBy"/>
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R2a-8P-elG" customClass="ValleyButton">
                                     <rect key="frame" x="99" y="170" width="72" height="72"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="72" id="8I7-Td-WYw"/>
-                                        <constraint firstAttribute="height" constant="72" id="WIL-wh-d79"/>
-                                    </constraints>
                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_8" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="zMs-OX-oz8">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <string key="keyEquivalent">8</string>
                                     </buttonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="72" id="8I7-Td-WYw"/>
+                                        <constraint firstAttribute="height" constant="72" id="WIL-wh-d79"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="move:" target="Voe-Tx-rLC" id="MLZ-Sg-qyD"/>
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gDe-pZ-KZJ" customClass="ValleyButton">
                                     <rect key="frame" x="176" y="170" width="72" height="72"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="72" id="FBy-HQ-Bup"/>
-                                        <constraint firstAttribute="height" constant="72" id="XJF-JK-5Lb"/>
-                                    </constraints>
                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_9" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="aRN-xw-5eM">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <string key="keyEquivalent">9</string>
                                     </buttonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="72" id="FBy-HQ-Bup"/>
+                                        <constraint firstAttribute="height" constant="72" id="XJF-JK-5Lb"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="move:" target="Voe-Tx-rLC" id="6UM-FV-kgf"/>
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qLY-6g-PZc" customClass="ValleyButton">
                                     <rect key="frame" x="20" y="92" width="72" height="72"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="72" id="2sL-CN-tDd"/>
-                                        <constraint firstAttribute="height" constant="72" id="mlP-GV-Jc5"/>
-                                    </constraints>
                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_4" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="BJw-Pw-cRA">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <string key="keyEquivalent">4</string>
                                     </buttonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="72" id="2sL-CN-tDd"/>
+                                        <constraint firstAttribute="height" constant="72" id="mlP-GV-Jc5"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="move:" target="Voe-Tx-rLC" id="fWh-mG-FzD"/>
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sY6-dY-QmM" customClass="ValleyButton">
                                     <rect key="frame" x="99" y="92" width="72" height="72"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="72" id="Axe-40-0LL"/>
-                                        <constraint firstAttribute="width" constant="72" id="wjT-ex-p5L"/>
-                                    </constraints>
                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_5" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="LYk-nf-Z3h">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <string key="keyEquivalent">5</string>
                                     </buttonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="72" id="Axe-40-0LL"/>
+                                        <constraint firstAttribute="width" constant="72" id="wjT-ex-p5L"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="move:" target="Voe-Tx-rLC" id="4tg-sN-LKK"/>
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nfg-k9-zH4" customClass="ValleyButton">
                                     <rect key="frame" x="176" y="92" width="72" height="72"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="72" id="Wzf-av-ECU"/>
-                                        <constraint firstAttribute="height" constant="72" id="jck-kx-ltV"/>
-                                    </constraints>
                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_6" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="s9h-tT-Y8X">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <string key="keyEquivalent">6</string>
                                     </buttonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="72" id="Wzf-av-ECU"/>
+                                        <constraint firstAttribute="height" constant="72" id="jck-kx-ltV"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="move:" target="Voe-Tx-rLC" id="Axc-Fe-KvC"/>
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ptz-sd-f0c" customClass="ValleyButton">
                                     <rect key="frame" x="20" y="14" width="72" height="72"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="72" id="MxW-Wq-6MN"/>
-                                        <constraint firstAttribute="height" constant="72" id="Zyv-E2-RSo"/>
-                                    </constraints>
                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_1" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="5x3-Jo-7Qs">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <string key="keyEquivalent">1</string>
                                     </buttonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="72" id="MxW-Wq-6MN"/>
+                                        <constraint firstAttribute="height" constant="72" id="Zyv-E2-RSo"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="move:" target="Voe-Tx-rLC" id="01a-Jk-ac9"/>
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yw4-Vv-7yH" customClass="ValleyButton">
                                     <rect key="frame" x="99" y="14" width="72" height="72"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="72" id="byU-Pz-lz4"/>
-                                        <constraint firstAttribute="width" constant="72" id="xw1-vZ-KQ2"/>
-                                    </constraints>
                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_2" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="VA8-JI-Ryy">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <string key="keyEquivalent">2</string>
                                     </buttonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="72" id="byU-Pz-lz4"/>
+                                        <constraint firstAttribute="width" constant="72" id="xw1-vZ-KQ2"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="move:" target="Voe-Tx-rLC" id="i6Q-9S-d2s"/>
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J8c-Hg-OPZ" customClass="ValleyButton">
                                     <rect key="frame" x="176" y="14" width="72" height="72"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="72" id="6P7-st-huU"/>
-                                        <constraint firstAttribute="height" constant="72" id="Hsj-uW-CcO"/>
-                                    </constraints>
                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_3" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="7ir-BZ-5Gs">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <string key="keyEquivalent">3</string>
                                     </buttonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="72" id="6P7-st-huU"/>
+                                        <constraint firstAttribute="height" constant="72" id="Hsj-uW-CcO"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="move:" target="Voe-Tx-rLC" id="CbT-Ac-GkM"/>
                                     </connections>
@@ -737,45 +737,45 @@
                                 </imageView>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rQo-Gd-H5X" customClass="ValleyButton">
                                     <rect key="frame" x="20" y="48" width="72" height="72"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="72" id="5Uj-Z3-lMt"/>
-                                        <constraint firstAttribute="width" constant="72" id="kJM-Tp-C94"/>
-                                    </constraints>
                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_b" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="tvc-A3-Pqa">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <string key="keyEquivalent">b</string>
                                     </buttonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="72" id="5Uj-Z3-lMt"/>
+                                        <constraint firstAttribute="width" constant="72" id="kJM-Tp-C94"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="strike:" target="Voe-Tx-rLC" id="vz7-5J-nAq"/>
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cPD-sr-E7l" customClass="ValleyButton">
                                     <rect key="frame" x="229" y="12" width="72" height="72"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="72" id="mpr-He-5tv"/>
-                                        <constraint firstAttribute="height" constant="72" id="oGA-gM-lZV"/>
-                                    </constraints>
                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_l" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="S78-cY-JPV">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <string key="keyEquivalent">l</string>
                                     </buttonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="72" id="mpr-He-5tv"/>
+                                        <constraint firstAttribute="height" constant="72" id="oGA-gM-lZV"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="strike:" target="Voe-Tx-rLC" id="86r-hK-9HL"/>
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0If-JD-g82" customClass="ValleyButton">
                                     <rect key="frame" x="229" y="92" width="72" height="72"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="72" id="2Nq-0Z-Eim"/>
-                                        <constraint firstAttribute="height" constant="72" id="SiX-k2-e27"/>
-                                    </constraints>
                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_h" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="XWG-Li-sDD">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <string key="keyEquivalent">h</string>
                                     </buttonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="72" id="2Nq-0Z-Eim"/>
+                                        <constraint firstAttribute="height" constant="72" id="SiX-k2-e27"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="strike:" target="Voe-Tx-rLC" id="Dkd-Tz-epl"/>
                                     </connections>
@@ -800,75 +800,75 @@
                     </box>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nfd-f5-DaQ" customClass="ValleyButton">
                         <rect key="frame" x="340" y="20" width="72" height="72"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="72" id="Bue-0R-Xcg"/>
-                            <constraint firstAttribute="height" constant="72" id="Qiv-ea-IUf"/>
-                        </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_a" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="UAE-sl-rWO">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent">a</string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="Bue-0R-Xcg"/>
+                            <constraint firstAttribute="height" constant="72" id="Qiv-ea-IUf"/>
+                        </constraints>
                         <connections>
                             <action selector="attack:" target="Voe-Tx-rLC" id="Kux-Hq-ocu"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wD3-p8-NX5" customClass="ValleyButton">
                         <rect key="frame" x="422" y="20" width="72" height="72"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="72" id="I8u-sf-dhV"/>
-                            <constraint firstAttribute="height" constant="72" id="Lyz-BK-WZI"/>
-                        </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_r" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="O8e-Mu-9el">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent">r</string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="I8u-sf-dhV"/>
+                            <constraint firstAttribute="height" constant="72" id="Lyz-BK-WZI"/>
+                        </constraints>
                         <connections>
                             <action selector="retreat:" target="Voe-Tx-rLC" id="6pq-3c-e14"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LAL-ew-NJg" customClass="ValleyButton">
                         <rect key="frame" x="504" y="20" width="72" height="72"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="72" id="Fn4-GD-qB4"/>
-                            <constraint firstAttribute="height" constant="72" id="KA3-n8-TTz"/>
-                        </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_s" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="BYS-fx-IEm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent">s</string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="Fn4-GD-qB4"/>
+                            <constraint firstAttribute="height" constant="72" id="KA3-n8-TTz"/>
+                        </constraints>
                         <connections>
                             <action selector="castSpell:" target="Voe-Tx-rLC" id="udj-iM-Lro"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KhN-tC-9Uj">
                         <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="10" id="Xd3-mi-gpq"/>
-                            <constraint firstAttribute="width" constant="10" id="c25-Sr-Hv3"/>
-                        </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="0fd-Qc-Orx">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent">n</string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="Xd3-mi-gpq"/>
+                            <constraint firstAttribute="width" constant="10" id="c25-Sr-Hv3"/>
+                        </constraints>
                         <connections>
                             <action selector="newChar:" target="Voe-Tx-rLC" id="8T6-sQ-0aI"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="54L-0Y-nSw" customClass="ValleyButton">
                         <rect key="frame" x="586" y="20" width="72" height="72"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="72" id="3Zo-Jk-cCg"/>
-                            <constraint firstAttribute="width" constant="72" id="bec-I0-NK6"/>
-                        </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="key_e" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="vl7-JE-Lwo">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent">e</string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="72" id="3Zo-Jk-cCg"/>
+                            <constraint firstAttribute="width" constant="72" id="bec-I0-NK6"/>
+                        </constraints>
                         <connections>
                             <action selector="ego:" target="Voe-Tx-rLC" id="loM-YF-E8g"/>
                         </connections>
@@ -911,7 +911,7 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="436" height="436"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
             <value key="minSize" type="size" width="436" height="436"/>
             <value key="maxSize" type="size" width="436" height="436"/>
             <view key="contentView" wantsLayer="YES" id="ewN-Zi-AvS">
@@ -944,84 +944,84 @@
                     </imageView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QgD-Ad-GUQ">
                         <rect key="frame" x="20" y="242" width="72" height="72"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="1a2-4P-1aR"/>
-                            <constraint firstAttribute="height" constant="72" id="Yl1-PQ-W8W"/>
-                        </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_wizard" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="OFb-zY-ksA">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="1a2-4P-1aR"/>
+                            <constraint firstAttribute="height" constant="72" id="Yl1-PQ-W8W"/>
+                        </constraints>
                         <connections>
                             <action selector="setProfession:" target="Voe-Tx-rLC" id="Oxz-HX-eoK"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="98K-WS-4r1">
                         <rect key="frame" x="20" y="160" width="72" height="72"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="72" id="LB5-Us-eXd"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="MGg-jS-Ye7"/>
-                        </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_barbarian" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="VXC-tL-q3r">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="72" id="LB5-Us-eXd"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="MGg-jS-Ye7"/>
+                        </constraints>
                         <connections>
                             <action selector="setProfession:" target="Voe-Tx-rLC" id="4Di-Ox-tXQ"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zAm-hs-Gel">
                         <rect key="frame" x="20" y="78" width="72" height="72"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="Q2A-Ce-UTS"/>
-                            <constraint firstAttribute="height" constant="72" id="zDS-ZS-9y4"/>
-                        </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_thinker" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="fWm-kP-KAp">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="Q2A-Ce-UTS"/>
+                            <constraint firstAttribute="height" constant="72" id="zDS-ZS-9y4"/>
+                        </constraints>
                         <connections>
                             <action selector="setProfession:" target="Voe-Tx-rLC" id="gOn-DK-wxs"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="reS-y0-K8R">
                         <rect key="frame" x="344" y="242" width="72" height="72"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="cHa-s1-Vbu"/>
-                            <constraint firstAttribute="height" constant="72" id="wzD-wv-Gvk"/>
-                        </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_warrior" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="dnr-Bc-Me1">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="cHa-s1-Vbu"/>
+                            <constraint firstAttribute="height" constant="72" id="wzD-wv-Gvk"/>
+                        </constraints>
                         <connections>
                             <action selector="setProfession:" target="Voe-Tx-rLC" id="hQe-39-d67"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9jw-mU-1QD">
                         <rect key="frame" x="344" y="160" width="72" height="72"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="72" id="1GI-ym-SfW"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="IRz-mL-iBx"/>
-                        </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_cleric" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="zgH-2W-uHH">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="72" id="1GI-ym-SfW"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="IRz-mL-iBx"/>
+                        </constraints>
                         <connections>
                             <action selector="setProfession:" target="Voe-Tx-rLC" id="liU-LM-l7s"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dp0-Ax-KSu">
                         <rect key="frame" x="344" y="78" width="72" height="72"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="DWI-Fv-GB3"/>
-                            <constraint firstAttribute="height" constant="72" id="EpZ-2o-v9U"/>
-                        </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_thief" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="J9w-5u-R4k">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="DWI-Fv-GB3"/>
+                            <constraint firstAttribute="height" constant="72" id="EpZ-2o-v9U"/>
+                        </constraints>
                         <connections>
                             <action selector="setProfession:" target="Voe-Tx-rLC" id="QYR-sF-8v8"/>
                         </connections>
@@ -1035,28 +1035,28 @@
                     </imageView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BhB-WX-5G2">
                         <rect key="frame" x="218" y="20" width="126" height="47"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="126" id="7dd-bT-SJF"/>
-                            <constraint firstAttribute="height" constant="47" id="I49-T4-YEY"/>
-                        </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_play" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="qFe-xm-PeO">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="126" id="7dd-bT-SJF"/>
+                            <constraint firstAttribute="height" constant="47" id="I49-T4-YEY"/>
+                        </constraints>
                         <connections>
                             <action selector="saveCharSheet:" target="Voe-Tx-rLC" id="ZiC-12-dJy"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c83-GJ-lGl">
                         <rect key="frame" x="93" y="20" width="126" height="47"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="126" id="8lU-rT-UeM"/>
-                            <constraint firstAttribute="height" constant="47" id="TlY-Oa-e7p"/>
-                        </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_cancel" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="W7o-fA-AdW">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="126" id="8lU-rT-UeM"/>
+                            <constraint firstAttribute="height" constant="47" id="TlY-Oa-e7p"/>
+                        </constraints>
                         <connections>
                             <action selector="cancelCharSheet:" target="Voe-Tx-rLC" id="ETI-67-waO"/>
                         </connections>
@@ -1111,7 +1111,7 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="640" height="320"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
             <value key="minSize" type="size" width="640" height="320"/>
             <value key="maxSize" type="size" width="640" height="320"/>
             <view key="contentView" id="PkO-xz-L2r">
@@ -1122,7 +1122,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="640" height="320"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="about_back" id="4bx-0W-OnR"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="359" translatesAutoresizingMaskIntoConstraints="NO" id="dZP-8b-e3s">
+                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="359" translatesAutoresizingMaskIntoConstraints="NO" id="dZP-8b-e3s">
                         <rect key="frame" x="262" y="20" width="360" height="87"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="87" id="o8D-Bn-io4"/>
@@ -1135,7 +1135,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="170" translatesAutoresizingMaskIntoConstraints="NO" id="ens-TM-00h">
+                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="170" translatesAutoresizingMaskIntoConstraints="NO" id="ens-TM-00h">
                         <rect key="frame" x="18" y="51" width="60" height="56"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53" id="aVT-BO-cfL"/>
@@ -1151,10 +1151,6 @@ Fraser  Charlton</string>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EwX-hz-H93">
                         <rect key="frame" x="539" y="13" width="88" height="33"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="74" id="27b-CE-lWE"/>
-                            <constraint firstAttribute="height" constant="21" id="wAd-Qq-fib"/>
-                        </constraints>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fe7-rT-iU4">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -1162,17 +1158,21 @@ Fraser  Charlton</string>
 DQ
 </string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="74" id="27b-CE-lWE"/>
+                            <constraint firstAttribute="height" constant="21" id="wAd-Qq-fib"/>
+                        </constraints>
                         <connections>
                             <action selector="closeAboutSheet:" target="Voe-Tx-rLC" id="J4c-c5-lW0"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="359" translatesAutoresizingMaskIntoConstraints="NO" id="zS5-OU-swR">
+                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="359" translatesAutoresizingMaskIntoConstraints="NO" id="zS5-OU-swR">
                         <rect key="frame" x="226" y="283" width="396" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="fRT-UI-ph7"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="392" id="rbF-DA-1sc"/>
                         </constraints>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="macOS version coded by Tony Smith 2009-2020" id="gGq-Xh-IUh">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="macOS version coded by Tony Smith 2009-2025" id="gGq-Xh-IUh">
                             <font key="font" metaFont="systemBold"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1204,7 +1204,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="480" height="217"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
             <value key="minSize" type="size" width="480" height="217"/>
             <value key="maxSize" type="size" width="480" height="217"/>
             <view key="contentView" id="WnT-aI-PUP">
@@ -1213,10 +1213,6 @@ DQ
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xs4-PO-hhe">
                         <rect key="frame" x="395" y="13" width="72" height="33"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="0Vq-sd-wAK"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="58" id="KHF-LK-9sW"/>
-                        </constraints>
                         <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FrU-VN-o4r">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -1224,16 +1220,16 @@ DQ
 DQ
 </string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="0Vq-sd-wAK"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="58" id="KHF-LK-9sW"/>
+                        </constraints>
                         <connections>
                             <action selector="prefsSheetSave:" target="Voe-Tx-rLC" id="m3E-Uf-Oo6"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lIk-Xa-InB">
                         <rect key="frame" x="313" y="13" width="84" height="33"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="Bz9-9m-rcy"/>
-                            <constraint firstAttribute="height" constant="21" id="mH0-OX-nsy"/>
-                        </constraints>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NhM-b4-Wy7">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -1241,6 +1237,10 @@ DQ
 Gw
 </string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="Bz9-9m-rcy"/>
+                            <constraint firstAttribute="height" constant="21" id="mH0-OX-nsy"/>
+                        </constraints>
                         <connections>
                             <action selector="prefsSheetCancel:" target="Voe-Tx-rLC" id="8zg-bz-hCd"/>
                         </connections>
@@ -1248,52 +1248,50 @@ Gw
                     <box autoresizesSubviews="NO" borderType="line" title="Valley Preferences" translatesAutoresizingMaskIntoConstraints="NO" id="IRn-xL-RqL">
                         <rect key="frame" x="17" y="51" width="446" height="146"/>
                         <view key="contentView" id="6vx-b8-Z40">
-                            <rect key="frame" x="3" y="3" width="440" height="126"/>
+                            <rect key="frame" x="4" y="5" width="438" height="124"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xCY-vL-Sgi">
-                                    <rect key="frame" x="18" y="87" width="402" height="20"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="18" id="Eay-97-qL1"/>
-                                    </constraints>
+                                    <rect key="frame" x="18" y="85" width="400" height="20"/>
                                     <buttonCell key="cell" type="check" title="Only allow games to be saved in a Safe Castle" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="63j-ec-hFz">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
-                                    <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="Eay-97-qL1"/>
+                                    </constraints>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yI7-ti-Yxb">
-                                    <rect key="frame" x="18" y="63" width="402" height="20"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="18" id="ljw-DE-xTz"/>
-                                    </constraints>
+                                    <rect key="frame" x="18" y="61" width="400" height="20"/>
                                     <buttonCell key="cell" type="check" title="Use new graphics" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="KCF-Vt-n3u">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="ljw-DE-xTz"/>
+                                    </constraints>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a1R-y3-VLC">
-                                    <rect key="frame" x="18" y="39" width="402" height="20"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="18" id="qUQ-w9-PYM"/>
-                                    </constraints>
+                                    <rect key="frame" x="18" y="37" width="400" height="20"/>
                                     <buttonCell key="cell" type="check" title="Play sounds" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="WQT-gw-MvX">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="qUQ-w9-PYM"/>
+                                    </constraints>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AeV-WO-2ed">
-                                    <rect key="frame" x="18" y="15" width="402" height="20"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="18" id="GJN-C2-N9X"/>
-                                    </constraints>
+                                    <rect key="frame" x="18" y="13" width="400" height="20"/>
                                     <buttonCell key="cell" type="check" title="Begin game in full screen" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="UUz-Yy-ZPK">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
-                                    <color key="contentTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="GJN-C2-N9X"/>
+                                    </constraints>
                                 </button>
                             </subviews>
                             <constraints>
@@ -1334,7 +1332,7 @@ Gw
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="131" y="158" width="640" height="822"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
             <value key="minSize" type="size" width="640" height="822"/>
             <value key="maxSize" type="size" width="640" height="822"/>
             <view key="contentView" wantsLayer="YES" id="uh8-IV-ZCw">
