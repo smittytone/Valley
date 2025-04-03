@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -923,187 +923,135 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="char_back" id="G8Q-9c-Dng"/>
                     </imageView>
-                    <textField focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6F-8A-ZqF">
-                        <rect key="frame" x="20" y="348" width="396" height="31"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="31" id="HLO-Q6-UgH"/>
-                        </constraints>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="center" placeholderString="Enter your name here" drawsBackground="YES" usesSingleLineMode="YES" id="Hzv-iQ-8TI">
-                            <font key="font" size="20" name="Apple-Chancery"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6F-8A-ZqF">
+                        <rect key="frame" x="8" y="362" width="420" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" alignment="center" placeholderString="Enter your name here" drawsBackground="YES" usesSingleLineMode="YES" id="Hzv-iQ-8TI">
+                            <font key="font" size="18" name="Apple-Chancery"/>
+                            <color key="textColor" name="systemIndigoColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                         </textFieldCell>
                     </textField>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3PD-F0-4hP">
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3PD-F0-4hP">
                         <rect key="frame" x="100" y="78" width="236" height="236"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="236" id="0i0-7D-FFc"/>
-                            <constraint firstAttribute="height" constant="236" id="aNT-1F-fwK"/>
-                        </constraints>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="figure_base" id="dlZ-si-xgR"/>
                     </imageView>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QgD-Ad-GUQ">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QgD-Ad-GUQ">
                         <rect key="frame" x="20" y="242" width="72" height="72"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_wizard" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="OFb-zY-ksA">
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" title="Wizard" bezelStyle="shadowlessSquare" image="button_base" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="OFb-zY-ksA">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" size="15" name="Apple-Chancery"/>
                         </buttonCell>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="1a2-4P-1aR"/>
-                            <constraint firstAttribute="height" constant="72" id="Yl1-PQ-W8W"/>
-                        </constraints>
+                        <color key="contentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
                             <action selector="setProfession:" target="Voe-Tx-rLC" id="Oxz-HX-eoK"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="98K-WS-4r1">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98K-WS-4r1">
                         <rect key="frame" x="20" y="160" width="72" height="72"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_barbarian" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="VXC-tL-q3r">
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" title="Barbarian" bezelStyle="shadowlessSquare" image="button_base" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="VXC-tL-q3r">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" size="13" name="Apple-Chancery"/>
                         </buttonCell>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="72" id="LB5-Us-eXd"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="MGg-jS-Ye7"/>
-                        </constraints>
+                        <color key="contentTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="setProfession:" target="Voe-Tx-rLC" id="4Di-Ox-tXQ"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zAm-hs-Gel">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zAm-hs-Gel">
                         <rect key="frame" x="20" y="78" width="72" height="72"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_thinker" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="fWm-kP-KAp">
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" title="Thinker" bezelStyle="shadowlessSquare" image="button_base" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="fWm-kP-KAp">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" size="15" name="Apple-Chancery"/>
                         </buttonCell>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="Q2A-Ce-UTS"/>
-                            <constraint firstAttribute="height" constant="72" id="zDS-ZS-9y4"/>
-                        </constraints>
+                        <color key="contentTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="setProfession:" target="Voe-Tx-rLC" id="gOn-DK-wxs"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="reS-y0-K8R">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="reS-y0-K8R">
                         <rect key="frame" x="344" y="242" width="72" height="72"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_warrior" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="dnr-Bc-Me1">
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" title="Warrior" bezelStyle="shadowlessSquare" image="button_base" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="dnr-Bc-Me1">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" size="15" name="Apple-Chancery"/>
                         </buttonCell>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="cHa-s1-Vbu"/>
-                            <constraint firstAttribute="height" constant="72" id="wzD-wv-Gvk"/>
-                        </constraints>
+                        <color key="contentTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="setProfession:" target="Voe-Tx-rLC" id="hQe-39-d67"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9jw-mU-1QD">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9jw-mU-1QD">
                         <rect key="frame" x="344" y="160" width="72" height="72"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_cleric" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="zgH-2W-uHH">
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" title="Cleric" bezelStyle="shadowlessSquare" image="button_base" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="zgH-2W-uHH">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" size="18" name="Apple-Chancery"/>
                         </buttonCell>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="72" id="1GI-ym-SfW"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="IRz-mL-iBx"/>
-                        </constraints>
+                        <color key="contentTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="setProfession:" target="Voe-Tx-rLC" id="liU-LM-l7s"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dp0-Ax-KSu">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dp0-Ax-KSu">
                         <rect key="frame" x="344" y="78" width="72" height="72"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_thief" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="J9w-5u-R4k">
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" title="Thief" bezelStyle="shadowlessSquare" image="button_base" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="J9w-5u-R4k">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" size="18" name="Apple-Chancery"/>
                         </buttonCell>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="DWI-Fv-GB3"/>
-                            <constraint firstAttribute="height" constant="72" id="EpZ-2o-v9U"/>
-                        </constraints>
+                        <color key="contentTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="setProfession:" target="Voe-Tx-rLC" id="QYR-sF-8v8"/>
                         </connections>
                     </button>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L8o-b1-Blr">
-                        <rect key="frame" x="20" y="387" width="396" height="29"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="29" id="vMe-dK-Cd9"/>
-                        </constraints>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="char_text_line_1" id="bzk-zR-qmR"/>
-                    </imageView>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BhB-WX-5G2">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BhB-WX-5G2">
                         <rect key="frame" x="218" y="20" width="126" height="47"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_play" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="qFe-xm-PeO">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="126" id="7dd-bT-SJF"/>
-                            <constraint firstAttribute="height" constant="47" id="I49-T4-YEY"/>
-                        </constraints>
+                        <color key="contentTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="saveCharSheet:" target="Voe-Tx-rLC" id="ZiC-12-dJy"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c83-GJ-lGl">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c83-GJ-lGl">
                         <rect key="frame" x="93" y="20" width="126" height="47"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_cancel" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="W7o-fA-AdW">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="126" id="8lU-rT-UeM"/>
-                            <constraint firstAttribute="height" constant="47" id="TlY-Oa-e7p"/>
-                        </constraints>
+                        <color key="contentTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="cancelCharSheet:" target="Voe-Tx-rLC" id="ETI-67-waO"/>
                         </connections>
                     </button>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cis-Jf-tgO">
-                        <rect key="frame" x="20" y="322" width="396" height="29"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="29" id="2ol-95-Syi"/>
-                        </constraints>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="char_text_line_2" id="0pG-0P-LEn"/>
-                    </imageView>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1cH-AS-EOE">
+                        <rect key="frame" x="-1" y="395" width="438" height="41"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Enter your character’s name..." id="SgU-52-uEU">
+                            <font key="font" size="24" name="Apple-Chancery"/>
+                            <color key="textColor" white="0.0" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.12" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ae-hf-4cv">
+                        <rect key="frame" x="-1" y="314" width="438" height="54"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="...and choose your character’s class..." id="oMV-uG-Dx5">
+                            <font key="font" size="24" name="Apple-Chancery"/>
+                            <color key="textColor" white="0.0" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.12" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
-                <constraints>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zAm-hs-Gel" secondAttribute="trailing" constant="20" symbolic="YES" id="1fF-oD-B0Z"/>
-                    <constraint firstItem="Dp0-Ax-KSu" firstAttribute="top" secondItem="9jw-mU-1QD" secondAttribute="bottom" constant="10" id="3jm-EQ-vSA"/>
-                    <constraint firstAttribute="trailing" secondItem="BhB-WX-5G2" secondAttribute="trailing" constant="92" id="3kV-ae-zGl"/>
-                    <constraint firstAttribute="trailing" secondItem="reS-y0-K8R" secondAttribute="trailing" constant="20" id="3l4-7C-0G6"/>
-                    <constraint firstItem="3PD-F0-4hP" firstAttribute="centerX" secondItem="ewN-Zi-AvS" secondAttribute="centerX" id="74X-b6-bd4"/>
-                    <constraint firstItem="9jw-mU-1QD" firstAttribute="top" secondItem="reS-y0-K8R" secondAttribute="bottom" constant="10" id="7T4-4u-JYt"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QgD-Ad-GUQ" secondAttribute="trailing" constant="20" symbolic="YES" id="99K-Zi-3gQ"/>
-                    <constraint firstItem="reS-y0-K8R" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" symbolic="YES" id="Aq8-xn-zaP"/>
-                    <constraint firstItem="QgD-Ad-GUQ" firstAttribute="top" secondItem="cis-Jf-tgO" secondAttribute="bottom" constant="8" id="ArO-12-5bB"/>
-                    <constraint firstItem="cis-Jf-tgO" firstAttribute="top" secondItem="g6F-8A-ZqF" secondAttribute="bottom" constant="-3" id="EIA-xQ-uWW"/>
-                    <constraint firstItem="c83-GJ-lGl" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="93" id="EbE-hM-g4K"/>
-                    <constraint firstItem="zAm-hs-Gel" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="Eeh-WQ-t7s"/>
-                    <constraint firstAttribute="trailing" secondItem="g6F-8A-ZqF" secondAttribute="trailing" constant="20" id="Exj-Ld-a1E"/>
-                    <constraint firstItem="cis-Jf-tgO" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="GRZ-mA-ojs"/>
-                    <constraint firstItem="g6F-8A-ZqF" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="IVJ-1J-Dsd"/>
-                    <constraint firstAttribute="trailing" secondItem="9jw-mU-1QD" secondAttribute="trailing" constant="20" id="JTp-ix-qQq"/>
-                    <constraint firstItem="zAm-hs-Gel" firstAttribute="top" secondItem="98K-WS-4r1" secondAttribute="bottom" constant="10" id="KPR-cK-xCX"/>
-                    <constraint firstItem="9jw-mU-1QD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" symbolic="YES" id="MAJ-96-qKL"/>
-                    <constraint firstItem="98K-WS-4r1" firstAttribute="top" secondItem="QgD-Ad-GUQ" secondAttribute="bottom" constant="10" id="Qwl-pU-6Ds"/>
-                    <constraint firstAttribute="trailing" secondItem="cis-Jf-tgO" secondAttribute="trailing" constant="20" id="SPX-P4-MEI"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="98K-WS-4r1" secondAttribute="trailing" constant="20" symbolic="YES" id="SsQ-Mn-lFg"/>
-                    <constraint firstAttribute="trailing" secondItem="L8o-b1-Blr" secondAttribute="trailing" constant="20" id="Trn-Oe-OBO"/>
-                    <constraint firstAttribute="bottom" secondItem="c83-GJ-lGl" secondAttribute="bottom" constant="20" id="UHb-Kc-4No"/>
-                    <constraint firstItem="98K-WS-4r1" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="Y6J-wM-U3X"/>
-                    <constraint firstItem="L8o-b1-Blr" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="YhL-Py-KZI"/>
-                    <constraint firstItem="QgD-Ad-GUQ" firstAttribute="leading" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" id="cIj-4G-xNL"/>
-                    <constraint firstAttribute="bottom" secondItem="BhB-WX-5G2" secondAttribute="bottom" constant="20" id="hkf-bm-WBL"/>
-                    <constraint firstItem="Dp0-Ax-KSu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ewN-Zi-AvS" secondAttribute="leading" constant="20" symbolic="YES" id="j9I-c6-A8p"/>
-                    <constraint firstAttribute="trailing" secondItem="Dp0-Ax-KSu" secondAttribute="trailing" constant="20" id="mbp-QN-eak"/>
-                    <constraint firstItem="reS-y0-K8R" firstAttribute="top" secondItem="cis-Jf-tgO" secondAttribute="bottom" constant="8" id="p8C-16-asL"/>
-                    <constraint firstItem="L8o-b1-Blr" firstAttribute="top" secondItem="ewN-Zi-AvS" secondAttribute="top" constant="20" id="qkO-hC-TtM"/>
-                    <constraint firstItem="3PD-F0-4hP" firstAttribute="top" secondItem="cis-Jf-tgO" secondAttribute="bottom" constant="8" id="sUI-S8-kg0"/>
-                    <constraint firstItem="g6F-8A-ZqF" firstAttribute="top" secondItem="L8o-b1-Blr" secondAttribute="bottom" constant="8" id="zUy-vJ-hsv"/>
-                </constraints>
             </view>
             <point key="canvasLocation" x="-510" y="33"/>
         </window>
@@ -1267,7 +1215,6 @@ Gw
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
-                                    <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="ljw-DE-xTz"/>
                                     </constraints>
@@ -1278,14 +1225,13 @@ Gw
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
-                                    <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="qUQ-w9-PYM"/>
                                     </constraints>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AeV-WO-2ed">
                                     <rect key="frame" x="18" y="13" width="400" height="20"/>
-                                    <buttonCell key="cell" type="check" title="Begin game in full screen" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="UUz-Yy-ZPK">
+                                    <buttonCell key="cell" type="check" title="Begin game in full screen" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="UUz-Yy-ZPK">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
@@ -1354,14 +1300,14 @@ Gw
                                 <textView editable="NO" selectable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" allowsCharacterPickerTouchBarItem="NO" quoteSubstitution="YES" dashSubstitution="YES" textCompletion="NO" smartInsertDelete="YES" id="4da-rh-wcU">
                                     <rect key="frame" x="0.0" y="0.0" width="564" height="705"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <size key="minSize" width="564" height="705"/>
                                     <size key="maxSize" width="564" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment content="Test">
                                             <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <font key="NSFont" size="20" name="Apple-Chancery"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
@@ -1392,15 +1338,16 @@ Gw
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="scroll_mask_bot" id="43W-2F-OJZ"/>
                     </imageView>
                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XP6-bu-am7">
-                        <rect key="frame" x="527" y="20" width="72" height="72"/>
+                        <rect key="frame" x="533" y="13" width="72" height="72"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_seal" imagePosition="only" alignment="center" inset="2" id="B4Z-3L-F9t">
+                        <buttonCell key="cell" type="square" title="OK" bezelStyle="shadowlessSquare" image="button_base" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="B4Z-3L-F9t">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" size="20" name="Apple-Chancery"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
 DQ
 </string>
                         </buttonCell>
+                        <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <connections>
                             <action selector="closeStory:" target="Voe-Tx-rLC" id="XZh-e1-rUn"/>
                         </connections>
@@ -1427,18 +1374,10 @@ DQ
         <image name="about_back" width="640" height="320"/>
         <image name="back_combat" width="220" height="110"/>
         <image name="background" width="680" height="442"/>
-        <image name="button_barbarian" width="72" height="72"/>
+        <image name="button_base" width="72" height="72"/>
         <image name="button_cancel" width="126" height="47"/>
-        <image name="button_cleric" width="72" height="72"/>
         <image name="button_play" width="126" height="47"/>
-        <image name="button_seal" width="72" height="72"/>
-        <image name="button_thief" width="72" height="72"/>
-        <image name="button_thinker" width="72" height="72"/>
-        <image name="button_warrior" width="72" height="72"/>
-        <image name="button_wizard" width="72" height="72"/>
         <image name="char_back" width="436" height="436"/>
-        <image name="char_text_line_1" width="396" height="30"/>
-        <image name="char_text_line_2" width="396" height="30"/>
         <image name="figure_base" width="236" height="236"/>
         <image name="key_1" width="72" height="72"/>
         <image name="key_2" width="72" height="72"/>
