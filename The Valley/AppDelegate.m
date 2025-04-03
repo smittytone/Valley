@@ -3857,7 +3857,8 @@
 
 - (void)setSounds:(BOOL)state
 {
-    NSSound *clickSound = state ? [NSSound soundNamed:@"click"] : nil;
+    NSSound *clickSound = state ? [NSSound soundNamed:@"pet_keyclick"] : nil;
+    //NSSound *spacebarSound = state ? [NSSound soundNamed:@"pet_spacebar"] : nil;
 
     button9.sound = clickSound;
     button8.sound = clickSound;
