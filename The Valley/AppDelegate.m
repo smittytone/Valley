@@ -420,6 +420,11 @@
     charLevels[26] = @"Demon Killer";
     charLevels[27] = @"Lord of the Valley";
     charLevels[28] = @"Master of Destiny";
+    
+    // Add all graphics pref
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *n = [defaults objectForKey:@"le_Valley_Ascii_Graphic"];
+    [theScreen useAltGraphics:n.boolValue];
 }
 
 
@@ -3349,7 +3354,7 @@
 
 - (IBAction)showAboutSheet:(id)sender
 {
-    aboutLabel.stringValue = [NSString stringWithFormat:@"macOS version coded by Tony Smith 2009-2020 (v%@)", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    aboutLabel.stringValue = [NSString stringWithFormat:@"macOS version (%@) coded by Tony Smith 2009-2025", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
 
     [_window beginSheet:aboutSheet completionHandler:nil];
 }
@@ -3685,7 +3690,7 @@
 
     // Set window elements according to the Defaults values
 
-    NSNumber *n = [defaults objectForKey:@"le_Valley_Ascii_Graphic"];
+    NSNumber *n = [defaults objectForKey:@"le_Valley_Ascii_Graphics"];
     prefsAsciiCheckbox.state = n.boolValue ? NSOnState : NSOffState;
 
     n = [defaults objectForKey:@"le_Valley_Save_in_Castles"];
@@ -3729,21 +3734,19 @@
 
     NSNumber *n = [NSNumber numberWithBool:([prefsAsciiCheckbox state] == NSOnState)];
     [defaults setObject:n forKey:@"le_Valley_Ascii_Graphics"];
+    [theScreen useAltGraphics:n.boolValue];
 
     n = [NSNumber numberWithBool:([prefsSaveCheckbox state] == NSOnState)];
     [defaults setObject:n forKey:@"le_Valley_Save_in_Castles"];
 
     n = [NSNumber numberWithBool:([prefsSoundCheckbox state] == NSOnState)];
     [defaults setObject:n forKey:@"le_Valley_Do_Sounds"];
-
+    [self setSounds:n.boolValue];
+    
     n = [NSNumber numberWithBool:([fullScreenCheckbox state] == NSOnState)];
     [defaults setObject:n forKey:@"le_Valley_Do_Fullscreen_Start"];
 
     [defaults synchronize];
-
-    // Make sure we enable/disable sounds as required by the user
-
-    [self setSounds:([prefsSoundCheckbox state] == NSOnState)];
 }
 
 

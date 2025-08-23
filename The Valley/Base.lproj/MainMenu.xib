@@ -1211,7 +1211,7 @@ Gw
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yI7-ti-Yxb">
                                     <rect key="frame" x="18" y="61" width="400" height="20"/>
-                                    <buttonCell key="cell" type="check" title="Use new graphics" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="KCF-Vt-n3u">
+                                    <buttonCell key="cell" type="check" title="Use new graphics" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="KCF-Vt-n3u">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>

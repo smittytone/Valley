@@ -14,15 +14,18 @@
 {
     NSImage *theView;
     NSImage *theGraphics;
+    NSImage *altGraphics;
     NSInteger *screenArray;
 
     BOOL splashFlag;
+    BOOL useAltGraphics;
 }
 
 
 - (void)copyScreen:(NSInteger *)arrayAddress;
 - (void)drawViewScreen;
 - (void)showSplash:(NSImage *)image;
+- (void)useAltGraphics:(BOOL)doUse;
 
 
 @property (nonatomic, strong, setter=showSplash:) NSImage *splashImage;

@@ -23,6 +23,7 @@
 	{
         theView = [[NSImage alloc] initWithSize:NSMakeSize(624, 224)];
         theGraphics = [NSImage imageNamed:@"petchars_a"];
+        altGraphics = [NSImage imageNamed:@"petchars_d"];
         splashImage = nil;
         splashFlag = NO;
     }
@@ -36,6 +37,7 @@
 {
     theView = [[NSImage alloc] initWithSize:NSMakeSize(624, 224)];
     theGraphics = [NSImage imageNamed:@"petchars_a"];
+    altGraphics = [NSImage imageNamed:@"petchars_d"];
     splashImage = nil;
     splashFlag = NO;
 }
@@ -73,8 +75,10 @@
                     NSUInteger row = theGraphicCode / 16;
                     NSUInteger col = theGraphicCode - (row * 16);
                     NSRect rect = NSMakeRect(col * 16, 240 - (row * 16), 16 , 16);
+                    
+                    NSImage *useGraphics = useAltGraphics ? altGraphics : theGraphics;
 
-                    [theGraphics drawAtPoint: NSMakePoint((x * 16), 208 - (y * 16))
+                    [useGraphics drawAtPoint: NSMakePoint((x * 16), 208 - (y * 16))
                                     fromRect: rect
                                    operation: NSCompositingOperationCopy
                                     fraction: 1.0];
@@ -110,6 +114,12 @@
     splashImage = image;
     splashFlag = YES;
     [self setNeedsDisplayInRect:(NSMakeRect(0, 0, 640 , 224))];
+}
+
+
+- (void)useAltGraphics:(BOOL)doUse {
+    
+    useAltGraphics = doUse;
 }
 
 
